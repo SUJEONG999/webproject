@@ -14,3 +14,7 @@ for v4 in range(1, 6, 2):
 print("*"*20)
 for v5 in range(5, 0, -1):
     print("v5 is :", v4)
+
+## 강용이 수정한 내용
+for i in range(1, 10):
+    print(i)
