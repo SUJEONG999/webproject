@@ -15,14 +15,5 @@ print("*"*20)
 for v5 in range(5, 0, -1):
     print("v5 is :", v4)
 
-# 주석 달기
-
-<<<<<<< HEAD
-#하영
-print("*"*20)
-for v5 in range(5, 0, -1):
-    print("v5 is :", v4)
-=======
-## 강용이 수정한 내용
-
- 3333
+# 연습하기
+# 상원
