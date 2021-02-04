@@ -15,6 +15,6 @@ print("*"*20)
 for v5 in range(5, 0, -1):
     print("v5 is :", v4)
 
+# 주석 달기
+
 ## 강용이 수정한 내용
-for i in range(1, 10):
-    print(i)
