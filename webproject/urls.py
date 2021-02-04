@@ -20,4 +20,5 @@ import testapp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', testapp.views.test),
+    path('', include('projectapp.urls')),
 ]
