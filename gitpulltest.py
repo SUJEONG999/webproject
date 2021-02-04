@@ -16,6 +16,10 @@ for v5 in range(5, 0, -1):
     print("v5 is :", v4)
 
 # 연습하기
+<<<<<<< HEAD
 # 상원
 
 
+=======
+# 상원
+>>>>>>> 18ad1799d2c03b9cc423acff9dbf567e885a8d72
