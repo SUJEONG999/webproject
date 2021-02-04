@@ -16,6 +16,7 @@ for v5 in range(5, 0, -1):
     print("v5 is :", v4)
 
 # 연습하기
+# 상원
 
 
 
