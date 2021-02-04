@@ -16,3 +16,8 @@ for v5 in range(5, 0, -1):
     print("v5 is :", v4)
 
 # 주석 달기
+
+#하영
+print("*"*20)
+for v5 in range(5, 0, -1):
+    print("v5 is :", v4)
