@@ -19,7 +19,5 @@ for v5 in range(5, 0, -1):
 # 상원
 
 
-git
-
 
 
