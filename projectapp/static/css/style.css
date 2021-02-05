@@ -8019,7 +8019,8 @@ textarea.form-control {
   padding: 0; }
 
 .ftco-extend-mb {
-  margin-bottom: 8em; }
+/*수정*/
+  margin-bottom: 0em; }
 
 .ftco-no-pt {
   padding-top: 0; }
