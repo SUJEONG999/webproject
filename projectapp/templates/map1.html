@@ -2,8 +2,24 @@
 <html lang="en">
   <head>
 	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
+		div{
+		}
+		#search{
+			display: inline;
+		}
 	</style>
+<!-- Bootstrap Buttons  -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+>>>>>>> YSW
     <title>KD - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,7 +53,7 @@
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><<a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
+					<li><a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						홈</a></li><br>
 					<li class="colorlib-active"><a href="../map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						안심식당</a></li><br>
@@ -63,63 +79,157 @@
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row no-gutters slider-text justify-content-end align-items-center">
 	          <div class="col-md-10 ftco-animate">
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Services</span></p>
-	            <h1 class="bread">Services</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+	            <h1 class="bread" style="font-family: 'Jua', sans-serif;">안심 식당</h1>
 	          </div>
-	        </div>
+	        		</div>
 				</div>
 			</section>
 
-			<section class="ftco-services ftco-section ftco-no-pt">
+			<section class="ftco-section-no-padding">
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row justify-content-end">
-						<div class="col-md-10">
-							<div class="row mb-lg-5">
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-idea"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Perfectly Design</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>      
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-compass-symbol"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Carefully Planned</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>    
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-layers"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Smartly Execute</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>      
-			          </div>
-			        </div>
-			        <div class="row mt-5">
-			        	<div class="col-md-8 ftco-animate">
-			        		<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-			        		A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-			        	</div>
-			        </div>
-			      </div>
-	        </div>
+						<div class="hero-wrap col-md-10">
+							<div class="overlay"></div>
+							<div class="d-flex">
+								<div>
+								<!-- 검색창 -->
+								<div class="container" id="search">
+								    <div class="form-group">
+      								<input type="text" class="form-control" style="width:650px;"
+										   placeholder="주소를 입력해주세요." name="adress">
+									<button type="submit" class="btn btn-dark">검색</button>
+    								</div>
+								</div>
+								<!-- 지도 -->
+								<div class="ftco-animate" id="map" style="width:800px;height:600px;"></div>
+									<script type="text/javascript"
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae">
+									</script>
+									<script>
+										var container = document.getElementById('map');
+										var options = {
+											center: new kakao.maps.LatLng(33.450701, 126.570667),
+											level: 3
+											};
+
+										var map = new kakao.maps.Map(container, options);
+									</script>
+								</div>
+								<div class="author-info text p-4 p-md-5 mt-5 mb-5 align-items-center d-flex ftco-animate">
+									<div class="desc" >
+										<!-- 버튼 -->
+										<div class="container" id="section-counter">
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1" style="width = 50px">
+												강남구 : <strong class="number" data-number="100">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												강동구 : <strong class="number" data-number="51">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												강북구 : <strong class="number" data-number="35">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												강서구 : <strong class="number" data-number="31">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												관악구 : <strong class="number" data-number="3">0</strong></button><br>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												광진구 : <strong class="number" data-number="51">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												구로구 : <strong class="number" data-number="16">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												금천구 : <strong class="number" data-number="10">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												노원구 : <strong class="number" data-number="28">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												도봉구 : <strong class="number" data-number="0">0</strong></button><br>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												동대문구 : <strong class="number" data-number="11">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												동작구 : <strong class="number" data-number="23">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												마포구 : <strong class="number" data-number="3">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												서대문구 : <strong class="number" data-number="2">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												서초구 : <strong class="number" data-number="90">0</strong></button><br>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												성동구 : <strong class="number" data-number="60">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												성북구 : <strong class="number" data-number="20">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												송파구 : <strong class="number" data-number="13">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												양천구 : <strong class="number" data-number="12">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												영등포구 : <strong class="number" data-number="42">0</strong></button><br>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												용산구 : <strong class="number" data-number="90">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												은평구 : <strong class="number" data-number="10">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												종로구 : <strong class="number" data-number="10">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												중구 : <strong class="number" data-number="10">0</strong></button>
+											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
+												중랑구 : <strong class="number" data-number="10">0</strong></button><br>
+										</div>
+<!--										<ul class="ftco-social mt-5">
+											<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+											<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+				              				<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+				            			</ul>
+				            			-->
+										<h1 class="mb-4">Welcome to <span><a href="#">KD</a></span> Architecture Agency</h1>
+										<p>I am A Photographer from America Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+										<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			            			</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
-
+			
+			<section class="ftco-section ftco-counter img" id="section-counter">
+	    	<div class="container-fluid px-3 px-md-0">
+	    		<div class="row d-md-flex align-items-center justify-content-end">
+	    			<div class="col-md-10">
+	    				<div class="row d-md-flex align-items-start">
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="18">0</strong>
+			                <span>Years of Experienced</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="351">0</strong>
+			                <span>Happy Clients</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="564">0</strong>
+			                <span>Finished Projects</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="300">0</strong>
+			                <span>Working Days</span>
+			              </div>
+			            </div>
+			          </div>
+		          </div>
+	          </div>
+	        </div>
+	    	</div>
+	    </section>
 			
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
 	      <div class="container px-md-5">
@@ -142,8 +252,8 @@
 	              <h2 class="ftco-heading-2">Links</h2>
 	              <ul class="list-unstyled categories">
 	              	<li><a href="#">홈</a></li>
-	              	<li><a href="#">안심식당<br><br></a></li>
-	              	<li><a href="#">안심병원<br>& 진료소<br><br></a></li>
+	              	<li><a href="#">안심식당</a></li>
+	              	<li><a href="#">안심병원 & 진료소</a></li>
 	              	<li><a href="#">식당리뷰</a></li>
 	              </ul>
 	            </div>
@@ -203,9 +313,9 @@
   <script src="/static/js/jquery.animateNumber.min.js"></script>
   <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
   <script src="/static/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/static/js/google-map.js"></script>
   <script src="/static/js/main.js"></script>
+
     
   </body>
 </html>

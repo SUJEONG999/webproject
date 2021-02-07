@@ -1691,7 +1691,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   height: calc(2.875rem + 2px); }
 
 .form-group {
-  margin-bottom: 1rem; }
+  margin-bottom: 0rem; }
 
 .form-text {
   display: block;
@@ -6197,7 +6197,7 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important; }
+/* 상원 버튼의 위 마진 top 0 */}
 
 .mr-5,
 .mx-5 {
@@ -6205,6 +6205,8 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
+  /* 상원 버튼위 공간 삭제 */
+  margin-top: 0rem !important;
   margin-bottom: 3rem !important; }
 
 .ml-5,
@@ -6684,7 +6686,11 @@ button.bg-dark:focus {
   .px-md-4 {
     padding-left: 1.5rem !important; }
   .p-md-5 {
-    padding: 3rem !important; }
+  /* 본문 padding 사이즈 수정 */
+    padding-bottom: 3rem !important;
+    padding-top: 0rem !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
   .pt-md-5,
   .py-md-5 {
     padding-top: 3rem !important; }
@@ -7818,10 +7824,12 @@ h1, h2, h3, h4, h5,
       .ftco-bread .breadcrumbs span a {
         color: rgba(0, 0, 0, 0.5); }
   .ftco-bread .bread {
-    font-weight: 600;
+    /* 상원 */
+    font-weight: 300;
     color: #000000;
     margin-bottom: 0;
-    font-size: 8vw;
+    /* 상원 */
+    font-size: 4vw;
     display: inline-block;
     position: relative;
     line-height: 1; }
@@ -8019,7 +8027,11 @@ textarea.form-control {
   padding: 0; }
 
 .ftco-extend-mb {
+<<<<<<< HEAD
 /*수정*/
+=======
+ /* 상원 */
+>>>>>>> YSW
   margin-bottom: 0em; }
 
 .ftco-no-pt {

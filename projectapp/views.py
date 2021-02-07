@@ -87,7 +87,6 @@ def map1(request) :
 
 
 
-
 # 강용님
 def map2(request) :
     template = loader.get_template('map2.html')
@@ -108,12 +107,10 @@ def map2(request) :
 
 
 
-
 # 하영님
 def board(request) :
     template = loader.get_template('board.html')
     return HttpResponse(template.render(None, request))
-
 
 
 
