@@ -32,13 +32,11 @@ def map1(request) :
     template = loader.get_template('map1.html')
     return HttpResponse(template.render(None, request))
 
+def exam23(request):
+    return render(request, 'exam23.html')
 
-
-
-
-
-
-
+def exam22(request):
+    return render(request, 'exam22.html')
 
 
 

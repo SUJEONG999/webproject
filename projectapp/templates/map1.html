@@ -47,7 +47,82 @@
     <link rel="stylesheet" href="/static/css/style.css">
   </head>
   <body>
+	<script>
+		function getFormatDate(date){
+    	var year = date.getFullYear();
+    	var month = (1 + date.getMonth());
+    	month = month >= 10 ? month : '0' + month;
+    	var day = date.getDate();
+    	day = day >= 10 ? day : '0' + day;
+    	return  year+'-'+month+'-'+day;
+		}
 
+		$(document).ready(function() {
+  			const today = new Date();
+  			const d = today.getTime() - (24*60*60*1000);
+  			const targetday = new Date(d);
+  			const targetDt = getFormatDate(targetday);
+  			$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/1000/',
+        		function(jsonObj){
+            		var dom = $('#section-counter');
+            		let kn = 0;
+            		let kd = 0;
+              		let kb = 0;
+              		let ks = 0;
+              		let ka = 0;
+              		let kj = 0;
+              		let kr = 0;
+              		let kc = 0;
+              		let nw = 0;
+              		let db = 0;
+            		let ddm = 0;
+            		let dj = 0;
+					let mp = 0;
+            		let sdm = 0;
+            		let sc = 0;
+            		let sd = 0;
+            		let sb = 0;
+					let sp = 0;
+            		let yc = 0;
+            		let yd = 0;
+            		let ys = 0;
+            		let ep = 0;
+            		let jr = 0;
+            		let jg = 0;
+            		let jl = 0;
+            		let total = 0;
+            		let goo = [[kn, kd, kb, ks, ka, kj, kr, kc, nw, db, ddm, dj, mp, sdm,
+                         	   		sc, sd, sb, sp, yc, yd, ys, ep, jr, jg, jl],
+                         		['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구',
+                         	   		'도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구',
+                         	   		'송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구']];
+              		let content="";
+              		for (var i = 0; i < 1000; i++) {
+                		if(jsonObj.Corona19Status.row[i].CORONA19_DATE == targetDt) {
+                    		for (var j = 0; j < 25; j++) {
+                        		if(jsonObj.Corona19Status.row[i].CORONA19_AREA == goo[1][j]){
+                            		goo[0][j] += 1;
+                            		total += 1;
+                            		break;
+                        		}
+                    		}
+                		}
+             		}
+              		for (var i = 0; i < 25; i++){
+                		if(i % 5 == 4) {
+                    		content += "<button type='button' class='btn btn-outline-dark mr-2 mb-1' style='width = 50px'>" +
+                    	                	goo[1][i] + " : <strong>" + goo[0][i] + "</strong></button><br>"
+                		}
+                		else {
+                		    content += "<button type='button' class='btn btn-outline-dark mr-2 mb-1' style='width = 50px'>" +
+                    	                	goo[1][i] + " : <strong>" + goo[0][i] + "</strong></button>"
+                		}
+              		}
+              		dom.html(content);
+          		}
+    		);
+		});
+	</script>
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
@@ -97,7 +172,7 @@
 								<div>
 								<!-- 검색창 -->
 								<div class="container" id="search">
-								    <div class="form-group">
+								    <div class="form-group ftco-animate">
       								<input type="text" class="form-control" style="width:650px;"
 										   placeholder="주소를 입력해주세요." name="adress">
 									<button type="submit" class="btn btn-dark">검색</button>
@@ -122,56 +197,6 @@
 									<div class="desc" >
 										<!-- 버튼 -->
 										<div class="container" id="section-counter">
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1" style="width = 50px">
-												강남구 : <strong class="number" data-number="100">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												강동구 : <strong class="number" data-number="51">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												강북구 : <strong class="number" data-number="35">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												강서구 : <strong class="number" data-number="31">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												관악구 : <strong class="number" data-number="3">0</strong></button><br>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												광진구 : <strong class="number" data-number="51">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												구로구 : <strong class="number" data-number="16">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												금천구 : <strong class="number" data-number="10">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												노원구 : <strong class="number" data-number="28">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												도봉구 : <strong class="number" data-number="0">0</strong></button><br>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												동대문구 : <strong class="number" data-number="11">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												동작구 : <strong class="number" data-number="23">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												마포구 : <strong class="number" data-number="3">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												서대문구 : <strong class="number" data-number="2">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												서초구 : <strong class="number" data-number="90">0</strong></button><br>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												성동구 : <strong class="number" data-number="60">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												성북구 : <strong class="number" data-number="20">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												송파구 : <strong class="number" data-number="13">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												양천구 : <strong class="number" data-number="12">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												영등포구 : <strong class="number" data-number="42">0</strong></button><br>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												용산구 : <strong class="number" data-number="90">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												은평구 : <strong class="number" data-number="10">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												종로구 : <strong class="number" data-number="10">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												중구 : <strong class="number" data-number="10">0</strong></button>
-											<button type="button" class="btn btn-outline-dark mr-2 mb-1">
-												중랑구 : <strong class="number" data-number="10">0</strong></button><br>
 										</div>
 <!--										<ul class="ftco-social mt-5">
 											<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
@@ -190,7 +215,7 @@
 				</div>
 			</section>
 			
-			<section class="ftco-section ftco-counter img" id="section-counter">
+			<section class="ftco-section ftco-counter img" id="section-counter1">
 	    	<div class="container-fluid px-3 px-md-0">
 	    		<div class="row d-md-flex align-items-center justify-content-end">
 	    			<div class="col-md-10">
