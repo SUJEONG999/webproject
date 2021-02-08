@@ -8009,7 +8009,7 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 3em 0; //수정
   position: relative; }
   @media (max-width: 991.98px) {
     .ftco-section {
