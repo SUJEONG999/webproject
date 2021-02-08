@@ -29,6 +29,8 @@ def main(request) :
 
 # 상원
 def map1(request) :
+    template = loader.get_template('map1.html')
+    return HttpResponse(template.render(None, request))
 
 
 
@@ -46,10 +48,10 @@ def map1(request) :
 
 
 
-
-# 상원
+# 강용
 def map2(request) :
-
+    template = loader.get_template('map2.html')
+    return HttpResponse(template.render(None, request))
 
 
 
@@ -69,7 +71,8 @@ def map2(request) :
 
 # 하영님
 def board(request) :
-
+    template = loader.get_template('board.html')
+    return HttpResponse(template.render(None, request))
 
 
 
