@@ -8,4 +8,5 @@ urlpatterns = [
     path('board/', views.board, name = 'board'),
     path('register/', views.register, name= 'register'), # 수정's 추가
     path('login/', views.login, name= 'login'), # 수정's 추가
+    path('logout/', views.logout, name= 'logout'), # 수정's 추가
 ]

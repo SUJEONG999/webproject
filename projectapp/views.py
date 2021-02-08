@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
 import random
-import datetime
+from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -12,7 +12,9 @@ from django.contrib import auth
 # 수정님
 def main(request) :
     template = loader.get_template('index.html')
-    return HttpResponse(template.render(None, request))
+    date = datetime.now()
+    context = { 'current_date' : date }
+    return HttpResponse(template.render(context, request))
 def register(request):
     res_data = None
     if request.method =='POST':
@@ -41,7 +43,7 @@ def login(request):
         user = auth.authenticate(username=useremail, password=password)
         if user is not None :
             auth.login(request, user)
-            return redirect("index")
+            return redirect("main")
         else :
             return render(request, 'login.html', {'error': '사용자 아이디 또는 패스워드가 틀립니다.'})
     else :
@@ -49,7 +51,7 @@ def login(request):
 def logout(request):
     if request.user.is_authenticated:
         auth.logout(request)
-    return redirect("index")
+    return redirect("main")
 def only_member(request) :
     context = None
     if request.user.is_authenticated:
