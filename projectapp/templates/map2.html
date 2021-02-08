@@ -3,6 +3,7 @@
 <head>
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+
 	</style>
 	<title>KD - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -73,27 +74,35 @@
 				<!--button end-->
 
 				<!--map start-->
-<div id="map" style="width:750px;height:400px;"></div>
+<div id="map" style="width:100%;height:350px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae"></script>
+
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-mapOption = {
-	center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	level: 3 // 지도의 확대 레벨
-};
+    mapOption = {
+        center: new kakao.maps.LatLng(37.49291474389836, 127.04622318176783), // 지도의 중심좌표
+        level: 9 // 지도의 확대 레벨
+    };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
 
 // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
 var positions = [
     {
-        content: '<div>강서구 선별진료소</div>',
-        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+        content: '<div>연세대학교 강남세브란스병원</div>',
+        latlng: new kakao.maps.LatLng(37.49291474389836, 127.04622318176783)
     },
     {
-        content: '<div>강남구 선별진료소</div>',
-        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+        content: '<div>중앙보훈병원</div>',
+        latlng: new kakao.maps.LatLng(37.530738028509035, 127.14806495478547)
+    },
+    {
+        content: '<div>강동성심병원</div>',
+        latlng: new kakao.maps.LatLng(37.536306294173684, 127.13540153944153)
+    },
+    {
+        content: '<div>강동경희대학교병원</div>',
+        latlng: new kakao.maps.LatLng(37.553637181473654, 127.15762533944209)
     }
 ];
 
@@ -129,8 +138,9 @@ function makeOutListener(infowindow) {
         infowindow.close();
     };
 }
+
 </script>
-				<!--map end-->
+			<!--map end-->
 
 			</div>
 			</div>
@@ -146,7 +156,7 @@ function makeOutListener(infowindow) {
 			</div>
 			</section>
 			
-			<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<footer class="ftco-footer ftco-bg-dark ftco-section">
 			<div class="container px-md-5">
 			<div class="row mb-5">
 			<div class="col-md">
@@ -207,7 +217,7 @@ function makeOutListener(infowindow) {
 			</div>
 			</div>
 			</div>
-			</footer>
+		</footer>
 			</div><!-- END COLORLIB-MAIN -->
 			</div><!-- END COLORLIB-PAGE -->
 

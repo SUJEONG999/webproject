@@ -50,8 +50,17 @@ def map1(request) :
 
 # 강용
 def map2(request) :
-    template = loader.get_template('map2.html')
-    return HttpResponse(template.render(None, request))
+    lat = [37.5115, 37.5094, 37.5080, 37.5110, 37.5088]
+    lng = [127.0500, 127.0503, 127.0600, 127.0590, 127.0560];
+    hname = ['병원1', '병원2', '병원3', '병원4', '병원5'];
+    address = ['aaa', 'bbb', 'ccc', 'ddd', 'eee'];
+    context = {
+        'lat': lat, 'lng': lng, 'hname': hname, 'address': address
+    }
+
+    return render(request, 'map2.html', context)
+
+
 
 
 
