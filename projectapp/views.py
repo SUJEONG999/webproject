@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
+from projectapp.models import Hospital
+
 import random
 import datetime
 
@@ -50,16 +52,12 @@ def map1(request) :
 
 # 강용
 def map2(request) :
-    lat = [37.5115, 37.5094, 37.5080, 37.5110, 37.5088]
-    lng = [127.0500, 127.0503, 127.0600, 127.0590, 127.0560];
-    hname = ['병원1', '병원2', '병원3', '병원4', '병원5'];
-    address = ['aaa', 'bbb', 'ccc', 'ddd', 'eee'];
-    context = {
-        'lat': lat, 'lng': lng, 'hname': hname, 'address': address
-    }
+    hospitals = Hospital.objects.all()
 
+    hname = ['연세대학교강남세브란스병원', '중앙보훈병원', '강동성심병원'];
+    haddress = ['서울특별시 강남구 언주로211', '서울특별시 강동구 진황도로 61길 53', '서울특별시 강동구 성안로 150'];
+    context = {"hospitals": hospitals, "hname":hname, "haddress":haddress}
     return render(request, 'map2.html', context)
-
 
 
 
