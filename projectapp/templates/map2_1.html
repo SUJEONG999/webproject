@@ -4,22 +4,22 @@
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
 
-	#hospital {		/* hospital TABLE 내용 적용 START*/
+	#clinic {		/* clinic TABLE 내용 적용 START*/
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
 	}
 
-	#hospital td, #hospital th {
+	#clinic td, #clinic th {
 	border: 1px solid #ddd;
 	padding: 8px;
 	}
 
-	#hospital tr:nth-child(even){background-color: #f2f2f2;}
+	#clinic tr:nth-child(even){background-color: #f2f2f2;}
 
-	#hospital tr:hover {background-color: #ccb78f;}
+	#clinic tr:hover {background-color: #ccb78f;}
 
-	#hospital th {
+	#clinic th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
@@ -91,9 +91,9 @@
 		<div class="blog-entry">
 
 <!--button start-->
-			<a href="../map2" class="btn btn-primary">안심병원</a>
-			<a href="../map2_1" class="btn btn-primary">선별진료소</a>
-			<br><br>
+		<a href="../map2" class="btn btn-primary">안심병원</a>
+		<a href="../map2_1" class="btn btn-primary">선별진료소</a>
+		<br><br>
 <!--button end-->
 
 <!--map start-->
@@ -116,13 +116,13 @@
 
 			// 주소로 좌표를 검색합니다
 			{% autoescape off %}
-        	var hname = {{ hname }};
-        	var haddress = {{ haddress }};
+        	var cname = {{ cname }};
+        	var caddress = {{ caddress }};
         	{% endautoescape %}
 						
-			for(i=0; i<44; i++) {	
+			for(i=0; i<45; i++) {	
 
-			geocoder.addressSearch(haddress[i], function(result, status) {
+			geocoder.addressSearch(caddress[i], function(result, status) {
 
 				// 정상적으로 검색이 완료됐으면
 				if (status === kakao.maps.services.Status.OK) {
@@ -136,7 +136,7 @@
 					});
 
 					// 인포윈도우로 장소에 대한 설명을 표시합니다
-					var contenString = hname[i];
+					var contenString = cname[i];
 					var infowindow = new kakao.maps.InfoWindow({
 						content: contenString
 					});
@@ -157,19 +157,17 @@
 			<h3 class="sidebar-heading">참고사항</h3>
 			<p>* 안심병원과 선별진료소는 2021년 2월 3일 데이터 기준 입니다.</p>
 <!--TABLE START-->
-			<table id="hospital">
+			<table id="clinic">
 			<tr>
-			<th>안심병원</th>
+			<th>선별진료소</th>
 			<th>주소</th>
-			<th>유형</th>
 			<th>전화번호</th>
 			</tr>
-			{% for hospital in hospitals %}
+			{% for clinic in clinics %}
 			<tr>
-			<td>{{ hospital.name }}</td>
-			<td>{{ hospital.address }}</td>
-			<td>{{ hospital.type }}</td>
-			<td>{{ hospital.number }}</td>
+			<td>{{ clinic.name }}</td>
+			<td>{{ clinic.address }}</td>
+			<td>{{ clinic.number }}</td>
 			</tr>
 			{% endfor %}
 			</table>
