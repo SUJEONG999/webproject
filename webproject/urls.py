@@ -22,3 +22,5 @@ urlpatterns = [
     path('test/', testapp.views.test),
     path('', include('projectapp.urls')),
 ]
+
+#하영
