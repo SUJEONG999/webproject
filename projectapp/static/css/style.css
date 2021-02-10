@@ -8022,7 +8022,7 @@ textarea.form-control {
 
 .ftco-extend-mb {
  /* 상원 */
-  margin-bottom: 3em; }
+  margin-bottom: 1em; }  /* 3em에서 1em으로 수정_강용 */
 
 .ftco-no-pt {
   padding-top: 0; }
