@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
 import random
-from datetime import datetime
+from datetime import datetime, timedelta # 수정
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -12,7 +12,7 @@ from django.contrib import auth
 # 수정님
 def main(request) :
     template = loader.get_template('index.html')
-    date = datetime.now()
+    date = datetime.now() - timedelta(1)
     context = { 'current_date' : date }
     return HttpResponse(template.render(context, request))
 def register(request):
