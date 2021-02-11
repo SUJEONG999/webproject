@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
+from .models import Restaurant
 import random
 import datetime
 
@@ -29,14 +30,26 @@ def main(request) :
 
 # 상원
 def map1(request) :
-    template = loader.get_template('map1.html')
-    return HttpResponse(template.render(None, request))
+    Restaurants = Restaurant.objects.all()
+    Rname = []
+    Raddress = []
+    for rest in Restaurants :
+        Rname.append(rest.r_name)
+        Raddress.append(rest.r_address)
 
-def exam23(request):
-    return render(request, 'exam23.html')
-
-def exam22(request):
-    return render(request, 'exam22.html')
+    if request.method == 'POST':
+        txt = (request.POST['text'])
+        context = {
+            "txt":txt,
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    else :
+        context = {
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    return render(request, 'map1.html', context)
 
 
 
@@ -47,8 +60,10 @@ def exam22(request):
 
 # 강용님
 def map2(request) :
-    template = loader.get_template('map2.html')
-    return HttpResponse(template.render(None, request))
+    hospitals = Hospital.objects.all()
+    context = {"hospitals": hospitals}
+
+    return render(request, 'map2.html', context)
 
 
 
