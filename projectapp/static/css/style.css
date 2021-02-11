@@ -7285,8 +7285,8 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   font-family: "Poppins", Arial, sans-serif;
   background: #dddddd;
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 14px;    /* 16에서 14로 수정_강용 */
+  line-height: 1.4;   /* 1.8에서 1.4로 수정_강용 */
   font-weight: 400;
   color: #4d4d4d; }
   body.offcanvas {
@@ -7333,8 +7333,8 @@ h1, h2, h3, h4, h5,
 #colorlib-aside {
   padding-top: 3em;
   padding-bottom: 40px;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 3em;    /* 3em -> 2em 조정_강용 */
+  padding-right: 3em;   /* 3em -> 2em 조정_강용 */
   width: 22%;
   position: fixed;
   bottom: 0;
@@ -7350,7 +7350,7 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (min-width: 992px) {
     #colorlib-aside {
-      width: 22%; } }
+      width: 17%; } }  /* 22% -> 17% 조정_강용 */
   @media (max-width: 991.98px) {
     #colorlib-aside {
       width: 270px;
@@ -8036,7 +8036,7 @@ textarea.form-control {
 .ftco-footer {
   font-size: 14px;
   background: #242423;
-  padding: 6em 0; }
+  padding: 1em 0; } /* 6em에서 1em으로 수정 */
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
