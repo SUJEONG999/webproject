@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+<!-- google font -->
+    <style>
+		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
+		div{
+		}
+		#search{
+			display: inline;
+		}
 	</style>
+
+<!-- Bootstrap Buttons  -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <title>KD - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/animate.css">
-    
+
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
@@ -25,19 +42,18 @@
     <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
   </head>
   <body>
-
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><<a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
+					<li><a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						홈</a></li><br>
 					<li class="colorlib-active"><a href="../map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						안심식당</a></li><br>
@@ -47,9 +63,12 @@
 						식당리뷰</a></li><br>
 				</ul>
 				<p class="social">
-					<span><a href="#">로그인</a></span>
-					<span><a href="#">회원가입</a></span>
-					<span><a href="#">Instagram</a></span>
+					{% if not request.user.is_authenticated %}
+						<span><a href="../register" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">회원가입</a></span>
+            			<span><a href="../login" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그인</a></span>
+					{% else %}
+						<span><a href="../logout" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그아웃</a></span>
+					{% endif %}
 				</p>
 			</nav>
 
@@ -57,70 +76,332 @@
 				<h1 id="colorlib-logo"><a href="index.html">KD</a></h1>
 			</div>
 		</aside> <!-- END COLORLIB-ASIDE -->
+
+
 		<div id="colorlib-main">
-			
+
 			<section class="ftco-section ftco-bread ftco-extend-mb">
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row no-gutters slider-text justify-content-end align-items-center">
 	          <div class="col-md-10 ftco-animate">
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Services</span></p>
-	            <h1 class="bread">Services</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+	            <h1 class="bread" style="font-family: 'Jua', sans-serif;">안심 식당</h1>
 	          </div>
-	        </div>
+	        		</div>
 				</div>
 			</section>
 
-			<section class="ftco-services ftco-section ftco-no-pt">
+			<section class="ftco-section-no-padding">
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row justify-content-end">
-						<div class="col-md-10">
-							<div class="row mb-lg-5">
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-idea"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Perfectly Design</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>      
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-compass-symbol"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Carefully Planned</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>    
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center">
-			            		<span class="flaticon-layers"></span>
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Smartly Execute</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-			              </div>
-			            </div>      
-			          </div>
-			        </div>
-			        <div class="row mt-5">
-			        	<div class="col-md-8 ftco-animate">
-			        		<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-			        		A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-			        	</div>
-			        </div>
-			      </div>
-	        </div>
+						<div class="hero-wrap col-md-10">
+							<div class="overlay"></div>
+							<div class="d-flex">
+								<div>
+								<!-- 검색창 -->
+								<div class="container" id="search">
+								    <div class="form-group ftco-animate">
+									<form method="POST" action="/projectapp/map1/">
+	      								<input type="text" class="form-control" style="width:700px;"
+											   placeholder="주소를 입력해주세요." name="address">
+										<button type="submit" class="btn btn-dark">검색</button>
+    								</div>
+								</div>
+								<!-- 지도 -->
+								<div class="ftco-animate" id="map" style="width:800px;height:600px;"></div>
+								</div>
+								<div class="author-info text p-4 p-md-5 mt-5 mb-5 align-items-center d-flex ftco-animate">
+<!-- 버튼 스크립트 -->
+	<script>
+		function getFormatDate(date){
+    	var year = date.getFullYear();
+    	var month = (1 + date.getMonth());
+    	month = month >= 10 ? month : '0' + month;
+    	var day = date.getDate();
+    	day = day >= 10 ? day : '0' + day;
+    	return  year+'-'+month+'-'+day;
+		}
+
+		const today = new Date();
+		const d = today.getTime() - (24*60*60*1000);
+		const targetday = new Date(d);
+		const targetDt = getFormatDate(targetday);
+		kn = 0;
+		kd = 0;
+		kb = 0;
+		ks = 0;
+		ka = 0;
+		kj = 0;
+		kr = 0;
+		kc = 0;
+		nw = 0;
+		db = 0;
+		ddm = 0;
+		dj = 0;
+		mp = 0;
+		sdm = 0;
+		sc = 0;
+		sd = 0;
+		sb = 0;
+		sp = 0;
+		yc = 0;
+		yd = 0;
+		ys = 0;
+		ep = 0;
+		jr = 0;
+		jg = 0;
+		jl = 0;
+		total = 0;
+		goo2 = new Array
+		goo = [[kn, kd, kb, ks, ka, kj, kr, kc, nw, db, ddm, dj, mp, sdm,
+						sc, sd, sb, sp, yc, yd, ys, ep, jr, jg, jl],
+					['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구',
+						'도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구',
+						'송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구']];
+		$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/1000/',
+			function(jsonObj){
+				for (var i = 0; i < 1000; i++) {
+					if(jsonObj.Corona19Status.row[i].CORONA19_DATE == targetDt) {
+						for (var j = 0; j < 25; j++) {
+							if(jsonObj.Corona19Status.row[i].CORONA19_AREA == goo[1][j]){
+								goo[0][j] += 1;
+								total += 1;
+								break;
+							}
+						}
+					}
+				}
+				var goo_idd1 = document.querySelector("#goo_id1");
+				goo_idd1.innerHTML = goo[0][0];
+
+				var goo_idd2 = document.querySelector("#goo_id2");
+				goo_idd2.innerHTML = goo[0][1];
+
+				var goo_idd3 = document.querySelector("#goo_id3");
+				goo_idd3.innerHTML = goo[0][2];
+
+				var goo_idd4 = document.querySelector("#goo_id4");
+				goo_idd4.innerHTML = goo[0][3];
+
+				var goo_idd5 = document.querySelector("#goo_id5");
+				goo_idd5.innerHTML = goo[0][4];
+
+				var goo_idd6 = document.querySelector("#goo_id6");
+				goo_idd6.innerHTML = goo[0][5];
+
+				var goo_idd7 = document.querySelector("#goo_id7");
+				goo_idd7.innerHTML = goo[0][6];
+
+				var goo_idd8 = document.querySelector("#goo_id8");
+				goo_idd8.innerHTML = goo[0][7];
+
+				var goo_idd9 = document.querySelector("#goo_id9");
+				goo_idd9.innerHTML = goo[0][8];
+
+				var goo_idd10 = document.querySelector("#goo_id10");
+				goo_idd10.innerHTML = goo[0][9];
+
+				var goo_idd11 = document.querySelector("#goo_id11");
+				goo_idd11.innerHTML = goo[0][10];
+
+				var goo_idd12 = document.querySelector("#goo_id12");
+				goo_idd12.innerHTML = goo[0][11];
+
+				var goo_idd13 = document.querySelector("#goo_id13");
+				goo_idd13.innerHTML = goo[0][12];
+
+				var goo_idd14 = document.querySelector("#goo_id14");
+				goo_idd14.innerHTML = goo[0][13];
+
+				var goo_idd15 = document.querySelector("#goo_id15");
+				goo_idd15.innerHTML = goo[0][14];
+
+				var goo_idd16 = document.querySelector("#goo_id16");
+				goo_idd16.innerHTML = goo[0][15];
+
+				var goo_idd17 = document.querySelector("#goo_id17");
+				goo_idd17.innerHTML = goo[0][16];
+
+				var goo_idd18 = document.querySelector("#goo_id18");
+				goo_idd18.innerHTML = goo[0][17];
+
+				var goo_idd19 = document.querySelector("#goo_id19");
+				goo_idd19.innerHTML = goo[0][18];
+
+				var goo_idd20 = document.querySelector("#goo_id20");
+				goo_idd20.innerHTML = goo[0][19];
+
+				var goo_idd21 = document.querySelector("#goo_id21");
+				goo_idd21.innerHTML = goo[0][20];
+
+				var goo_idd22 = document.querySelector("#goo_id22");
+				goo_idd22.innerHTML = goo[0][21];
+
+				var goo_idd23 = document.querySelector("#goo_id23");
+				goo_idd23.innerHTML = goo[0][22];
+
+				var goo_idd24 = document.querySelector("#goo_id24");
+				goo_idd24.innerHTML = goo[0][23];
+
+				var goo_idd25 = document.querySelector("#goo_id25");
+				goo_idd25.innerHTML = goo[0][24];
+			}
+		);
+	</script>
+									<div class="desc" >
+										<!-- 버튼 -->
+										<div class="container" id="button-counter">
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("강남구")' style = 'width = 50px'>
+													강남구 : <strong id="goo_id1" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("강동구")' style = 'width = 50px'>
+													강동구 : <strong id="goo_id2" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("강북구")' style = 'width = 50px'>
+													강북구 : <strong id="goo_id3" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("강서구")' style = 'width = 50px'>
+													강서구 : <strong id="goo_id4" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("관악구")' style = 'width = 50px'>
+													관악구 : <strong id="goo_id5" class="number"></strong></button><br>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("광진구")' style = 'width = 50px'>
+													광진구 : <strong id="goo_id6" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("구로구")' style = 'width = 50px'>
+													구로구 : <strong id="goo_id7" class="number"></strong></button>
+
+										<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("금천구")' style = 'width = 50px'>
+													금천구 : <strong id="goo_id8" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("노원구")' style = 'width = 50px'>
+													노원구 : <strong id="goo_id9" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("도봉구")' style = 'width = 50px'>
+													도봉구 : <strong id="goo_id10" class="number"></strong></button><br>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("동대문구")' style = 'width = 50px'>
+													동대문구 : <strong id="goo_id11" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("동작구")' style = 'width = 50px'>
+													동작구 : <strong id="goo_id12" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("마포구")' style = 'width = 50px'>
+													마포구 : <strong id="goo_id13" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("서대문구")' style = 'width = 50px'>
+													서대문구 : <strong id="goo_id14" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("서초구")' style = 'width = 50px'>
+													서초구 : <strong id="goo_id15" class="number"></strong></button><br>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("성동구")' style = 'width = 50px'>
+													성동구 : <strong id="goo_id16" class="number"></strong></buton>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("성북구")' style = 'width = 50px'>
+													성북구 : <strong id="goo_id17" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("송파구")' style = 'width = 50px'>
+													송파구 : <strong id="goo_id18" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("양천구")' style = 'width = 50px'>
+													양천구 : <strong id="goo_id19" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("영등포구")' style = 'width = 50px'>
+													영등포구 : <strong id="goo_id20" class="number"></strng></button><br>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("용산구")' style = 'width = 50px'>
+													용산구 : <strong id="goo_id21" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("은평구")' style = 'width = 50px'>
+													은평구 : <strong id="goo_id22" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("종로구")' style = 'width = 50px'>
+													종로구 : <strong id="goo_id23" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("중구")' style = 'width = 50px'>
+													중구 : <strong id="goo_id24" class="number"></strong></button>
+
+											<button type = 'button' class = 'btn btn-outline-dark mr-2 mb-1'
+													onclick = 'panTo("중랑구")' style = 'width = 50px'>
+													중랑구 : <strong id="goo_id25" class="number"></strong></button><br>
+										</div>
+			            			</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			
+			<section class="ftco-section ftco-counter img" id="section-counter1">
+	    	<div class="container-fluid px-3 px-md-0">
+	    		<div class="row d-md-flex align-items-center justify-content-end">
+	    			<div class="col-md-10">
+	    				<div class="row d-md-flex align-items-start">
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="351">0</strong>
+			                <span>Years of Experienced</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="351">0</strong>
+			                <span>Happy Clients</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="564">0</strong>
+			                <span>Finished Projects</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="300">0</strong>
+			                <span>Working Days</span>
+			              </div>
+			            </div>
+			          </div>
+		          </div>
+	          </div>
+	        </div>
+	    	</div>
+	    </section>
+
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
 	      <div class="container px-md-5">
 	        <div class="row mb-5">
@@ -142,8 +423,8 @@
 	              <h2 class="ftco-heading-2">Links</h2>
 	              <ul class="list-unstyled categories">
 	              	<li><a href="#">홈</a></li>
-	              	<li><a href="#">안심식당<br><br></a></li>
-	              	<li><a href="#">안심병원<br>& 진료소<br><br></a></li>
+	              	<li><a href="#">안심식당</a></li>
+	              	<li><a href="#">안심병원 & 진료소</a></li>
 	              	<li><a href="#">식당리뷰</a></li>
 	              </ul>
 	            </div>
@@ -190,22 +471,155 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="/static/js/popper.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-  <script src="/static/js/jquery.easing.1.3.js"></script>
-  <script src="/static/js/jquery.waypoints.min.js"></script>
-  <script src="/static/js/jquery.stellar.min.js"></script>
-  <script src="/static/js/owl.carousel.min.js"></script>
-  <script src="/static/js/jquery.magnific-popup.min.js"></script>
-  <script src="/static/js/aos.js"></script>
-  <script src="/static/js/jquery.animateNumber.min.js"></script>
-  <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="/static/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="/static/js/google-map.js"></script>
-  <script src="/static/js/main.js"></script>
-    
+  	<script src="/static/js/jquery.min.js"></script>
+  	<script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+  	<script src="/static/js/jquery.easing.1.3.js"></script>
+  	<script src="/static/js/jquery.waypoints.min.js"></script>
+  	<script src="/static/js/jquery.stellar.min.js"></script>
+  	<script src="/static/js/owl.carousel.min.js"></script>
+  	<script src="/static/js/jquery.magnific-popup.min.js"></script>
+  	<script src="/static/js/aos.js"></script>
+  	<script src="/static/js/jquery.animateNumber.min.js"></script>
+  	<script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
+  	<script src="/static/js/scrollax.min.js"></script>
+  	<script src="/static/js/main.js"></script>
+
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services"></script>
+	<script>
+		function panTo(map_goo) {
+    		// 이동할 위도 경도 위치를 생성합니다
+    		if (map_goo == '강남구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4959854, 127.0664091);
+			}
+			else if (map_goo == '강동구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.551199578961295, 127.14608357214425);
+			}
+			else if (map_goo == '강북구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.6469954, 127.0147158);
+			}
+			else if (map_goo == '강서구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5657617, 126.8226561);
+			}
+			else if (map_goo == '관악구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4653993, 126.9438071);
+			}
+			else if (map_goo == '광진구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5481445, 127.0857528);
+			}
+			else if (map_goo == '구로구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4954856, 126.858121);
+			}
+			else if (map_goo == '금천구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4600969, 126.9001546);
+			}
+			else if (map_goo == '노원구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.655264, 127.0771201);
+			}
+			else if (map_goo == '도봉구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.6658609, 127.0317674);
+			}
+			else if (map_goo == '도봉구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.6658609, 127.0317674);
+			}
+			else if (map_goo == '동대문구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5838012, 127.0507003);
+			}
+			else if (map_goo == '동작구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4965037, 126.9443073);
+			}
+			else if (map_goo == '마포구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5622906, 126.9087803);
+			}
+			else if (map_goo == '서대문구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5820369, 126.9356665);
+			}
+			else if (map_goo == '서초구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.4769528, 127.0378103);
+			}
+			else if (map_goo == '성동구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5506753, 127.0409622);
+			}
+			else if (map_goo == '성북구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.606991, 127.0232185);
+			}
+			else if (map_goo == '송파구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5048534, 127.1144822);
+			}
+			else if (map_goo == '양천구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5270616, 126.8561534);
+			}
+			else if (map_goo == '영등포구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.520641, 126.9139242);
+			}
+			else if (map_goo == '용산구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5311008, 126.9810742);
+			}
+			else if (map_goo == '은평구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.6176125, 126.9227004);
+			}
+			else if (map_goo == '종로구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5990998, 126.9861493);
+			}
+			else if (map_goo == '중구') {
+    			var moveLatLon = new kakao.maps.LatLng(37.5579452, 126.9941904);
+			}
+			else {
+    			var moveLatLon = new kakao.maps.LatLng(37.5953795, 127.0939669);
+			}
+  			// 지도 중심을 부드럽게 이동시킵니다
+			// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    		map.setLevel(7);
+    		map.panTo(moveLatLon);
+		}
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center: new kakao.maps.LatLng(37.558874600711086, 126.97957058127422), // 지도의 중심좌표
+			level: 8 // 지도의 확대 레벨
+		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+		// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			{% autoescape off %}
+				var rest_n = {{ Rname }};
+				var rest = {{ Raddress }};
+			{% endautoescape %}
+
+
+			// 주소로 좌표를 검색합니다
+			for (var j = 0; j < rest.length; j++){
+				geocoder.addressSearch(rest[j] , function(result, status) {
+				// 정상적으로 검색이 완료됐으면
+					if (status === kakao.maps.services.Status.OK) {
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+						// 마커 이미지의 이미지 크기 입니다
+						var imageSize = new kakao.maps.Size(24, 35);
+						// 마커 이미지를 생성합니다
+						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+
+						// 결과값으로 받은 위치를 마커로 표시합니다
+						var marker = new kakao.maps.Marker({
+							map: map,
+							position: coords,
+							image : markerImage,
+							clickable: true
+						});
+					}
+				});
+			}
+	</script>
+
+
+
+
   </body>
 </html>

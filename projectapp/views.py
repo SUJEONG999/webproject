@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
-import random
-from datetime import datetime, timedelta # 수정
 from django.contrib.auth.models import User
 from django.contrib import auth
+from .models import Restaurant # 상원
+from datetime import datetime, timedelta # 수정
+from projectapp.models import Hospital # 강용
+from projectapp.models import Clinic # 강용
+
 
 
 
@@ -59,53 +62,51 @@ def only_member(request) :
     return render(request, 'member.html', context)
 
 
-
-
-
-
-
-
-
-
-
-
 # 상원
 def map1(request) :
-    template = loader.get_template('map1.html')
-    return HttpResponse(template.render(None, request))
+    Restaurants = Restaurant.objects.all()
+    Rname = []
+    Raddress = []
+    for rest in Restaurants :
+        Rname.append(rest.r_name)
+        Raddress.append(rest.r_address)
+
+    if request.method == 'POST':
+        txt = (request.POST['text'])
+        context = {
+            "txt":txt,
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    else :
+        context = {
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    return render(request, 'map1.html', context)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 강용님
+# 강용
 def map2(request) :
-    template = loader.get_template('map2.html')
-    return HttpResponse(template.render(None, request))
+    hospitals = Hospital.objects.all()
+    hname = []
+    haddress = []
+    for hospital in hospitals:
+        hname.append(hospital.address)
+        haddress.append(hospital.type)
+    context = {"hospitals":hospitals, "hname":hname, "haddress":haddress}
+    return render(request, 'map2.html', context)
 
-
-
-
-
-
-
-
-
-
-
-
+def map2_1(request) :
+    clinics = Clinic.objects.all()
+    cname = []
+    caddress = []
+    for clinic in clinics:
+        cname.append(clinic.name)
+        caddress.append(clinic.address)
+    context = {"clinics":clinics, "cname":cname, "caddress":caddress}
+    return render(request, 'map2_1.html', context)
 
 
 

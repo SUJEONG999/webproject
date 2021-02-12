@@ -3,6 +3,9 @@
   <head>
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Myeongjo:wght@400;800&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
 	.area {
     position: absolute;
     background: #fff;
@@ -92,46 +95,46 @@
 
 			<section class="ftco-section ftco-no-pt ftco-counter img" id="section-counter">
 
-	    	<div class="container-fluid px-3 px-md-0">
-	    		<div class="row d-md-flex align-items-center justify-content-end">
-	    			<div class="col-md-10">
-	    				<div class="row d-md-flex align-items-start">
-			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-			            <div class="block-18">
-			              <div class="text">
-								<strong class="number" id = "xx" data-number="+85">0</strong>
-								<span>증감폭</span>
-							  </div>
-			            </div>
-			          </div>
-			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-			            <div class="block-18">
-			              <div class="text">
-								  <strong class="number" id="tt"></strong>
-								  <span>서울시 전일 확진자수</span>
-						  </div>
-			            </div>
-			          </div>
+			<section class="ftco-services ftco-section">
+				<div class="container-fluid px-3 px-md-0">
+					<div class="row justify-content-end">
+						<div class="col-md-10">
+							<div class="row">
 			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text" >
-								<strong class="number" id = "yy"data-number="134">0</strong>
-								<span>주평균 확진자수</span>
-							  </div>
+							  <strong class="number" id = "tt"data-number="158">0</strong>
+							  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">전일 확진자수</h3>
+							  <strong class="number" id = "zz"data-number="25544">0</strong>
+							  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">누적 확진자수</h3>
+			              </div>
 			            </div>
 			          </div>
-			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-			            <div class="block-18">
-			              <div class="text" >
-								<strong class="number" id = "zz"data-number="25544">0</strong>
-								<span>누적 확진자수</span>
-							  </div>
+			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+			            <div class="media block-6 services d-block">
+			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/happy.png); background-size:contain;">
+			              </div>
+			              <div class="media-body p-2 mt-3">
+			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">안심지역</span></h3>
+			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
+			              </div>
 			            </div>
 			          </div>
-		          </div>
-	          </div>
+			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+			            <div class="media block-6 services d-block">
+			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/scared.png); background-size:contain;">
+			              </div>
+			              <div class="media-body p-2 mt-3">
+			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">위험지역</span></h3>
+			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
 	        </div>
-	    	</div>
+				</div>
+			</section>
 				<script>
 						function getFormatDate(date){
 							var year = date.getFullYear();
@@ -173,17 +176,12 @@
 	    </section>
 
 
-			<section class="ftco-section px-0">
-				<div class="container-fluid px-0 border">
-					<div class="row justify-content-end">
-						<div class="col-md-10">
-								<div class="container">
-									<div class="row js-fullheight justify-content-center d-flex align-items-start">
+					<section class="ftco-section contact-section ftco-no-pt">
+							<div class="container-fluid px-md-0 px-3">
+									<div class="row mb-5 contact-info justify-content-end">
 										<div class="col-md-10">
-											<div class="text text-center">
-												<br>
-												<h2><a href="#" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 36pt;"><span style="color : black"><서울시 각 구별 </span><span style="color : red">전일 확진자 수<span style="color : black">></span></span></a></h2>
-													<div id="map" style="width:90%;height:600px;"></div>
+												<h2><a href="#" style=" text-align: right; font-family: 'Nanum Myeongjo', sans-serif; font-size: 36pt;"><span style="color : black; font-family: 'Jua', sans-serif;"><서울시 각 구별 </span><span style="color : red; font-family: 'Jua', sans-serif;">전일 확진자 수<span style="color : black">></span></span></a></h2>
+													<div id="map" style="width:90%;height:500px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae"></script>
 														<script>
 														// 지도에 폴리곤으로 표시할 영역데이터 배열입니다
@@ -1593,47 +1591,6 @@
 								</div>
 						</div>
 					</div>
-				</div>
-			</section>
-
-			<section class="ftco-services ftco-section">
-				<div class="container-fluid px-3 px-md-0">
-					<div class="row justify-content-end">
-						<div class="col-md-10">
-							<div class="row">
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/free-icon-scared-3922637.png); background-size:contain;">
-			              </div>
-			              <div class="media-body p-2 mt-3">
-							  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 <span style="color : navy">1위</span></h3>
-			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
-			              </div>
-			            </div>      
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/free-icon-scared-3922637.png); background-size:contain;">
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 <span style="color : navy">2위</span></h3>
-			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
-			              </div>
-			            </div>    
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/free-icon-scared-3922637.png); background-size:contain;">
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 <span style="color : navy">3위</span></h3>
-			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
-			              </div>
-			            </div>      
-			          </div>
-			        </div>
-			      </div>
-	        </div>
 				</div>
 			</section>
 

@@ -6197,7 +6197,8 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important; }
+ /* margin-top: 3rem !important; */
+ }
 
 .mr-5,
 .mx-5 {
@@ -6205,6 +6206,7 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
+  margin-top: 0rem !important;
   margin-bottom: 3rem !important; }
 
 .ml-5,
@@ -7334,8 +7336,8 @@ h1, h2, h3, h4, h5,
   padding-top: 3em;
   padding-bottom: 40px;
   padding-left: 3em;
-  padding-right: 3em;
-  width: 22%;
+  padding-right: 0em;
+  width: 15%;
   position: fixed;
   bottom: 0;
   top: 0;
@@ -7350,7 +7352,7 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (min-width: 992px) {
     #colorlib-aside {
-      width: 22%; } }
+      width: 15%; } }
   @media (max-width: 991.98px) {
     #colorlib-aside {
       width: 270px;
@@ -7818,10 +7820,10 @@ h1, h2, h3, h4, h5,
       .ftco-bread .breadcrumbs span a {
         color: rgba(0, 0, 0, 0.5); }
   .ftco-bread .bread {
-    font-weight: 600;
+    font-weight: 300;
     color: #000000;
     margin-bottom: 0;
-    font-size: 8vw;
+    font-size: 4vw;
     display: inline-block;
     position: relative;
     line-height: 1; }
