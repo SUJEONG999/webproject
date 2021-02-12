@@ -55,7 +55,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 하영 수정
     'projectapp',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,5 +1,9 @@
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from projectapp import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('main/', views.main, name = 'main'),
@@ -9,13 +13,10 @@ urlpatterns = [
 
 #하영
     path('board_list/', views.board_list, name='board_list'),
-    path('board_view/', views.board_view, name='board_view'),
+    path('board_view//<int:board_id>/', views.board_view, name='board_view'),
     path('board_write/', views.board_write, name='board_write'),
     path('board_edit/', views.board_edit, name='board_edit'),
+    path('post/', views.post, name='post'),
 ]
 
-#     path('download/<int:pk>', views.board_download_view, name="board_download"),
-#    # 페이징 처리 / url 추가
-#     path('', views.BoardListView.as_view(), name='board_list'),
-#     # 게시글 검색기능 구현
-#     path('search/', views.SearchFormView.as_view(), name='search'),
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
