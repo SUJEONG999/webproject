@@ -60,10 +60,8 @@ def map1(request) :
 
 # 강용님
 def map2(request) :
-    hospitals = Hospital.objects.all()
-    context = {"hospitals": hospitals}
 
-    return render(request, 'map2.html', context)
+    return render(request, 'map2.html')
 
 
 
