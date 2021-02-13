@@ -24,8 +24,29 @@
 	.info .title {
 		font-weight: bold;
 	}
+	#inform {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 90%;
+	}
+
+	#inform td, #inform th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	height: 10px;
+	}
+
+	#inform tr:nth-child(even){background-color: #f2f2f2;}
+
+	#inform tr:hover { color: #392613;  font-weight : bold; border: 2.5px solid #ccb78f;}
+
+	#inform th{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	}
 	</style>
-    <title>KD - Free Bootstrap 4 Template by Colorlib</title>
+    <title>코딩해조</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -84,95 +105,56 @@
 					<div class="row justify-content-end">
 						<div class="col-md-10 mt-3">
 							<div class="text text-center">
-								<h1 class="mb-5" style="font-family: 'Do Hyeon', sans-serif; font-size: 90pt;">오늘의 코로나 안심지역은?</h1>
+								<h1 class="bread" style="font-family: 'Jua', sans-serif; font-size: 85pt;">오늘의 코로나 안심지역은?</h1>
 							</div>
-									<p style="text-align: right; font-family: 'Do Hyeon', sans-serif; font-size: 25pt;">'{{current_date|date}} 00:00'기준</p>
+							<p style="text-align: right; font-family: 'Jua', sans-serif; font-size: 25pt;">'{{current_date|date}}' 00:00 기준    </p>
 						</div>
 					</div>
 				</div>
 			</section>
-
-
 			<section class="ftco-section ftco-no-pt ftco-counter img" id="section-counter">
 
-			<section class="ftco-services ftco-section">
-				<div class="container-fluid px-3 px-md-0">
-					<div class="row justify-content-end">
-						<div class="col-md-10">
-							<div class="row">
-			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-			            <div class="block-18">
-			              <div class="text" >
-							  <strong class="number" id = "tt"data-number="158">0</strong>
-							  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">전일 확진자수</h3>
-							  <strong class="number" id = "zz"data-number="25544">0</strong>
-							  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">누적 확진자수</h3>
-			              </div>
-			            </div>
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/happy.png); background-size:contain;">
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">안심지역</span></h3>
-			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
-			              </div>
-			            </div>
-			          </div>
-			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-			            <div class="media block-6 services d-block">
-			              <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/scared.png); background-size:contain;">
-			              </div>
-			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">위험지역</span></h3>
-			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
-			              </div>
-			            </div>
-			          </div>
-			        </div>
-			      </div>
-	        </div>
+				<section class="ftco-services ftco-section">
+					<div class="container-fluid px-3 px-md-0">
+						<div class="row justify-content-end">
+							<div class="col-md-10">
+								<div class="row">
+						  <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18">
+							  <div class="text" >
+								  <strong class="number" id = "tt" ></strong>
+								  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">전일 확진자수</h3>
+								  <strong class="number" id = "zz" ></strong>
+								  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">누적 확진자수</h3>
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+							<div class="media block-6 services d-block">
+							  <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/happy.png); background-size:contain;">
+							  </div>
+							  <div class="media-body p-2 mt-3">
+								<h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">안심지역</span></h3>
+								<p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+							<div class="media block-6 services d-block">
+							  <div class="icon d-flex justify-content-center align-items-center" style="background-image: url(/static/images/scared.png); background-size:contain;">
+							  </div>
+							  <div class="media-body p-2 mt-3">
+								<h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : red">위험지역</span></h3>
+								<p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
 				</div>
-			</section>
-				<script>
-						function getFormatDate(date){
-							var year = date.getFullYear();
-							var month = (1 + date.getMonth());
-							month = month > 9 ? month : '0' + month;
-							var day = date.getDate();
-							day = day > 9 ? day : '0' + day;
-							return year + month + day;
-							}
-						window.onload = function() {
-							const today = new Date();
-							const d = today.getTime() - (1*24*60*60*1000);
-							const targetday = new Date(d);
-							const targetDt = getFormatDate(targetday);
-							formatNum = targetDt.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
-							console.log(formatNum);
+					</div>
+				</section>
 
-
-
-							$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/1000/',
-								function(jsonObj){
-									var dom = $('#tt');
-									let total = 0;
-									let init = 0;
-									let html='';
-									for (var i = 0; i < 1000; i++) {
-										if (formatNum == jsonObj.Corona19Status.row[i].CORONA19_DATE) {
-											total += 1;
-											continue;
-												}
-												}
-									html += total;
-									console.log(html);
-									dom.html(html);
-
-								});
-							};
-				</script>
 	    </section>
 
 
@@ -180,7 +162,7 @@
 							<div class="container-fluid px-md-0 px-3">
 									<div class="row mb-5 contact-info justify-content-end">
 										<div class="col-md-10">
-												<h2><a href="#" style=" text-align: right; font-family: 'Nanum Myeongjo', sans-serif; font-size: 36pt;"><span style="color : black; font-family: 'Jua', sans-serif;"><서울시 각 구별 </span><span style="color : red; font-family: 'Jua', sans-serif;">전일 확진자 수<span style="color : black">></span></span></a></h2>
+												<h2><a href="#" style=" text-align: right; color : black;font-family: 'Jua', sans-serif; font-size: 36pt;"><<span style="color : #663300; font-family: 'Jua', sans-serif;">서울시 구별 </span>전일 확진자 수></a></h2>
 													<div id="map" style="width:90%;height:500px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae"></script>
 														<script>
@@ -1279,6 +1261,61 @@
 																	new kakao.maps.LatLng(37.5548768201904, 126.96966524449994)
 																]
 															},
+															<!--은평구추가-->
+															{
+																name : '은평구',
+																path : [
+																	new kakao.maps.LatLng(37.57779095175834, 126.90215722748464),
+																	new kakao.maps.LatLng(37.5856812084405, 126.88928262354536),
+																	new kakao.maps.LatLng(37.59085023353351, 126.88275949088278),
+																	new kakao.maps.LatLng(37.59261850181282, 126.88481942751307),
+																	new kakao.maps.LatLng(37.588945897631746, 126.88653604137163),
+																	new kakao.maps.LatLng(37.589353973712555, 126.89923898392507),
+																	new kakao.maps.LatLng(37.612202663135605, 126.90129892055536),
+																	new kakao.maps.LatLng(37.62511994682213, 126.90850869876138),
+																	new kakao.maps.LatLng(37.63422868153803, 126.90644876213109),
+																	new kakao.maps.LatLng(37.64442370203532, 126.9124569106361),
+																	new kakao.maps.LatLng(37.6485043757381, 126.90605858938672),
+																	new kakao.maps.LatLng(37.644836070660844, 126.91390410649561),
+																	new kakao.maps.LatLng(37.64598745599606, 126.92415062237495),
+																	new kakao.maps.LatLng(37.650271523739015, 126.93003476020664),
+																	new kakao.maps.LatLng(37.65122609518355, 126.9359780123376),
+																	new kakao.maps.LatLng(37.65668255201845, 126.94077241136497),
+																	new kakao.maps.LatLng(37.6578732471388, 126.94548803386486),
+																	new kakao.maps.LatLng(37.65511255257072, 126.9512998687048),
+																	new kakao.maps.LatLng(37.65502052765064, 126.95350836594395),
+																	new kakao.maps.LatLng(37.65313399165504, 126.9562399283187),
+																	new kakao.maps.LatLng(37.648854598200984, 126.9574022952867),
+																	new kakao.maps.LatLng(37.646737817814625, 126.9560655732735),
+																	new kakao.maps.LatLng(37.64489709017941, 126.95716982189307),
+																	new kakao.maps.LatLng(37.641675707033365, 126.96315601101252),
+																	new kakao.maps.LatLng(37.640249049874754, 126.96414402293527),
+																	new kakao.maps.LatLng(37.636889394152696, 126.96757300549085),
+																	new kakao.maps.LatLng(37.63186955866816, 126.96486052808174),
+																	new kakao.maps.LatLng(37.6315853050124, 126.9557676837406),
+																	new kakao.maps.LatLng(37.6278899085475, 126.95086233350392),
+																	new kakao.maps.LatLng(37.62684758401574, 126.94834983704123),
+																	new kakao.maps.LatLng(37.62324671407665, 126.94643555402206),
+																	new kakao.maps.LatLng(37.620214267254994, 126.94703376746556),
+																	new kakao.maps.LatLng(37.61699215697548, 126.94787126628644),
+																	new kakao.maps.LatLng(37.61244305768859, 126.94870876510733),
+																	new kakao.maps.LatLng(37.609245297728535, 126.94844871682018),
+																	new kakao.maps.LatLng(37.608973319979185, 126.94484382771714),
+																	new kakao.maps.LatLng(37.60475753768499, 126.93883567921215),
+																	new kakao.maps.LatLng(37.60244555562919, 126.9386640178263),
+																	new kakao.maps.LatLng(37.600677520868736, 126.94038063168486),
+																	new kakao.maps.LatLng(37.598093394483605, 126.93797737228287),
+																	new kakao.maps.LatLng(37.59659728029123, 126.92956596437587),
+																	new kakao.maps.LatLng(37.58870818071851, 126.92767768913141),
+																	new kakao.maps.LatLng(37.587483935141904, 126.9225278475557),
+																	new kakao.maps.LatLng(37.58394711258913, 126.92149787924056),
+																	new kakao.maps.LatLng(37.58435521607536, 126.91600471489312),
+																	new kakao.maps.LatLng(37.58721187783476, 126.91617637627898),
+																	new kakao.maps.LatLng(37.588300101097005, 126.91239982579012),
+
+																	]
+															},
+
 
 															{
 																name : '종로구',
@@ -1457,7 +1494,7 @@
 																map: map, // 다각형을 표시할 지도 객체
 																path: area.path,
 																strokeWeight: 4,
-																strokeColor: '#004c80',
+																strokeColor: '#663300',
 																strokeOpacity: 0.8,
 																fillColor: '#fff',
 																fillOpacity: 0.7
@@ -1466,9 +1503,9 @@
 															// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다
 															// 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
 															kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
-																polygon.setOptions({fillColor: '#336699'});
+																polygon.setOptions({fillColor: '#c68c53'});
 
-																customOverlay.setContent('<div class="area">' + area.name + '</div>');
+																customOverlay.setContent('<div class="area">' + area.name + '<div id ="mapcount">' +'</div>'+ ' 00 명 </div>');
 
 																customOverlay.setPosition(mouseEvent.latLng);
 																customOverlay.setMap(map);
@@ -1486,45 +1523,26 @@
 																polygon.setOptions({fillColor: '#fff'});
 																customOverlay.setMap(null);
 															});
-
-
-
-															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
-															kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-																var content = '<div style="text-align : left;" class="info">' +
-																			'   <div class="title">' +area.name + '  ' + '현재 :  ' +'<div id = mapcount>'+  +'</div>' + '명'+  '</div>' +
-
-																			'   <a href="../map1/" style="color:blue" target="_blank">안심식당</a>' +
-																			'   <br> ' +
-																			'   <a href="../map1/" style="color:blue" target="_blank">안심병원&진료소</a>' +
-																			'</div>';
-
-																infowindow.setContent(content);
-																infowindow.setPosition(mouseEvent.latLng);
-																infowindow.setMap(map);
-
-
-															});
-														}
-
 															function getFormatDate(date){
-																var year = date.getFullYear();
-																var month = (1 + date.getMonth());
-																month = month >= 10 ? month : '0' + month;
-																var day = date.getDate();
-																day = day >= 10 ? day : '0' + day;
-																return  year+month+day;
-																}
-																window.onload = function() {
-																const today = new Date();
-																const d = today.getTime() - (1*24*60*60*1000);
-																const targetday = new Date(d);
-																const targetDt = getFormatDate(targetday);
-																formatNum = targetDt.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
-																console.log(formatNum);
-																$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/700/',
+															var year = date.getFullYear();
+															var month = (1 + date.getMonth());
+															month = month > 9 ? month : '0' + month;
+															var day = date.getDate();
+															day = day > 9 ? day : '0' + day;
+															return year + month + day;
+															}
+															window.onload = function() {
+															const today = new Date();
+															const d = today.getTime() - (2*24*60*60*1000);
+															const targetday = new Date(d);
+															const targetDt = getFormatDate(targetday);
+															formatNum = targetDt.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+															console.log(formatNum);
+																$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/1000/',
 																	function(jsonObj){
-																		var dom = $('#mapcount');
+																		var dom = $('#tt');
+																		var dom1 = $('#zz');
+																		var dom2 = $('#mapcount');
 																		let kn = 0;
 																		let kd = 0;
 																		let kb = 0;
@@ -1551,65 +1569,97 @@
 																		let jg = 0;
 																		let jl = 0;
 																		let total = 0;
+																		let init = 0;
 																		let html='';
-																		let goo = [ ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구",
+																		let html1='';
+																		let html2='';
+																		let goo = [ ["강남구", "강동구","강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구",
 																						"도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구",
 																						"송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
 																						[kn, kd, kb, ks, ka, kj, kr, kc, nw, db, ddm, dj, mp, sdm,
 																						sc, sd, sb, sp, yc, yd, ys, ep, jr, jg, jl]
 																					];
 
-																		let content="";
-																		for (var j = 0; j < 500; j++) {
-																			if(jsonObj.Corona19Status.row[j].CORONA19_DATE == formatNum) {
-																				for (var i = 0; i < areas.length; i++) {
-																					if(jsonObj.Corona19Status.row[j].CORONA19_AREA == goo[0][i]){
-																						if(goo[0][i] == areas[i].name){
-																							goo[1][i] += 1;
-																							total += 1;
-																							continue;
+
+																		for (var j = 0; j < 1000; j++) {
+																			if (formatNum == jsonObj.Corona19Status.row[j].CORONA19_DATE) {
+																				total += 1;
+																				continue;
+
 																					}
 																					}
-																				}
-																			}
-																		}
-																		html +=   goo[1][i]  ;
+																		html += total;
 																		console.log(html);
 																		dom.html(html);
+
+
+																		html1 += jsonObj.Corona19Status.row[0].CORONA19_ID;
+																		console.log(html1);
+																		dom1.html(html1);
+
+
+																		for (let j = 0; j < 1000; j++) {
+																			if (formatNum == jsonObj.Corona19Status.row[j].CORONA19_DATE) {
+																				for (let i = 0; i < areas.length; i++) {
+																					if(jsonObj.Corona19Status.row[j].CORONA19_AREA == areas[i].name){
+																						if(goo[0][i] == areas[i].name){
+																							goo[1][i] += 1;
+																							continue;
+																							}
+																							}
+																						}
+																					}
+																				}
+																		html2 +=   goo[1][i]  ;
+																		console.log(goo[1][2]);
+																		console.log(html2);
+																		dom2.html(html2);
 
 																	}
 																);
 															};
+
+
+															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
+															kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+																var content = '<div style="text-align : left; width: 110%;" class="info" >' +
+																			'   <div class="title" id ="mapcount">' +area.name +   '</div>' +
+																			'<a href="../map1" class="btn btn-primary">안심식당</a>' +
+																			'<a href="../map2" class="btn btn-primary">안심병원</a>' +
+																			'<a href="../map2_1" class="btn btn-primary">선별진료소</a>' +
+
+																			'</div>';
+
+																infowindow.setContent(content);
+																infowindow.setPosition(mouseEvent.latLng);
+																infowindow.setMap(map);
+
+															});
+														}
 													</script>
-															<div class="move-tab" style="text-align: center;">
-																<button type="button" onclick="location.href='../map1' " class="on">안심 <span>식당</span></button>
-																<button type="button" onclick="location.href='../map2' " class="btn-tab2">안심병원 & <span>진료소</span></button>
-															</div>
 											</div>
 										</div>
 									</div>
-								</div>
-						</div>
-					</div>
-				</div>
-			</section>
+					</section>
 
-			<section class="ftco-section">
-				<div class="container-fluid px-3 px-md-0">
-					<div class="row">
-						<div class="col-md-12 project ftco-animate">
+			<section class="ftco-section contact-section ftco-no-pt">
+				<div class="container-fluid px-md-0 px-3">
+					<div class="row mb-5 contact-info justify-content-end">
+						<div class="col-md-10">
 							<nav>
-						  		<button type="button" style="float:right;" class='btn btn-outline-dark mr-2 mb-1' onclick="coronapatients()" ondblclick="$('tbody').hide()">자세히보기</button>
-								<button type="button" style="float:right;" class='btn btn-outline-dark mr-2 mb-1' onclick="$('tbody').hide()">숨김</button>
-						</nav>
+						  		<button type="button" style="float:right;" class="btn btn-primary" onclick="coronapatients()" ondblclick="$('tbody').hide()">자세히보기</button>
+								<button type="button" style="float:right;" class="btn btn-primary" onclick="$('tbody').hide()">숨김</button>
+
+							</nav>
+							<br><br>
 						<section>
-						  <table class="table table-hover" style="margin-left: auto; margin-right: auto; text-align: center;  width: 65%;">
+						  <table id="inform" style= "text-align: center; ">
 							<thead>
 							<tr>
-								<th scope="col">확진일</th>
-								<th scope="col">환자 번호</th>
-								<th scope="col">발생지역</th>
-								<th scope="col">감염경로</th>
+								<th style="background-color: #ccb78f; color: white;" scope="col">확진일</th>
+								<th style="background-color: #ccb78f; color: white;" scope="col">환자 번호</th>
+								<th style="background-color: #ccb78f; color: white;" scope="col">발생지역</th>
+								<th style="background-color: #ccb78f; color: white;" scope="col">감염경로</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -1649,7 +1699,7 @@
 						}
 						</script>
 							<!-- 확진자 현황 : START -->
-
+						</div>
 					</div>
 				</div>
 			</section>
