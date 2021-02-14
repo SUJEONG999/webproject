@@ -2,52 +2,88 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
-from projectapp.models import Hospital
-from projectapp.models import Clinic
+from django.contrib.auth.models import User
+from django.contrib import auth
+from .models import Restaurant # 상원
+from datetime import datetime, timedelta # 수정
+from projectapp.models import Hospital # 강용
+from projectapp.models import Clinic # 강용
 
-import random
-import datetime
 
 
 
 # 수정님
 def main(request) :
     template = loader.get_template('index.html')
-    return HttpResponse(template.render(None, request))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    date = datetime.now() - timedelta(1)
+    context = { 'current_date' : date }
+    return HttpResponse(template.render(context, request))
+def register(request):
+    res_data = None
+    if request.method =='POST':
+        useremail = request.POST.get('useremail')
+        firstname = request.POST.get('firstname', None)
+        lastname = request.POST.get('lastname', None)
+        password = request.POST.get('password', None)
+        re_password = request.POST.get('re-password',None)
+        res_data = {}
+        if User.objects.filter(username=useremail):
+            res_data['error']='이미 가입된 아이디(이메일주소)입니다.'
+        elif password != re_password:
+            res_data['error']='비밀번호가 다릅니다.'
+        else:
+            user = User.objects.create_user(username = useremail,
+                            first_name = firstname,
+                            last_name = lastname,
+                            password = password)
+            auth.login(request, user)
+            redirect("index.html")
+    return render(request, 'register.html', res_data)
+def login(request):
+    if request.method == "POST":
+        useremail = request.POST.get('useremail', None)
+        password = request.POST.get('password', None)
+        user = auth.authenticate(username=useremail, password=password)
+        if user is not None :
+            auth.login(request, user)
+            return redirect("main")
+        else :
+            return render(request, 'login.html', {'error': '사용자 아이디 또는 패스워드가 틀립니다.'})
+    else :
+        return render(request, 'login.html')
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+    return redirect("main")
+def only_member(request) :
+    context = None
+    if request.user.is_authenticated:
+        context = {'logineduser': request.user.last_name+request.user.first_name}
+    return render(request, 'member.html', context)
 
 
 # 상원
 def map1(request) :
-    template = loader.get_template('map1.html')
-    return HttpResponse(template.render(None, request))
+    Restaurants = Restaurant.objects.all()
+    Rname = []
+    Raddress = []
+    for rest in Restaurants :
+        Rname.append(rest.r_name)
+        Raddress.append(rest.r_address)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if request.method == 'POST':
+        txt = (request.POST['text'])
+        context = {
+            "txt":txt,
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    else :
+        context = {
+            "Rname":Rname,
+            "Raddress":Raddress
+        }
+    return render(request, 'map1.html', context)
 
 
 
@@ -57,8 +93,8 @@ def map2(request) :
     hname = []
     haddress = []
     for hospital in hospitals:
-        hname.append(hospital.name)
-        haddress.append(hospital.address)
+        hname.append(hospital.h_name)
+        haddress.append(hospital.h_address)
     context = {"hospitals":hospitals, "hname":hname, "haddress":haddress}
     return render(request, 'map2.html', context)
 
@@ -76,37 +112,4 @@ def map2_1(request) :
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 하영님
-def board(request) :
-    template = loader.get_template('board.html')
-    return HttpResponse(template.render(None, request))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 하영
