@@ -135,7 +135,7 @@
 							  </div>
 							  <div class="media-body p-2 mt-3">
 								<h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">오늘의 <span style="color : navy">안심지역</span></h3>
-								<p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
+								<p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;" id = "best"></p>
 							  </div>
 							</div>
 						  </div>
@@ -1468,11 +1468,15 @@
 
 														];
 
+
+
+
 														var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 															mapOption = {
 																center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 																draggable: false,
 																level: 9 // 지도의 확대 레벨
+
 															};
 
 														var map = new kakao.maps.Map(mapContainer, mapOption),
@@ -1543,6 +1547,8 @@
 																		var dom = $('#tt');
 																		var dom1 = $('#zz');
 																		var dom2 = $('#mapcount');
+																		var dom3 = $('#best');
+																		var dom4 = $('#worst');
 																		let kn = 0;
 																		let kd = 0;
 																		let kb = 0;
@@ -1573,6 +1579,8 @@
 																		let html='';
 																		let html1='';
 																		let html2='';
+																		let html3='';
+																		let html4='';
 																		let goo = [ ["강남구", "강동구","강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구",
 																						"도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구",
 																						"송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
@@ -1606,14 +1614,35 @@
 																							goo[1][i] += 1;
 																							continue;
 																							}
+
 																							}
 																						}
 																					}
 																				}
-																		html2 +=   goo[1][i]  ;
+
+<!--																		for (let i = 0; i < areas.length; i++) {-->
+<!--																				if (area.name == areas[i].name) {-->
+<!--																					html2+=  goo[1][i]  ;}};-->
+
+
+
 																		console.log(goo[1][2]);
 																		console.log(html2);
 																		dom2.html(html2);
+
+<!--																		let ar = new Array(goo[1][0],goo[1][1],goo[1][2],goo[1][3],goo[1][4], goo[1][5],goo[1][6],goo[1][7],goo[1][8], goo[1][9],goo[1][10],-->
+<!--																							goo[1][11],goo[1][12],goo[1][13],goo[1][14],goo[1][15],goo[1][16],goo[1][17],goo[1][18],goo[1][19],goo[1][20],-->
+<!--																							goo[1][21],goo[1][22],goo[1][23],goo[1][24]);-->
+<!--																		let max = Math.max.apply(null, ar);-->
+<!--																		console.log(max);-->
+<!--																		let max.index = goo[0][arr.indexOf(Math.max.apply(null, ar))];-->
+<!--																		let min = Math.min.apply(null, ar);-->
+<!--																		let min.index = goo[0][arr.indexOf(Math.min.apply(null, ar))];-->
+
+<!--																		html3 += min.index + min ;-->
+<!--																		console.log(html3);-->
+<!--																		dom3.html(html3);-->
+
 
 																	}
 																);
@@ -1624,11 +1653,13 @@
 															kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
 																var content = '<div style="text-align : left; width: 110%;" class="info" >' +
 																			'   <div class="title" id ="mapcount">' +area.name +   '</div>' +
-																			'<a href="../map1" class="btn btn-primary">안심식당</a>' +
+																			'   <a href="../map1/?search=' +  area.name + '"class="btn btn-primary">안심식당</a>' +
 																			'<a href="../map2" class="btn btn-primary">안심병원</a>' +
 																			'<a href="../map2_1" class="btn btn-primary">선별진료소</a>' +
 
 																			'</div>';
+
+
 
 																infowindow.setContent(content);
 																infowindow.setPosition(mouseEvent.latLng);
