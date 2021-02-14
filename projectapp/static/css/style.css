@@ -6197,7 +6197,7 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
-/* 상원 버튼의 위 마진 top 0 */}
+/* 상원 */}
 
 .mr-5,
 .mx-5 {
@@ -6205,7 +6205,7 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
-  /* 상원 버튼위 공간 삭제 */
+  /* 상원 */
   margin-top: 0rem !important;
   margin-bottom: 3rem !important; }
 
@@ -8020,7 +8020,7 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 3em 0;
   position: relative; }
   @media (max-width: 991.98px) {
     .ftco-section {

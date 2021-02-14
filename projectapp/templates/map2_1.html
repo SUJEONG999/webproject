@@ -6,23 +6,23 @@
 		@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 		@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
 
-	#hospital {		/* hospital TABLE 내용 적용 START*/
+	#clinic {		/* clinic TABLE 내용 적용 START*/
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 95%;
 	}
 
-	#hospital td, #hospital th {
+	#clinic td, #clinic th {
 	border: 1px solid #ddd;
-	padding: 8px;
 	height: 10px;
+	padding: 8px;
 	}
 
-	#hospital tr:nth-child(even){background-color: #f2f2f2;}
+	#clinic tr:nth-child(even){background-color: #f2f2f2;}
 
-	#hospital tr:hover {background-color: #ccb78f;}
+	#clinic tr:hover {background-color: #ccb78f;}
 
-	#hospital th {
+	#clinic th {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	text-align: center;
@@ -54,7 +54,7 @@
 	<div id="colorlib-page">
 	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 	<aside id="colorlib-aside" role="complementary" class="js-fullheight">
-		<nav id="colorlib-main-menu" role="navigation">
+	<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li><a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						홈</a></li><br>
@@ -75,6 +75,7 @@
 				</p>
 	</nav>
 	</aside> <!-- END COLORLIB-ASIDE -->
+	<div id="colorlib-main">
 
 	<section class="ftco-section ftco-bread ftco-extend-mb">
 		<div class="row no-gutters slider-text justify-content-end align-items-center">
@@ -95,6 +96,7 @@
 <!--button end-->
 
 <!--map start-->
+
 			<div id="map" style="width:95%;height:350px;"></div>
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services""></script>
 
@@ -113,13 +115,13 @@
 
 			// 주소로 좌표를 검색합니다
 			{% autoescape off %}
-        	var hname = {{ hname }};
-        	var haddress = {{ haddress }};
+        	var cname = {{ cname }};
+        	var caddress = {{ caddress }};
         	{% endautoescape %}
 
-			for(i=0; i<44; i++) {
+			for(i=0; i<45; i++) {
 
-			geocoder.addressSearch(haddress[i], function(result, status) {
+			geocoder.addressSearch(caddress[i], function(result, status) {
 
 				// 정상적으로 검색이 완료됐으면
 				if (status === kakao.maps.services.Status.OK) {
@@ -132,32 +134,28 @@
 						position: coords
 					});
 
+					// 인포윈도우로 장소에 대한 설명을 표시합니다
+					var contenString = cname[i];
+					var infowindow = new kakao.maps.InfoWindow({
+						content: contenString
+					});
 
+					// 마커에 마우스오버 이벤트를 등록합니다
+					kakao.maps.event.addListener(marker, 'mouseover', function() {
+					// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+					infowindow.open(map, marker);
+					});
+
+					// 마커에 마우스아웃 이벤트를 등록합니다
+					kakao.maps.event.addListener(marker, 'mouseout', function() {
+					// 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+					infowindow.close();
+					});
+					// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+					map.setCenter(coords);
 				}
-			// 인포윈도우로 장소에 대한 설명을 표시합니다
-			var contenString = hname[i];
-			var infowindow = new kakao.maps.InfoWindow({
-				content: contenString
-			});
-
-			// 마커에 마우스오버 이벤트를 등록합니다
-			kakao.maps.event.addListener(marker, 'mouseover', function() {
-			// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-			infowindow.open(map, marker);
-			});
-
-			// 마커에 마우스아웃 이벤트를 등록합니다
-			kakao.maps.event.addListener(marker, 'mouseout', function() {
-			// 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-			infowindow.close();
-			});
-
-			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			map.setCenter(coords);
 			});
 			}
-
-
 
 			</script>
 <!--map end-->
@@ -165,19 +163,17 @@
 			<h3 class="sidebar-heading">참고사항</h3>
 			<p>* 안심병원과 선별진료소는 2021년 2월 3일 데이터 기준 입니다.</p>
 <!--TABLE START-->
-			<table id="hospital">
+			<table id="clinic">
 			<tr>
-			<th>안심병원</th>
+			<th>선별진료소</th>
 			<th>주소</th>
-			<th>유형</th>
 			<th>전화번호</th>
 			</tr>
-			{% for hospital in hospitals %}
+			{% for clinic in clinics %}
 			<tr>
-			<td>{{ hospital.h_name }}</td>
-			<td>{{ hospital.h_address }}</td>
-			<td>{{ hospital.h_type }}</td>
-			<td>{{ hospital.h_number }}</td>
+			<td>{{ clinic.name }}</td>
+			<td>{{ clinic.address }}</td>
+			<td>{{ clinic.number }}</td>
 			</tr>
 			{% endfor %}
 			</table>

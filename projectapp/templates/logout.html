@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Myeongjo:wght@400;800&display=swap');
 	</style>
     <title>KD - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/animate.css">
-    
+
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -37,9 +37,9 @@
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><a href="../main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
+					<li class="colorlib-active"><a href="" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						홈</a></li><br>
-					<li class="colorlib-active"><a href="../map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
+					<li><a href="../map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						안심식당</a></li><br>
 					<li><a href="../map2" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
 						안심병원<br>& 진료소</a></li><br>
@@ -47,44 +47,113 @@
 						식당리뷰</a></li><br>
 				</ul>
 				<p class="social">
-					<span><a href="#">로그인</a></span>
-					<span><a href="#">회원가입</a></span>
-					<span><a href="#">Instagram</a></span>
+						<span><a href="../register" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">회원가입</a></span>
+            			<span><a href="../login" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그인</a></span>
 				</p>
 			</nav>
+            <div class="row mt-5">
+                <div class="col-12 text-center" style="color:green">
+                    <h1>{{ msg }}</h1>
+                </div>
+            </div>
 
-			<div class="colorlib-footer">
-				<h1 id="colorlib-logo"><a href="../main">KD</a></h1>
-			</div>
 		</aside> <!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
-			
-			<section class="ftco-section ftco-bread ftco-extend-mb">
+			<section class="ftco-section ftco-no-pt ftco-no-pb mb-5 ftco-intro">
 				<div class="container-fluid px-3 px-md-0">
-					<div class="row no-gutters slider-text justify-content-end align-items-center">
-	          <div class="col-md-10 ftco-animate">
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Services</span></p>
-	            <h1 class="bread">Services</h1>
-	          </div>
-	        </div>
+					<div class="row justify-content-end">
+						<div class="col-md-10 mt-3">
+							<div class="text text-center">
+								<h1 class="mb-5" style="font-family: 'Do Hyeon', sans-serif; font-size: 90pt;">오늘의 코로나 안심지역은?</h1>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+										<p style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;"> 오늘 날짜 : {{current_date|date }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			<section class="ftco-services ftco-section ftco-no-pt">
+			<section class="ftco-section ftco-no-pt ftco-counter img" id="section-counter">
+	    	<div class="container-fluid px-3 px-md-0">
+	    		<div class="row d-md-flex align-items-center justify-content-end">
+	    			<div class="col-md-10">
+	    				<div class="row d-md-flex align-items-start">
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="33">0</strong>
+			                <span>실시간 확진자수</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="126">0</strong>
+			                <span>서울시 전일 확진자수</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="139">0</strong>
+			                <span>주평균 확진자수</span>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+			            <div class="block-18">
+			              <div class="text">
+			                <strong class="number" data-number="24880">0</strong>
+			                <span>누적 확진자수</span>
+			              </div>
+			            </div>
+			          </div>
+		          </div>
+	          </div>
+	        </div>
+	    	</div>
+	    </section>
+
+			<section class="ftco-section px-0">
+				<div class="container-fluid px-0 border">
+					<div class="row justify-content-end">
+						<div class="col-md-10">
+							<div id="home" class="video-hero js-fullheight" style="height: 500px; background-image: url(/static/images/seoul_map_rmbg.png); background-size:contain; background-position: center center;">
+								<div class="container">
+									<div class="row js-fullheight justify-content-center d-flex align-items-start">
+										<div class="col-md-10">
+											<div class="text text-center">
+												<h2><a href="#" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 48pt;"><span style="color : black">서울시 각 구별 </span><span style="color : red">실시간 확진자 수</span></a></h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="ftco-services ftco-section">
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row justify-content-end">
 						<div class="col-md-10">
-							<div class="row mb-lg-5">
+							<div class="row">
 			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
 			            <div class="media block-6 services d-block">
 			              <div class="icon d-flex justify-content-center align-items-center">
 			            		<span class="flaticon-idea"></span>
 			              </div>
 			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Perfectly Design</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 1위</h3>
+			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
 			              </div>
-			            </div>      
+			            </div>
 			          </div>
 			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
 			            <div class="media block-6 services d-block">
@@ -92,10 +161,10 @@
 			            		<span class="flaticon-compass-symbol"></span>
 			              </div>
 			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Carefully Planned</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 2위</h3>
+			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
 			              </div>
-			            </div>    
+			            </div>
 			          </div>
 			          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
 			            <div class="media block-6 services d-block">
@@ -103,24 +172,76 @@
 			            		<span class="flaticon-layers"></span>
 			              </div>
 			              <div class="media-body p-2 mt-3">
-			                <h3 class="heading">Smartly Execute</h3>
-			                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+			                <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">현재 확진자 3위</h3>
+			                <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;">00구 00명</p>
 			              </div>
-			            </div>      
+			            </div>
 			          </div>
-			        </div>
-			        <div class="row mt-5">
-			        	<div class="col-md-8 ftco-animate">
-			        		<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-			        		A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-			        	</div>
 			        </div>
 			      </div>
 	        </div>
 				</div>
 			</section>
 
-			
+			<section class="ftco-section">
+				<div class="container-fluid px-3 px-md-0">
+					<div class="row">
+						<div class="col-md-12 project ftco-animate">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-1.jpg);">
+								<div class="text text-center">
+									<h2 style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 50pt;"><a href="#">확진자 추이</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 project ftco-animate">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-2.jpg);">
+								<div class="text text-center">
+									<h2><a href="#">Office Interior Design</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 project ftco-animate">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-3.jpg);">
+								<div class="text text-center">
+									<h2><a href="#">Apartment Design</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 project">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-4.jpg);">
+								<div class="text text-2 text-center">
+									<h2><a href="#">Office Interior Design</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 project">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-5.jpg);">
+								<div class="text text-2 text-center">
+									<h2><a href="#">Dining Table</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 project ftco-animate">
+							<div class="img js-fullheight" style="background-image: url(/static/images/work-6.jpg);">
+								<div class="text text-center">
+									<h2><a href="#">Apartment Design</a></h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 text-center ftco-animate">
+							<h2><a href="#" class="btn-custom-2">View All Projects</a></h2>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
 	      <div class="container px-md-5">
 	        <div class="row mb-5">
@@ -141,10 +262,9 @@
 	             <div class="ftco-footer-widget mb-4 pl-lg-5">
 	              <h2 class="ftco-heading-2">Links</h2>
 	              <ul class="list-unstyled categories">
-	              	<li><a href="#">홈</a></li>
-	              	<li><a href="#">안심식당</a></li>
-	              	<li><a href="#">안심병원 & 진료소</a></li>
-	              	<li><a href="#">게시판</a></li>
+	              	<li><a href="#">map1</a></li>
+	              	<li><a href="#">map2</a></li>
+	              	<li><a href="#">board</a></li>
 	              </ul>
 	            </div>
 	          </div>
@@ -206,6 +326,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/static/js/google-map.js"></script>
   <script src="/static/js/main.js"></script>
-    
+
   </body>
 </html>
