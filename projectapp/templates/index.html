@@ -24,6 +24,11 @@
 	.info .title {
 		font-weight: bold;
 	}
+<!--	.kbk::before {-->
+<!--		background:#fff;-->
+<!--		opacity: 0.1;-->
+<!--		}-->
+
 	#inform {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -122,9 +127,9 @@
 						  <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18">
 							  <div class="text" >
-								  <strong class="number" id = "tt" ></strong>
+								  <strong class="number" id = "previous" ></strong>
 								  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">전일 확진자수</h3>
-								  <strong class="number" id = "zz" ></strong>
+								  <strong class="number" id = "cumulative" ></strong>
 								  <h3 class="heading" style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 20pt;">누적 확진자수</h3>
 							  </div>
 							</div>
@@ -166,7 +171,7 @@
 													<div id="map" style="width:90%;height:500px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae"></script>
 														<script>
-														// 지도에 폴리곤으로 표시할 영역데이터 배열입니다
+														/* 서울시 각구 영역 데이터 표기작업 : 지도에 폴리곤으로 표시   start */
 														var areas = [
 															{
 																name : '강남구',
@@ -1467,9 +1472,7 @@
 															},
 
 														];
-
-
-
+														/* 서울시 각구 영역 데이터 표기작업 : 지도에 폴리곤으로 표시   end */
 
 														var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 															mapOption = {
@@ -1479,54 +1482,48 @@
 
 															};
 
+														// 지도 생성
 														var map = new kakao.maps.Map(mapContainer, mapOption),
 															customOverlay = new kakao.maps.CustomOverlay({}),
 															infowindow = new kakao.maps.InfoWindow({removable: true});
 
 
 
-														// 지도에 영역데이터를 폴리곤으로 표시합니다
+														// 지도에 영역데이터를 폴리곤으로 표시
 														for (var i = 0, len = areas.length; i < len; i++) {
 															displayArea(areas[i]);
 														}
 
-														// 다각형을 생상하고 이벤트를 등록하는 함수입니다
+														// 다각형을 생상하고 이벤트를 등록하는 함수
 														function displayArea(area) {
 
-															// 다각형을 생성합니다
+															// 다각형 생성
 															var polygon = new kakao.maps.Polygon({
 																map: map, // 다각형을 표시할 지도 객체
 																path: area.path,
 																strokeWeight: 4,
-																strokeColor: '#663300',
+																strokeColor: '#392102',
 																strokeOpacity: 0.8,
 																fillColor: '#fff',
-																fillOpacity: 0.7
+																fillOpacity: 0.8
 															});
 
-															// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다
-															// 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
+															// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경
+															// 지역명을 표시하는 커스텀오버레이를 지도위에 표시
 															kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
-																polygon.setOptions({fillColor: '#c68c53'});
+																polygon.setOptions({fillColor: '#a76105'});
 
-																customOverlay.setContent('<div class="area">' + area.name + '<div id ="mapcount">' +'</div>'+ ' 00 명 </div>');
-
-																customOverlay.setPosition(mouseEvent.latLng);
-																customOverlay.setMap(map);
 															});
 
-															// 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다
-															kakao.maps.event.addListener(polygon, 'mousemove', function(mouseEvent) {
 
-																customOverlay.setPosition(mouseEvent.latLng);
-															});
-
-															// 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
-															// 커스텀 오버레이를 지도에서 제거합니다
+															// 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경
+															// 커스텀 오버레이를 지도에서 제거
 															kakao.maps.event.addListener(polygon, 'mouseout', function() {
 																polygon.setOptions({fillColor: '#fff'});
-																customOverlay.setMap(null);
+
 															});
+
+															/* 기준 날짜 추출 start */
 															function getFormatDate(date){
 															var year = date.getFullYear();
 															var month = (1 + date.getMonth());
@@ -1537,18 +1534,19 @@
 															}
 															window.onload = function() {
 															const today = new Date();
-															const d = today.getTime() - (2*24*60*60*1000);
+															const d = today.getTime() - (1.5*24*60*60*1000);
 															const targetday = new Date(d);
 															const targetDt = getFormatDate(targetday);
 															formatNum = targetDt.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
 															console.log(formatNum);
+															/* 기준 날짜 추출 end */
+
 																$.getJSON('http://openapi.seoul.go.kr:8088/48517049706e69643737757a557870/json/Corona19Status/1/1000/',
 																	function(jsonObj){
-																		var dom = $('#tt');
-																		var dom1 = $('#zz');
-																		var dom2 = $('#mapcount');
-																		var dom3 = $('#best');
-																		var dom4 = $('#worst');
+																		var dom = $('#previous');
+																		var dom1 = $('#cumulative');
+																		var dom2 = $('#best');
+																		var dom3 = $('#worst');
 																		let kn = 0;
 																		let kd = 0;
 																		let kb = 0;
@@ -1580,8 +1578,6 @@
 																		let html1='';
 																		let html2='';
 																		let html3='';
-																		let html4='';
-<!--																		let html4='';-->
 																		let goo = [ ["강남구", "강동구","강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구",
 																						"도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구",
 																						"송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
@@ -1589,7 +1585,7 @@
 																						sc, sd, sb, sp, yc, yd, ys, ep, jr, jg, jl]
 																					];
 
-
+																		/* 전일 확진자수 추출 id = "previous" */
 																		for (var j = 0; j < 1000; j++) {
 																			if (formatNum == jsonObj.Corona19Status.row[j].CORONA19_DATE) {
 																				total += 1;
@@ -1601,12 +1597,12 @@
 																		console.log(html);
 																		dom.html(html);
 
-
+																		/* 누적 확진자수 추출 id = "cumulative" */
 																		html1 += jsonObj.Corona19Status.row[0].CORONA19_ID;
 																		console.log(html1);
 																		dom1.html(html1);
 
-
+																		/* 오늘의 안심지역/위험지역 추출 (id= best, worst) start */
 																		for (let j = 0; j < 1000; j++) {
 																			if (formatNum == jsonObj.Corona19Status.row[j].CORONA19_DATE) {
 																				for (let i = 0; i < areas.length; i++) {
@@ -1621,54 +1617,244 @@
 																					}
 																				}
 
-<!--																		for (let i = 0; i < areas.length; i++) {-->
-<!--																				if (area.name == areas[i].name) {-->
-<!--																					html2+=  goo[1][i]  ;}};-->
-
-
-
-<!--																		console.log(goo[1][2]);-->
-<!--																		console.log(html2);-->
-<!--																		dom2.html(html2);-->
-
 																		var ar = [goo[1][0],goo[1][1],goo[1][2],goo[1][3],goo[1][4], goo[1][5],goo[1][6],goo[1][7],goo[1][8], goo[1][9],goo[1][10],
 																							goo[1][11],goo[1][12],goo[1][13],goo[1][14],goo[1][15],goo[1][16],goo[1][17],goo[1][18],goo[1][19],goo[1][20],
 																							goo[1][21],goo[1][22],goo[1][23],goo[1][24]];
-<!--
+																		var ar_name = [goo[0][0],goo[0][1],goo[0][2],goo[0][3],goo[0][4], goo[0][5],goo[0][6],goo[0][7],goo[0][8], goo[0][9],goo[0][10],
+																							goo[0][11],goo[0][12],goo[0][13],goo[0][14],goo[0][15],goo[0][16],goo[0][17],goo[0][18],goo[0][19],goo[0][20],
+																							goo[0][21],goo[0][22],goo[0][23],goo[0][24]];
+
 																		console.log( ar.reduce((a,b)=>a>b ? a : b) )
 																		console.log( ar.reduce((a,b)=>a>b ? b : a) )
+
 																		var min = ar.reduce((a,b)=>a>b ? b : a)
 																		var max = ar.reduce((a,b)=>a>b ? a : b)
 
+																		const minResult = [];
+																		const maxResult = [];
 
+																		console.log( ar.indexOf(min) )
+																		console.log( ar.indexOf(max) )
 
+																		let index_min = ar.indexOf(min)
+																		let index_max = ar.indexOf(max)
 
+																		while (index_min != -1) {
+																			minResult.push(index_min);
+																			index_min = ar.indexOf(min, index_min + 1);
+																			}
+																		console.log(minResult);
+																		while (index_max != -1) {
+																			maxResult.push(index_max);
+																			index_max = ar.indexOf(max, index_max + 1);
+																			}
+																		console.log(maxResult);
 
-<!--																		let max.index = goo[0][arr.indexOf(Math.max.apply(null, goo[1]))];-->
-<!--																		var min = Math.min(goo[1][0],goo[1][1],goo[1][2],goo[1][3],goo[1][4], goo[1][5],goo[1][6],goo[1][7],goo[1][8], goo[1][9],goo[1][10],-->
-<!--																							goo[1][11],goo[1][12],goo[1][13],goo[1][14],goo[1][15],goo[1][16],goo[1][17],goo[1][18],goo[1][19],goo[1][20],-->
-<!--																							goo[1][21],goo[1][22],goo[1][23],goo[1][24]);-->
-<!--																		let min.index = goo[0][arr.indexOf(Math.min.apply(null, goo[1]))];-->
+																		var min_area='';
+																		var max_area='';
+																		for (let i = 0; i < minResult.length; i++) {
+																			min_area += ar_name[minResult[i]] + " "}
+																		for (let i = 0; i < maxResult.length; i++) {
+																			max_area += ar_name[maxResult[i]] + " "}
+																		console.log(min_area)
+																		console.log(max_area)
 
+																		html2 +=  min_area + min + '명';
+																		console.log(html2);
+																		dom2.html(html2);
 
-																		html3 += min + '명';
+																		html3 +=  max_area + max + '명';
 																		console.log(html3);
 																		dom3.html(html3);
+																		/* 오늘의 안심지역/위험지역 추출 end */
 
-																		html4 += max + '명';
-																		console.log(html4);
-																		dom4.html(html4);
-
+																		/* 커스텀 오버레이 생성, 지도에 표시 start */
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][0] + '<br>'+ '<span style="color : navy">'+ goo[1][0]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.504623153578926, 127.05949062537763), // 강남구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][1] + '<br>'+ '<span style="color : navy">'+ goo[1][1]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.5607863549836, 127.1421644692095), // 강동구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div class="kbk" style="font-weight: bold; position: relative; font-size: 11pt; text-align : right;">' + goo[0][2] + '<br>'+ '<span style="color : navy; ">'+ goo[1][2]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.64490610719697, 127.0133322835402), // 강북구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][3] + '<br>'+ '<span style="color : navy">'+ goo[1][3]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.57775018294295, 126.8187204359482), // 강서구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][4] + '<br>'+ '<span style="color : navy">'+ goo[1][4]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.48165985785466, 126.94287400363935), // 관악구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][5] + '<br>'+ '<span style="color : navy">'+ goo[1][5]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.558378673736854, 127.08724333642496), // 광진구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : left;">' + goo[0][6] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][6]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.50706328208777, 126.84190463607086), // 구로구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.8pt; text-align : right;">' + goo[0][7] + '<br>'+ '<span style="color : navy">'+ goo[1][7]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.475652864873695, 126.89457115063648), // 금천구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][8] + '<br>'+ '<span style="color : navy">'+ goo[1][8]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.65785985622097, 127.07473709814093), // 노원구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][9] + '<br>'+ '<span style="color : navy">'+ goo[1][9]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.686199688033014, 127.03004360766113), // 도봉구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][10] + '<br>'+ '<span style="color : navy">'+ goo[1][10]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.5925972187505, 127.05158582031156), // 동대문구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][11] + '<span style="color : navy"> '+ goo[1][11]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.50770143971578, 126.9467185920646), // 동작구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][12] + '<br>'+ '<span style="color : navy"> '+ goo[1][12]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.574638463235985, 126.89796569759794), // 마포구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : right;">' + goo[0][13] + '<br>'+ '<span style="color : navy">'+ goo[1][13]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.583306827304256, 126.932054656516), // 서대문구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 12pt; text-align : right;">' + goo[0][14] + '<br>'+ '<span style="color : navy">'+ goo[1][14]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.49752686565149, 127.00733064534573), // 서초구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">' + goo[0][15] + '<br>'+ '<span style="color : navy">'+ goo[1][15]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.56337608875355, 127.03808108259298), // 성동구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : right;">' + goo[0][16] + '<br>'+ '<span style="color : navy">'+ goo[1][16]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.610755877852235, 127.01098755073711), // 성북구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][17] + '<br>'+ '<span style="color : navy">'+ goo[1][17]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.522573212224245, 127.1048513074155), // 송파구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : center;"> ' + goo[0][18] +  '<span style="color : navy">'+ goo[1][18]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.52520907343933, 126.85141135453145), // 양천구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][19] + '<br>'+ '<span style="color : navy">'+ goo[1][19]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.532400843453544, 126.909034060499), // 영등포구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][20] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][20]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.542085940314685, 126.97684677195822), // 용산구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][21] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][21]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.62661514348289, 126.9228560592482), // 은평구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;"> ' + goo[0][22] +  '<span style="color : navy">'+ goo[1][22]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.58580756496787, 126.98461116406769), // 종로구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">  ' + goo[0][23] +  '<span style="color : navy">'+ goo[1][23]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.567485116889, 126.99177297385386), // 중구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		var customOverlay = new kakao.maps.CustomOverlay({
+																			map: map,
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">  ' + goo[0][24] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][24]+ '명</span></div>',
+																			position: new kakao.maps.LatLng(37.60674081181382, 127.09072741551819), // 중랑구 커스텀 오버레이 표시 좌표
+																			xAnchor: 0.5, // 컨텐츠의 x 위치
+																			yAnchor: 0 // 컨텐츠의 y 위치
+																		});
+																		/* 커스텀 오버레이 생성, 지도에 표시 end */
 
 																	}
 																);
 															};
 
 
-															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
+															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시
 															kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
 																var content = '<div style="text-align : left; width: 110%;" class="info" >' +
-																			'   <div class="title" id ="mapcount">' +area.name +   '</div>' +
+																			'<div class="title">' + area.name +   '</div>' +
 																			'<a href="../map1/?search=' +  area.name + '"class="btn btn-primary">안심식당</a>' +
 																			'<a href="../map2/?search=' +  area.name + '"class="btn btn-primary">안심병원</a>' +
 																			'<a href="../map2_1/?search=' +  area.name + '"class="btn btn-primary">선별진료소</a>' +
@@ -1684,6 +1870,7 @@
 															});
 														}
 													</script>
+											<p>[ 글자주변을 클릭시 버튼이 생성됩니다. ]</p>
 											</div>
 										</div>
 									</div>
@@ -1714,7 +1901,7 @@
 						  </table>
 						</section>
 
-
+						<!-- 확진자 현황 : START -->
 						<script>
 						function getFormatDate(date){
 							var year = date.getFullYear();
@@ -1745,7 +1932,7 @@
 							);
 						}
 						</script>
-							<!-- 확진자 현황 : START -->
+						<!-- 확진자 현황 : end -->
 						</div>
 					</div>
 				</div>
