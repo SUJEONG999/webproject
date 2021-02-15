@@ -6,6 +6,9 @@
     <style>
 	 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 	 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
+
+
     </style>
 
     <meta charset="UTF-8">
@@ -73,83 +76,105 @@
         </section>
     </div>
 
-        <header>
-            <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-                <div class="container d-flex justify-content-between">
-                    <a href="http://localhost:8000/board/" class="navbar-brand d-flex align-items-center">
-                        <strong>추천 게시판</strong>
-                    </a>
-                </div>
-            </div>
-        </header>
-        <div class="container">
-            <table class="table">
-                <thead class="thead-light">
-                <tr class="text-center">
-                    <th scope="col">NO</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">작성일</th>
-                    <th scope="col">조회수</th>
-                    <th scope="col">추천수</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for board in boards %}
-                <tr class="text-center">
-                    <th scope="row">
-                        <span>{{ board.id }}</span>
-                    </th>
-                    <td>
-                        <a href="/post/{{ board.id }}">
-                            <span>{{ board.title }}</span>
-                        </a>
-                    </td>
-                    <td>
-                        <span>{{ board.author }}</span>
-                    </td>
-                    <td>
-                        <span>{{ board.created_date | date:"Y-m-d h:i" }}</span>
-                    </td>
-                    <td>
-                        <span>{{ board.hits}}</span>
-                    </td>
-                    <td>
-                        <span>{{ board.stars}}</span>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <div class="row">
-                <div class="col-auto mr-auto"></div>
-                <div class="col-auto">
-                    <a class="btn btn-primary" href="http://localhost:8000/board_write/"
-                       role="button">글쓰기</a>
-                </div>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+            <div class="container d-flex justify-content-between">
+                <a href="http://localhost:8000/board/" class="navbar-brand d-flex align-items-center">
+                    <strong>추천 게시판</strong>
+                </a>
             </div>
         </div>
-        <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
+    </header>
+    </header>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col">NO</th>
+                <th scope="col">제목</th>
+                <th scope="col">내용</th>
+                <th scope="col">작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for board in boards %}
+            <tr class="text-center">
+                <th scope="row">
+                    <span>{{ board.id }}</span>
+                </th>
+                 <td>
+                    <span>{{ board.title }}</span>
+                </td>
+                <td>
+                    <span>{{ board.contents }}</span>
+                </td>
+                <td>
+                    <span>{{ board.created_date}}</span>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% for list in boardlist %}
+<!--**게시글 클릭시 세부 페이지 이동-->
+        <div>
+            <ul>
+                <li><a href="{{list.pk}}/">{{list.postname}}</a></li>
+            </ul>
+        </div>
+        {% endfor %}
+<!--**페이징네이션        -->
+                <ul class="pagination justify-content-center">
+            {% if board.has_previous %}
+              <li class="page-item"><a class="page-link" href='?page={{board.number|add:-1}}'>Previous</a></li>
+            {% endif %}
+            {% for i in total%}
+              {% if i == current %}
+                <li class="page-item active"  ><a class="page-link" style="background-color:#b68834; border-color:#b68834;" href="?page={{i}}">{{i}}</a></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" style="color:black;"  href="?page={{i}}">{{i}}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if board.has_next %}
+              <li class="page-item"><a class="page-link"  href='?page={{board.number|add:+1}}'>Next</a></li>
+            {% endif%}
+        </ul>
+<!--** 검색기능-->
+        <div id="searchdiv">
+<!--            <select name="searchtype">-->
+<!--                <option value="search1">작성자명</option>-->
+<!--                <option value="search2">작성내용</option>-->
+<!--            </select>-->
+            <input type="text" name="keyword">
+            <button onclick="processSearch() ">검색</button>
+        </div>
+<!--** 버튼-->
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <a class="btn btn-primary" href="/board_write/"
+                   role="button" placeholder="검색어를 입력해주세요.">글쓰기</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
 </div>
 
-        <!--        # 게시글 검색기능 구현-->
-<!--        <input type="text" name="search_word" label="Search Word" align-items-cente>-->
 
-        <section class="ftco-section contact-section ftco-no-pt"></section>
-        <script src="/static/js/jquery.min.js"></script>
-        <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="/static/js/popper.min.js"></script>
-        <script src="/static/js/bootstrap.min.js"></script>
-        <script src="/static/js/jquery.easing.1.3.js"></script>
-        <script src="/static/js/jquery.waypoints.min.js"></script>
-        <script src="/static/js/jquery.stellar.min.js"></script>
-        <script src="/static/js/owl.carousel.min.js"></script>
-        <script src="/static/js/jquery.magnific-popup.min.js"></script>
-        <script src="/static/js/aos.js"></script>
-        <script src="/static/js/jquery.animateNumber.min.js"></script>
-        <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
-        <script src="/static/js/scrollax.min.js"></script>
-        <script src="/static/js/main.js"></script>
+<section class="ftco-section contact-section ftco-no-pt"></section>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.easing.1.3.js"></script>
+<script src="/static/js/jquery.waypoints.min.js"></script>
+<script src="/static/js/jquery.stellar.min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/aos.js"></script>
+<script src="/static/js/jquery.animateNumber.min.js"></script>
+<script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
+<script src="/static/js/scrollax.min.js"></script>
+<script src="/static/js/main.js"></script>
 </body>
 </html>

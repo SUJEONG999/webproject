@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.template import loader
@@ -75,38 +75,71 @@ def map2(request) :
 # 하영
 
 def board(request) :
-    template = loader.get_template('board.html')
-    return HttpResponse(template.render(None, request))
+    # 모든 Board를 가져와 boardlist에 저장
+    boardlist = Board.objects.all()
+    context = {'boardlist':boardlist}
+    return render(request, 'board.html', context)
 
-def board_view(request) :
-    boards = board_list.objects.all()
-    return render(request, 'boards/board_view.html', {'boards':boards})
+def board_view(request, pk) :
+    # 게시글(Board) 중 pk를 이용해 하나의 게시글(post)를 검색
+    board = Board.objects.get(pk=pk)
+    return render(request, 'boards/board_view.html', {'board':board}) #추가
 
 def board_write(request) :
     return render(request, 'boards/board_write.html')
 
-def board_edit(request) :
-    return render(request, 'boards/board_edit.html')
+# def new_post(request):
+#     if request.method == 'POST':
+#         if request.POST['mainphoto'] :
+#             new_article = Board.objects.create(
+#                 no=request.POST['no'],
+#                 writer=request.POST['writer'],
+#                 postname=request.POST['postname'],
+#                 contents=request.POST['contents'],
+#                 satisfaction=request.POST['satisfaction'],
+#                 mainphoto=request.POST['mainphoto'],
+#             )
+#         else:
+#             new_article = Board.objects.create(
+#                 no=request.POST['no'],
+#                 writer=request.POST['writer'],
+#                 postname=request.POST['postname'],
+#                 contents=request.POST['contents'],
+#                 satisfaction=request.POST['satisfaction'],
+#                 mainphoto=request.POST['mainphoto'],
+#             )
+#         return redirect('board')
+#     return render(request, 'boards/new_write.html')
 
-def board_list(request):
-    #모든 Board 내용을 가져와 boardlist에 저장
-    boardlist = Board.objects.all().order_by('-id') #최신사항부터
-    #board_list를 열 때, 모든 Board인 boardlist을 가져오겠다
-    return render(request, 'boards/board_list.html', {'boardlist':boardlist})
+def write(request):
+    print('a')
+    if request.method == 'POST' and request.user.is_authenticated:
+        writer = request.user
+        print('writer : ', writer)
+        postname = request.POST['postname']
+        print('postname : ', writer)
+        contents = request.POST['contents']
+        print('contents : ', writer)
+        mainphoto = request.POST['mainphoto']
+        print('mainphoto : ', writer)
 
-def new(request):
-    return render(request, 'new.html')
+        vdate = Board(
+        writer=request.user,
+        postname=postname,
+        contents=contents,
+        mainphoto=mainphoto)
+        vdate.save()
+        return redirect('board')
 
-def post(request):
+def remove_board(request, pk):
+    board = Board.objects.get(pk=pk)
     if request.method == 'POST':
-        post = Board()
-        post.store = request.POST['store'],
-        post.date = request.POST['date'],
-        post.customers = request.POST['customers'],
-        post.satisfaction = request.POST['satisfaction'],
-        post.title = request.POST['title'],
-        post.content = request.POST['content'],
-        post.imagefile=  request.POST['imagefile'],
-        board.pub_date = timezone.datetime.now(),
-        board.save()
-        return redirect('/board/' + str(board.id))
+        board.delete()
+        return redirect('board/')
+    return render(request, 'boards/remove_post.html', {'board': board})
+
+
+@property
+def click(self):
+    self.hits += 1
+    self.save()
