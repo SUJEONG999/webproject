@@ -1680,42 +1680,48 @@
 																		/* 커스텀 오버레이 생성, 지도에 표시 start */
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][0] + '<br>'+ '<span style="color : navy">'+ goo[1][0]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][0] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][0]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.504623153578926, 127.05949062537763), // 강남구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][1] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][1]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][1] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][1]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.5607863549836, 127.1421644692095), // 강동구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div class="kbk" style="font-weight: bold; position: relative; font-size: 11pt; text-align : right;">' + goo[0][2] + '<br>'+ '<span style="color : navy; ">'+ goo[1][2]+ '명</span></div>',
+																			content: '<div class="kbk" style="font-weight: bold; position: relative; font-size: 11pt; text-align : right;">' + goo[0][2] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][2]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.64490610719697, 127.0133322835402), // 강북구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][3] + '<br>'+ '<span style="color : navy">'+ goo[1][3]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][3] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][3]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.57775018294295, 126.8187204359482), // 강서구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][4] + '<br>'+ '<span style="color : navy">'+ goo[1][4]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][4] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][4]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.48165985785466, 126.94287400363935), // 관악구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][5] + '<br>'+ '<span style="color : navy">'+ goo[1][5]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][5] + '<br>'+
+																			 		'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][5]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.558378673736854, 127.08724333642496), // 광진구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1723,7 +1729,7 @@
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : left;">' + goo[0][6] + '<br>'+
-																						'<span style=" <c:if test = ${'+goo[1][6] +'> 9} >color : red;</c:if> <c:if test = ${'+goo[1][6]+' < 9} >color : blue;</c:if>">'+  goo[1][6]+ '명</span></div>',
+																						'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+  goo[1][6]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.50706328208777, 126.84190463607086), // 구로구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1731,7 +1737,7 @@
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 9.8pt; text-align : right;">' + goo[0][7] + '<br>'+
-																					'<span style=" <c:if test = {goo[1][7] > 9} >color : red;</c:if> <c:if test = {goo[1][7] < 9} >color : blue;</c:if>">'+ goo[1][7]+ '명</span></div>',
+																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][7]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.475652864873695, 126.89457115063648), // 금천구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1739,35 +1745,39 @@
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][8] + '<br>'+
-																					'<span style=" <c:if test = {goo[1][8] > 9} >color : red;</c:if> <c:if test = {goo[1][8] < 9} >color : blue;</c:if>">'+ goo[1][8]+ '명</span></div>',
+																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][8]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.65785985622097, 127.07473709814093), // 노원구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][9] + '<br>'+ '<span style="color : navy">'+ goo[1][9]+ '명</span></div>',
+																			content: '<div ani_type="scale" style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][9] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][9]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.686199688033014, 127.03004360766113), // 도봉구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][10] + '<br>'+ '<span style="color : navy">'+ goo[1][10]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][10] + '<br>'+
+																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][10]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.5925972187505, 127.05158582031156), // 동대문구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][11] + '<span style="color : navy"> '+ goo[1][11]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][11] +
+																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][11]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.50770143971578, 126.9467185920646), // 동작구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][12] + '<br>'+ '<span style="color : navy"> '+ goo[1][12]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][12] + '<br>'+
+																						'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][12]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.574638463235985, 126.89796569759794), // 마포구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
