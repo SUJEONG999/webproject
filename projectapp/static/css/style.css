@@ -1691,7 +1691,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   height: calc(2.875rem + 2px); }
 
 .form-group {
-  margin-bottom: 1rem; }
+  margin-bottom: 0rem; }
 
 .form-text {
   display: block;
@@ -6197,7 +6197,7 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important; }
+/* 상원 */}
 
 .mr-5,
 .mx-5 {
@@ -6205,6 +6205,8 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
+  /* 상원 */
+  margin-top: 0rem !important;
   margin-bottom: 3rem !important; }
 
 .ml-5,
@@ -6684,7 +6686,11 @@ button.bg-dark:focus {
   .px-md-4 {
     padding-left: 1.5rem !important; }
   .p-md-5 {
-    padding: 3rem !important; }
+  /* 본문 padding 사이즈 수정 */
+    padding-bottom: 3rem !important;
+    padding-top: 0rem !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
   .pt-md-5,
   .py-md-5 {
     padding-top: 3rem !important; }
@@ -7334,8 +7340,10 @@ h1, h2, h3, h4, h5,
   padding-top: 3em;
   padding-bottom: 40px;
   padding-left: 3em;
-  padding-right: 3em;
-  width: 22%;
+  /* 상원 */
+  padding-right: 0em;
+  /* 상원 */
+  width: 15%;
   position: fixed;
   bottom: 0;
   top: 0;
@@ -7350,7 +7358,8 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (min-width: 992px) {
     #colorlib-aside {
-      width: 22%; } }
+    /* 상원 */
+      width: 15%; } }
   @media (max-width: 991.98px) {
     #colorlib-aside {
       width: 270px;
@@ -8011,7 +8020,7 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 3em 0;
   position: relative; }
   @media (max-width: 991.98px) {
     .ftco-section {
@@ -8022,7 +8031,7 @@ textarea.form-control {
 
 .ftco-extend-mb {
  /* 상원 */
-  margin-bottom: 3em; }
+  margin-bottom: 0em; }
 
 .ftco-no-pt {
   padding-top: 0; }

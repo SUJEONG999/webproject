@@ -88,40 +88,12 @@ def board_view(request, pk) :
 def board_write(request) :
     return render(request, 'boards/board_write.html')
 
-# def new_post(request):
-#     if request.method == 'POST':
-#         if request.POST['mainphoto'] :
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         else:
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         return redirect('board')
-#     return render(request, 'boards/new_write.html')
-
 def write(request):
-    print('a')
     if request.method == 'POST' and request.user.is_authenticated:
         writer = request.user
-        print('writer : ', writer)
         postname = request.POST['postname']
-        print('postname : ', writer)
         contents = request.POST['contents']
-        print('contents : ', writer)
         mainphoto = request.POST['mainphoto']
-        print('mainphoto : ', writer)
 
         vdate = Board(
         writer=request.user,
@@ -135,9 +107,8 @@ def remove_board(request, pk):
     board = Board.objects.get(pk=pk)
     if request.method == 'POST':
         board.delete()
-        return redirect('board/')
+        return redirect('../../')
     return render(request, 'boards/remove_post.html', {'board': board})
-
 
 @property
 def click(self):
