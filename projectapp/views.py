@@ -64,6 +64,7 @@ def only_member(request) :
 
 # 상원
 def map1(request) :
+    search = request.GET.get('search')
     Restaurants = Restaurant.objects.all()
     Rname = []
     Raddress = []
@@ -76,12 +77,14 @@ def map1(request) :
         context = {
             "txt":txt,
             "Rname":Rname,
-            "Raddress":Raddress
+            "Raddress":Raddress,
+            "search":search,
         }
     else :
         context = {
             "Rname":Rname,
-            "Raddress":Raddress
+            "Raddress":Raddress,
+            "search":search,
         }
     return render(request, 'map1.html', context)
 
@@ -92,20 +95,66 @@ def map2(request) :
     hospitals = Hospital.objects.all()
     hname = []
     haddress = []
+    htype = []
+    hnumber = []
     for hospital in hospitals:
         hname.append(hospital.h_name)
         haddress.append(hospital.h_address)
-    context = {"hospitals":hospitals, "hname":hname, "haddress":haddress}
+        htype.append(hospital.h_type)
+        hnumber.append(hospital.h_number)
+
+    search = request.GET.get('search')
+    if request.method == 'POST':
+        txt = (request.POST['text'])
+        context = {
+            "txt":txt,
+            "search":search,
+            "hospitals": hospitals,
+            "hname": hname,
+            "haddress": haddress,
+            "htype": htype,
+            "hnumber": hnumber
+        }
+    else :
+        context = {
+            "search":search,
+            "hospitals": hospitals,
+            "hname": hname,
+            "haddress": haddress,
+            "htype": htype,
+            "hnumber": hnumber
+        }
     return render(request, 'map2.html', context)
 
 def map2_1(request) :
     clinics = Clinic.objects.all()
     cname = []
     caddress = []
+    cnumber = []
     for clinic in clinics:
         cname.append(clinic.name)
         caddress.append(clinic.address)
-    context = {"clinics":clinics, "cname":cname, "caddress":caddress}
+        cnumber.append(clinic.number)
+
+    search = request.GET.get('search')
+    if request.method == 'POST':
+        txt = (request.POST['text'])
+        context = {
+            "txt":txt,
+            "search":search,
+            "clinics": clinics,
+            "cname": cname,
+            "caddress": caddress,
+            "cnumber": cnumber
+        }
+    else :
+        context = {
+            "search":search,
+            "clinics": clinics,
+            "cname": cname,
+            "caddress": caddress,
+            "cnumber": cnumber
+        }
     return render(request, 'map2_1.html', context)
 
 
