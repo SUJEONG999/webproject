@@ -5,12 +5,23 @@
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
-	div{
-	}
+	
 	#search{
 		display: inline;
 	}
-	#hospital {		/* hospital TABLE 내용 적용 START*/
+/* 인포윈도우 start */
+	.info {
+	margin-left: 10px;
+	margin-right: 10px;
+    font-size: 12px;
+    padding: 7px;
+	}
+	.info .hname {
+		font-weight: bold;
+	}
+/* 인포윈도우 end */
+/* hospital TABLE 내용 적용 START*/
+	#hospital {		
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 95%;
@@ -32,13 +43,15 @@
 	text-align: center;
 	background-color: #ccb78f;
 	color: white;
-	}		/* hospital TABLE 내용 적용 END*/
+	}
+/* hospital TABLE 내용 적용 END*/
 	</style>
 
 	<title>Please coding for me</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+	
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon:200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
@@ -105,8 +118,10 @@
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 					</div>
-				</div>
+				</div>			
+
 				<br><br>
+
 <!--serach end-->
 
 <!--map start-->
@@ -1347,6 +1362,7 @@
 			}
 			});
 			// 검색 클릭 시 위치 이동 end
+
 			// 안심병원 마커 start
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				mapOption = {
@@ -1389,7 +1405,9 @@
 					});
 
 					// 인포윈도우로 장소에 대한 설명을 표시합니다
-					var contenString = hname[i]+'<br>'+hnumber[i]+'<br>'+htype[i];
+					var contenString = '<div class="info">'+'<div class="hname">'+hname[i]+' <img src="/static/images/hospital.png" width="20" height="20">'+'</div>'
+					+'<div class="hnumber">'+hnumber[i]+'</div>'+
+						'<div class="htype">'+htype[i]+'</div>'+'</div>';
 					var infowindow = new kakao.maps.InfoWindow({
 						content: contenString
 					});

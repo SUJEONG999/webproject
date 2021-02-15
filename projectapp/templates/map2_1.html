@@ -5,8 +5,18 @@
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
-	div{
+	
+/* 인포윈도우 start */
+	.info {
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 12px;
+	padding: 7px;
 	}
+	.info .cname {
+	font-weight: bold;
+	}
+/* 인포윈도우 end */
 	#search{
 		display: inline;
 	}
@@ -1390,7 +1400,8 @@
 					});
 
 					// 인포윈도우로 장소에 대한 설명을 표시합니다
-					var contenString = cname[i] +'<br>'+ cnumber[i];
+					var contenString = '<div class="info">'+'<div class="cname">'+cname[i]+'<img src="/static/images/syringe.png" width="20" height="20">'+'</div>'
+					+'<div class="cnumber">'+cnumber[i]+'</div>'+'</div>';
 					var infowindow = new kakao.maps.InfoWindow({
 						content: contenString
 					});
