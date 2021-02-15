@@ -1,4 +1,6 @@
 from django.db import models
+from uuid import uuid4
+from datetime import datetime
 
 class Hospital(models.Model) :
     h_id = models.IntegerField(primary_key=True)
@@ -21,3 +23,24 @@ class Restaurant(models.Model) :
     r_gu = models.CharField(max_length=10)
     r_name = models.TextField()
     r_address = models.TextField()
+
+# 하영
+class Board(models.Model):
+    no = models.IntegerField(primary_key=True)
+    store = models.CharField(max_length=30, verbose_name='방문매장')
+    satisfaction = models.PositiveIntegerField(default=5, verbose_name='만족도')
+    title = models.CharField(max_length=128, default="제목", verbose_name='제목')
+    content = models.TextField(default="내용", verbose_name='내용')
+
+#관리자 페이지에서 정상적으로 title 테이블 출력
+    def __str__(self):
+        return self.title
+
+
+@property
+def click(self):
+    self.hits += 1
+    self.save()
+
+def board():
+    return None

@@ -10,4 +10,9 @@ urlpatterns = [
     path('register/', views.register, name= 'register'), # 수정's 추가
     path('login/', views.login, name= 'login'), # 수정's 추가
     path('logout/', views.logout, name= 'logout'), # 수정's 추가
+    path('board_list/', views.board_list, name='board_list'),
+    path('board_view/<int:board_id>/', views.board_view, name='board_view'),
+    path('board_write/', views.board_write, name='board_write'),
+    path('write/', views.write, name='write'),
+    path('board_edit/', views.board_edit, name='board_edit'),
 ]

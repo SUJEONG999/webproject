@@ -8,6 +8,7 @@ from .models import Restaurant # 상원
 from datetime import datetime, timedelta # 수정
 from projectapp.models import Hospital # 강용
 from projectapp.models import Clinic # 강용
+from projectapp.models import Board # 하영
 
 
 
@@ -117,38 +118,32 @@ def map2_1(request) :
 
 # 하영님
 def board(request) :
-    template = loader.get_template('board.html')
-    return HttpResponse(template.render(None, request))
+    boards = Board.objects.all()
+    context = {"boards":boards}
+    return render(request, 'boards.html', context)
 
 def board_view(request) :
-    boards = board_list.objects.all()
-    return render(request, 'boards/board_view.html', {'boards':boards})
+    return render(request, 'boards/board_view.html')
 
 def board_write(request) :
     return render(request, 'boards/board_write.html')
+
+def write(request) :
+    no = 1
+    store = request.POST['store']
+    satisfaction = request.POST['satisfaction']
+    title = request.POST['title']
+    content = request.POST['content']
+    vdata = Board(no=no,
+                  store=store,
+                  satisfaction=satisfaction,
+                  title=title,
+                  content=content)
+    vdata.save()
+    return redirect("board")
 
 def board_edit(request) :
     return render(request, 'boards/board_edit.html')
 
 def board_list(request):
-    #모든 Board 내용을 가져와 boardlist에 저장
-    boardlist = Board.objects.all().order_by('-id') #최신사항부터
-    #board_list를 열 때, 모든 Board인 boardlist을 가져오겠다
-    return render(request, 'boards/board_list.html', {'boardlist':boardlist})
-
-def new(request):
-    return render(request, 'new.html')
-
-def post(request):
-    if request.method == 'POST':
-        post = Board()
-        post.store = request.POST['store'],
-        post.date = request.POST['date'],
-        post.customers = request.POST['customers'],
-        post.satisfaction = request.POST['satisfaction'],
-        post.title = request.POST['title'],
-        post.content = request.POST['content'],
-        post.imagefile=  request.POST['imagefile'],
-        board.pub_date = timezone.datetime.now(),
-        board.save()
-        return redirect('/board/' + str(board.id))
+    return render(request, 'boards/board_list.html')
