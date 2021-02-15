@@ -70,7 +70,7 @@
             	</div>
             	<div class="row mt-5">
                 	<div class="col-12">
-						<form method="POST" action="{% url 'login'%}">
+						<form method="POST" action="{% url 'login'%}" style="margin-top : 50px; margin-bottom : 50px;">
 							{% csrf_token %}
 							<div class="form-group">
 								<label for="username">사용자 아이디</label>
@@ -87,7 +87,7 @@
 			</div>
 
 
-				<div class="col-12 text-center">
+				<div class="col-12 text-center" style="margin-bottom : 50px;">
 					<a href="{% url 'main' %}"><span style="color : brown">메인화면으로</span></a>
 				</div>
 <br>
