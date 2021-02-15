@@ -35,7 +35,21 @@
 </head>
 
 <body style="background-color:#dddddd">
+        <h1>게시글 개별 페이지입니다</h1>
+        <p>{{board.writer}}</p>
+        <p>{{board.store}}</p>
+        <p>{{board.date}}</p>
+        <p>{{board.postname}}</p>
+        <p>{{board.contents}}</p>
+        <p>{{board.satisfaction}}</p>
 
+        <!-- 이미지 보여주기 -->
+        {% if post.mainphoto %}
+            <img src = "{{ post.mainphoto.url }}" alt="" height="600">
+            <br>
+        {% endif %}
+        <a href="/board/">목록</a>
+        <a href="/board/{{board.pk}}/remove">삭제</a>
 
         <script src="/static/js/jquery.min.js"></script>
         <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>

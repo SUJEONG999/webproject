@@ -1,6 +1,7 @@
 from django.db import models
 from uuid import uuid4
 from datetime import datetime
+from django.contrib.auth.models import User
 
 class Hospital(models.Model) :
     h_id = models.IntegerField(primary_key=True)
@@ -26,11 +27,12 @@ class Restaurant(models.Model) :
 
 # 하영
 class Board(models.Model):
-    no = models.IntegerField(primary_key=True)
-    store = models.CharField(max_length=30, verbose_name='방문매장')
-    satisfaction = models.PositiveIntegerField(default=5, verbose_name='만족도')
-    title = models.CharField(max_length=128, default="제목", verbose_name='제목')
-    content = models.TextField(default="내용", verbose_name='내용')
+    writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='작성자')
+    postname = models.CharField(max_length=50, verbose_name='제목')
+    contents = models.TextField(verbose_name='내용')
+    mainphoto = models.ImageField(blank=True, null=True, verbose_name='사진')
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
 #관리자 페이지에서 정상적으로 title 테이블 출력
     def __str__(self):

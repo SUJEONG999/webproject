@@ -7,8 +7,6 @@
 	 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 	 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
-
-
     </style>
 
     <meta charset="UTF-8">
@@ -104,50 +102,83 @@
                                     </div>
                                 </header>
 
-                                <form method="post" action="{% url 'write' %}">
+                                <form method="POST" action="{% url 'write' %}">
                                     <!--CSRF 토큰을 이용해 CSRF 공격 방지-->
                                     {% csrf_token %}
 
-                                    <div class="form-group row">
-                                        <label for="inputstore"
-                                               class="col-sm-2 col-form-label"><strong>방문매장</strong></label>
+                                    <div class="form-group row"></div>
+<!--                                        <label for="inputstore"-->
+<!--                                               class="col-sm-2 col-form-label"><strong>방문매장</strong></label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="text" name="store" cols="200" rows="10"-->
+<!--                                                   class="form-control" id="inputstore"-->
+<!--                                                   placeholder="방문하신 매장을 적어주세요.">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                        <div class="col-sm-10">
-                                            <input type="text" name="store" cols="200" rows="10"
-                                                   class="form-control" id="inputstore"
-                                                   placeholder="방문하신 매장을 적어주세요.">
-                                        </div>
-                                    </div>
+
+<!--                                    <div class="form-group row">-->
+<!--                                        <label class="col-sm-2 col-form-label"><strong>방문일자</strong></label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="date" name="date">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                    <!--                                    <div class="form-group row">-->
+                                    <!--                                        <label class="col-sm-2 col-form-label"><strong>동반고객</strong></label>-->
+                                    <!--                                        <div class="col-sm-10">-->
+                                    <!--                                            <input type="radio" name="customers" value="가족">가족-->
+                                    <!--                                            <input type="radio" name="customers" value="연인">연인-->
+                                    <!--                                            <input type="radio" name="customers" value="직장동료">직장동료-->
+                                    <!--                                            <input type="radio" name="customers" value="친구">친구-->
+                                    <!--                                            <input type="radio" name="customers" value="기타">기타-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+<!--                                    <div class="form-group row">-->
+<!--                                        <label class="col-sm-2 col-form-label"><strong>만 족 도</strong></label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="radio" name="satisfaction" value="5">매우 만족-->
+<!--                                            <input type="radio" name="satisfaction" value="4">만족-->
+<!--                                            <input type="radio" name="satisfaction" value="3">보통-->
+<!--                                            <input type="radio" name="satisfaction" value="2">불만족-->
+<!--                                            <input type="radio" name="satisfaction" value="1">매우 불만족-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>만 족 도</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="radio" name="satisfaction" value="5">매우 만족
-                                            <input type="radio" name="satisfaction" value="4">만족
-                                            <input type="radio" name="satisfaction" value="3">보통
-                                            <input type="radio" name="satisfaction" value="2">불만족
-                                            <input type="radio" name="satisfaction" value="1">매우 불만족
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputtitle"
+                                        <label for="inputpostname"
                                                class="col-sm-2 col-form-label"><strong>제목</strong></label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="title" cols="200" rows="10"
-                                                   class="form-control" id="inputtitle" placeholder="제목을 적어주세요.">
+                                            <input type="text" name="postname" cols="200" rows="10"
+                                                   class="form-control" id="inputpostname" placeholder="제목을 적어주세요.">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputContent" class="col-sm-2 col-form-label"><strong>내
+                                        <label for="inputContents" class="col-sm-2 col-form-label"><strong>내
                                             용</strong></label>
                                         <div class="col-sm-10">
-                                                <textarea type="text" name="content" cols="200" rows="10"
-                                                          class="form-control" id="inputContent"
+                                                <textarea type="text" name="contents" cols="200" rows="10"
+                                                          class="form-control" id="inputContents"
                                                           placeholder="의견을 적어주세요."></textarea>
                                         </div>
                                     </div>
+
+                                    <!--첨부파일 업로드-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>첨부파일</strong></label>
+                                        <div class="col-sm-10">
+
+                                            <div name="mainphoto">
+                                                <div class="card-footer">
+                                                    <div class="form-group">
+                                                        {{ form.upload_files }}
+                                                        <input type="file" name="mainphoto" class="form-text text-muted">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col-auto mr-auto">
                                                 <div class="col-auto">
@@ -158,18 +189,18 @@
                                                 </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
                                 </form>
 
-                            </div>
+
                         </div>
                         <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
                         <hr>
                     </div>
                 </div>
             </div>
-    </div>
 </div>
-
 
 <section class="ftco-section contact-section ftco-no-pt">
     <div class="container-fluid px-md-0 px-3">
@@ -180,7 +211,6 @@
     </div>
 </section>
 
-</div>
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
@@ -204,5 +234,6 @@
 <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
 <script src="/static/js/scrollax.min.js"></script>
 <script src="/static/js/main.js"></script>
+
 </body>
 </html>
