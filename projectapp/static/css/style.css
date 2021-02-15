@@ -1691,7 +1691,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   height: calc(2.875rem + 2px); }
 
 .form-group {
-  margin-bottom: 0rem; }
+  margin-bottom: 1rem; }
 
 .form-text {
   display: block;
@@ -2785,7 +2785,7 @@ input[type="button"].btn-block {
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  width: 100%; }
+  width: 50%; } /*100에서 50으로 변경_강용 */
   .input-group > .form-control,
   .input-group > .custom-select,
   .input-group > .custom-file {
@@ -7773,7 +7773,7 @@ h1, h2, h3, h4, h5,
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
-  border-radius: 30px;
+  border-radius: 30px;  /*30에서 10으로 변경_강용 */
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
   .btn:hover, .btn:active, .btn:focus {
