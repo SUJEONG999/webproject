@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +21,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    <title>KD - Free Bootstrap 4 Template by Colorlib</title>
+    <title>안심 식당</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -369,32 +368,24 @@
 			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text">
-			                <strong class="number" data-number="351">0</strong>
-			                <span>Years of Experienced</span>
 			              </div>
 			            </div>
 			          </div>
 			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text">
-			                <strong class="number" data-number="351">0</strong>
-			                <span>Happy Clients</span>
 			              </div>
 			            </div>
 			          </div>
 			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text">
-			                <strong class="number" data-number="564">0</strong>
-			                <span>Finished Projects</span>
 			              </div>
 			            </div>
 			          </div>
 			          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text">
-			                <strong class="number" data-number="300">0</strong>
-			                <span>Working Days</span>
 			              </div>
 			            </div>
 			          </div>
@@ -1797,6 +1788,65 @@
 				}
 				else if (search == '은평구') {
 					var moveLatLon = new kakao.maps.LatLng(37.6176125, 126.9227004);
+					var linePath = [
+										new kakao.maps.LatLng(37.57779095175834, 126.90215722748464),
+									   new kakao.maps.LatLng(37.5856812084405, 126.88928262354536),
+									   new kakao.maps.LatLng(37.59085023353351, 126.88275949088278),
+									   new kakao.maps.LatLng(37.59261850181282, 126.88481942751307),
+									   new kakao.maps.LatLng(37.588945897631746, 126.88653604137163),
+									   new kakao.maps.LatLng(37.589353973712555, 126.89923898392507),
+									   new kakao.maps.LatLng(37.612202663135605, 126.90129892055536),
+									   new kakao.maps.LatLng(37.62511994682213, 126.90850869876138),
+									   new kakao.maps.LatLng(37.63422868153803, 126.90644876213109),
+									   new kakao.maps.LatLng(37.64442370203532, 126.9124569106361),
+									   new kakao.maps.LatLng(37.6485043757381, 126.90605858938672),
+									   new kakao.maps.LatLng(37.644836070660844, 126.91390410649561),
+									   new kakao.maps.LatLng(37.64598745599606, 126.92415062237495),
+									   new kakao.maps.LatLng(37.650271523739015, 126.93003476020664),
+									   new kakao.maps.LatLng(37.65122609518355, 126.9359780123376),
+									   new kakao.maps.LatLng(37.65668255201845, 126.94077241136497),
+									   new kakao.maps.LatLng(37.6578732471388, 126.94548803386486),
+									   new kakao.maps.LatLng(37.65511255257072, 126.9512998687048),
+									   new kakao.maps.LatLng(37.65502052765064, 126.95350836594395),
+									   new kakao.maps.LatLng(37.65313399165504, 126.9562399283187),
+									   new kakao.maps.LatLng(37.648854598200984, 126.9574022952867),
+									   new kakao.maps.LatLng(37.646737817814625, 126.9560655732735),
+									   new kakao.maps.LatLng(37.64489709017941, 126.95716982189307),
+									   new kakao.maps.LatLng(37.641675707033365, 126.96315601101252),
+									   new kakao.maps.LatLng(37.640249049874754, 126.96414402293527),
+									   new kakao.maps.LatLng(37.636889394152696, 126.96757300549085),
+									   new kakao.maps.LatLng(37.63186955866816, 126.96486052808174),
+									   new kakao.maps.LatLng(37.6315853050124, 126.9557676837406),
+									   new kakao.maps.LatLng(37.6278899085475, 126.95086233350392),
+									   new kakao.maps.LatLng(37.62684758401574, 126.94834983704123),
+									   new kakao.maps.LatLng(37.62324671407665, 126.94643555402206),
+									   new kakao.maps.LatLng(37.620214267254994, 126.94703376746556),
+									   new kakao.maps.LatLng(37.61699215697548, 126.94787126628644),
+									   new kakao.maps.LatLng(37.61244305768859, 126.94870876510733),
+									   new kakao.maps.LatLng(37.609245297728535, 126.94844871682018),
+									   new kakao.maps.LatLng(37.608973319979185, 126.94484382771714),
+									   new kakao.maps.LatLng(37.60475753768499, 126.93883567921215),
+									   new kakao.maps.LatLng(37.60244555562919, 126.9386640178263),
+									   new kakao.maps.LatLng(37.600677520868736, 126.94038063168486),
+									   new kakao.maps.LatLng(37.598093394483605, 126.93797737228287),
+									   new kakao.maps.LatLng(37.59659728029123, 126.92956596437587),
+									   new kakao.maps.LatLng(37.58870818071851, 126.92767768913141),
+									   new kakao.maps.LatLng(37.587483935141904, 126.9225278475557),
+									   new kakao.maps.LatLng(37.58394711258913, 126.92149787924056),
+									   new kakao.maps.LatLng(37.58435521607536, 126.91600471489312),
+									   new kakao.maps.LatLng(37.58721187783476, 126.91617637627898),
+									   new kakao.maps.LatLng(37.588300101097005, 126.91239982579012),
+										new kakao.maps.LatLng(37.57779095175834, 126.90215722748464),
+					];
+
+					// 지도에 표시할 선을 생성합니다
+					var polyline = new kakao.maps.Polyline({
+						path: linePath, // 선을 구성하는 좌표배열 입니다
+						strokeWeight: 5, // 선의 두께 입니다
+						strokeColor: 'red', // 선의 색깔입니다
+						strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+						strokeStyle: 'solid' // 선의 스타일입니다
+					});
 				}
 				else if (search == '종로구') {
 					var moveLatLon = new kakao.maps.LatLng(37.5990998, 126.9861493);
@@ -1992,7 +2042,7 @@
 					image : markerImage2,
 					clickable: true
 				});
-				map.setLevel(6);
+				map.setLevel(7);
 				map.setCenter(la);
 				polyline.setMap(map);
 			};
@@ -3300,6 +3350,66 @@
 			}
 			else if (map_goo == '은평구') {
     			var moveLatLon = new kakao.maps.LatLng(37.6176125, 126.9227004);
+    			var linePath = [
+								new kakao.maps.LatLng(37.57779095175834, 126.90215722748464),
+							   new kakao.maps.LatLng(37.5856812084405, 126.88928262354536),
+							   new kakao.maps.LatLng(37.59085023353351, 126.88275949088278),
+							   new kakao.maps.LatLng(37.59261850181282, 126.88481942751307),
+							   new kakao.maps.LatLng(37.588945897631746, 126.88653604137163),
+							   new kakao.maps.LatLng(37.589353973712555, 126.89923898392507),
+							   new kakao.maps.LatLng(37.612202663135605, 126.90129892055536),
+							   new kakao.maps.LatLng(37.62511994682213, 126.90850869876138),
+							   new kakao.maps.LatLng(37.63422868153803, 126.90644876213109),
+							   new kakao.maps.LatLng(37.64442370203532, 126.9124569106361),
+							   new kakao.maps.LatLng(37.6485043757381, 126.90605858938672),
+							   new kakao.maps.LatLng(37.644836070660844, 126.91390410649561),
+							   new kakao.maps.LatLng(37.64598745599606, 126.92415062237495),
+							   new kakao.maps.LatLng(37.650271523739015, 126.93003476020664),
+							   new kakao.maps.LatLng(37.65122609518355, 126.9359780123376),
+							   new kakao.maps.LatLng(37.65668255201845, 126.94077241136497),
+							   new kakao.maps.LatLng(37.6578732471388, 126.94548803386486),
+							   new kakao.maps.LatLng(37.65511255257072, 126.9512998687048),
+							   new kakao.maps.LatLng(37.65502052765064, 126.95350836594395),
+							   new kakao.maps.LatLng(37.65313399165504, 126.9562399283187),
+							   new kakao.maps.LatLng(37.648854598200984, 126.9574022952867),
+							   new kakao.maps.LatLng(37.646737817814625, 126.9560655732735),
+							   new kakao.maps.LatLng(37.64489709017941, 126.95716982189307),
+							   new kakao.maps.LatLng(37.641675707033365, 126.96315601101252),
+							   new kakao.maps.LatLng(37.640249049874754, 126.96414402293527),
+							   new kakao.maps.LatLng(37.636889394152696, 126.96757300549085),
+							   new kakao.maps.LatLng(37.63186955866816, 126.96486052808174),
+							   new kakao.maps.LatLng(37.6315853050124, 126.9557676837406),
+							   new kakao.maps.LatLng(37.6278899085475, 126.95086233350392),
+							   new kakao.maps.LatLng(37.62684758401574, 126.94834983704123),
+							   new kakao.maps.LatLng(37.62324671407665, 126.94643555402206),
+							   new kakao.maps.LatLng(37.620214267254994, 126.94703376746556),
+							   new kakao.maps.LatLng(37.61699215697548, 126.94787126628644),
+							   new kakao.maps.LatLng(37.61244305768859, 126.94870876510733),
+							   new kakao.maps.LatLng(37.609245297728535, 126.94844871682018),
+							   new kakao.maps.LatLng(37.608973319979185, 126.94484382771714),
+							   new kakao.maps.LatLng(37.60475753768499, 126.93883567921215),
+							   new kakao.maps.LatLng(37.60244555562919, 126.9386640178263),
+							   new kakao.maps.LatLng(37.600677520868736, 126.94038063168486),
+							   new kakao.maps.LatLng(37.598093394483605, 126.93797737228287),
+							   new kakao.maps.LatLng(37.59659728029123, 126.92956596437587),
+							   new kakao.maps.LatLng(37.58870818071851, 126.92767768913141),
+							   new kakao.maps.LatLng(37.587483935141904, 126.9225278475557),
+							   new kakao.maps.LatLng(37.58394711258913, 126.92149787924056),
+							   new kakao.maps.LatLng(37.58435521607536, 126.91600471489312),
+							   new kakao.maps.LatLng(37.58721187783476, 126.91617637627898),
+							   new kakao.maps.LatLng(37.588300101097005, 126.91239982579012),
+								new kakao.maps.LatLng(37.57779095175834, 126.90215722748464),
+
+				];
+
+				// 지도에 표시할 선을 생성합니다
+				var polyline = new kakao.maps.Polyline({
+					path: linePath, // 선을 구성하는 좌표배열 입니다
+					strokeWeight: 5, // 선의 두께 입니다
+					strokeColor: 'red', // 선의 색깔입니다
+					strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+					strokeStyle: 'solid' // 선의 스타일입니다
+				});
 			}
 			else if (map_goo == '종로구') {
     			var moveLatLon = new kakao.maps.LatLng(37.5990998, 126.9861493);
@@ -3505,7 +3615,7 @@
 
 
 			// 주소로 좌표를 검색합니다
-			for (var j = 0; j < rest.length; j++){
+			for (let j = 0; j < rest.length; j++){
 				geocoder.addressSearch(rest[j] , function(result, status) {
 				// 정상적으로 검색이 완료됐으면
 					if (status === kakao.maps.services.Status.OK) {
@@ -3514,7 +3624,8 @@
 						// 마커 이미지의 이미지 주소입니다
 						//var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 						//var imageSrc = "/static/images/marker1.png"
-						var imageSrc = "/static/images/restaurant.png"
+						//var imageSrc = "/static/images/restaurant.png"
+						var imageSrc = "/static/images/cat.png"
 
 						// 마커 이미지의 이미지 크기 입니다
 						var imageSize = new kakao.maps.Size(24, 35);
@@ -3529,7 +3640,25 @@
 							image : markerImage,
 							clickable: true
 						});
-					}
+
+						var iwContent = '<div style="padding:5px;">' + rest_n[j] + '<br></div>',
+							iwPosition = coords,
+							iwRemoveable = true; //인포윈도우 표시 위치입니다
+
+
+						// 인포윈도우를 생성합니다
+						var infowindow = new kakao.maps.InfoWindow({
+							position : iwPosition,
+							content : iwContent,
+							removable : iwRemoveable
+						});
+
+						kakao.maps.event.addListener(marker, 'click', function() {
+							  // 마커 위에 인포윈도우를 표시합니다
+        					  infowindow.close();
+							  infowindow.open(map, marker);
+						});
+					};
 				});
 			}
 	</script>
