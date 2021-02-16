@@ -1691,7 +1691,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   height: calc(2.875rem + 2px); }
 
 .form-group {
-  margin-bottom: 1rem; }
+  margin-bottom: 0rem; }
 
 .form-text {
   display: block;
@@ -4623,7 +4623,7 @@ button.close {
   .bs-popover-top .arrow::before, .bs-popover-auto[x-placement^="top"] .arrow::before {
     bottom: 0;
     border-top-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-top .arrow::after,
   .bs-popover-auto[x-placement^="top"] .arrow::after {
     bottom: 1px;
@@ -4643,7 +4643,7 @@ button.close {
   .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before {
     left: 0;
     border-right-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-right .arrow::after,
   .bs-popover-auto[x-placement^="right"] .arrow::after {
     left: 1px;
@@ -4660,7 +4660,7 @@ button.close {
   .bs-popover-bottom .arrow::before, .bs-popover-auto[x-placement^="bottom"] .arrow::before {
     top: 0;
     border-bottom-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-bottom .arrow::after,
   .bs-popover-auto[x-placement^="bottom"] .arrow::after {
     top: 1px;
@@ -4689,7 +4689,7 @@ button.close {
   .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before {
     right: 0;
     border-left-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-left .arrow::after,
   .bs-popover-auto[x-placement^="left"] .arrow::after {
     right: 1px;
@@ -6197,8 +6197,7 @@ button.bg-dark:focus {
 
 .mt-5,
 .my-5 {
- /* margin-top: 3rem !important; */
- }
+/* 상원 */}
 
 .mr-5,
 .mx-5 {
@@ -6206,6 +6205,7 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
+  /* 상원 */
   margin-top: 0rem !important;
   margin-bottom: 3rem !important; }
 
@@ -6686,7 +6686,11 @@ button.bg-dark:focus {
   .px-md-4 {
     padding-left: 1.5rem !important; }
   .p-md-5 {
-    padding: 3rem !important; }
+  /* 본문 padding 사이즈 수정 */
+    padding-bottom: 3rem !important;
+    padding-top: 0rem !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
   .pt-md-5,
   .py-md-5 {
     padding-top: 3rem !important; }
@@ -7336,7 +7340,9 @@ h1, h2, h3, h4, h5,
   padding-top: 3em;
   padding-bottom: 40px;
   padding-left: 3em;
+  /* 상원 */
   padding-right: 0em;
+  /* 상원 */
   width: 15%;
   position: fixed;
   bottom: 0;
@@ -7352,6 +7358,7 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (min-width: 992px) {
     #colorlib-aside {
+    /* 상원 */
       width: 15%; } }
   @media (max-width: 991.98px) {
     #colorlib-aside {
@@ -7820,9 +7827,11 @@ h1, h2, h3, h4, h5,
       .ftco-bread .breadcrumbs span a {
         color: rgba(0, 0, 0, 0.5); }
   .ftco-bread .bread {
+    /* 상원 */
     font-weight: 300;
     color: #000000;
     margin-bottom: 0;
+    /* 상원 */
     font-size: 4vw;
     display: inline-block;
     position: relative;
@@ -7883,7 +7892,7 @@ h1, h2, h3, h4, h5,
     opacity: 0;
     background: #242423; }
 
-.ftco-counter .text strong.counter { /*수정 추가 */
+.ftco-counter .text strong.counter { /*수정 추가*/
   font-weight: 400;
   font-size: 40px;
   color: #000000;
@@ -8008,10 +8017,12 @@ textarea.form-control {
   border-radius: 50%; }
 
 .about-author .desc h3 {
-  font-size: 20px; }
+  font-size: 20px;
+  /* 상원 */
+  background-color: white;}
 
 .ftco-section {
-  padding: 3em 0; //수정
+  padding: 3em 0;
   position: relative; }
   @media (max-width: 991.98px) {
     .ftco-section {
@@ -8021,7 +8032,7 @@ textarea.form-control {
   padding: 0; }
 
 .ftco-extend-mb {
-/*수정*/
+ /* 상원 */
   margin-bottom: 0em; }
 
 .ftco-no-pt {
