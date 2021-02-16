@@ -1,24 +1,41 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <style>
-	 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-	 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
+    /* id=board css 수정 */
+    #board {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+    margin-left: 0px;
+   }
+    /* id=board css 수정 */
 
+    div{
+
+    }
+
+    #content_div{
+        width: 95%;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
     </style>
 
     <meta charset="UTF-8">
-    <title>수정 페이지</title>
+    <title>Board</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-          rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/animate.css">
@@ -34,203 +51,158 @@
     <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-
     <link rel="stylesheet" href="/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
-    <!--추가(2/8)-->
+
     <link rel="stylesheet" href="{% static 'css/board/bootstrap.min.css' %}">
-    <!------------>
 </head>
 
 <body style="background-color:#dddddd">
-<div id="colorlib-page">
-    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-    <aside id="colorlib-aside" role="complementary" class="js-fullheight">
-        <nav id="colorlib-main-menu" role="navigation">
-            <ul>
-                <li><a href="/main" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
-                    홈</a></li>
-                <br>
-                <li><a href="/map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
-                    안심식당</a></li>
-                <br>
-                <li><a href="/map2" style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
-                    안심병원<br>& 진료소</a></li>
-                <br>
-                <li class="colorlib-active"><a href="http://localhost:8000/board"
-                                               style="font-family: 'Do Hyeon', sans-serif; font-size: 35pt;">
-                    식당리뷰</a></li>
-                <br>
-            </ul>
-            <p class="social">
-                <span><a href="#">로그인</a></span>
-                <span><a href="#">회원가입</a></span>
-            </p>
-        </nav>
+        <div id="colorlib-page">
+            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            <aside id="colorlib-aside" role="complementary" class="js-fullheight">
+                <nav id="colorlib-main-menu" role="navigation">
+                    <ul>
+                        <li><a href="/main" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            홈</a></li>
+                        <br>
+                        <li><a href="/map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            안심식당</a></li>
+                        <br>
+                        <li><a href="/map2" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            안심병원<br>& 진료소</a></li>
+                        <br>
+                        <li class="colorlib-active">
+                            <a href="/board" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                                식당리뷰</a></li>
+                        <br>
+                    </ul>
+                    <p class="social">
+                       {% if not request.user.is_authenticated %}
+                          <span><a href="../register" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">회원가입</a></span>
+                             <span><a href="../login" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그인</a></span>
+                       {% else %}
+                          <span><a href="../logout" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그아웃</a></span>
+                       {% endif %}
+                    </p>
+                </nav>
+            </aside>
 
-    </aside>
-    <div id="colorlib-main">
-
-        <section class="ftco-section ftco-bread ftco-extend-mb">
-            <div class="container-fluid px-3 px-md-0">
-                <div class="row no-gutters slider-text justify-content-end align-items-center">
-                    <div class="col-md-10 ftco-animate">
-                        <h1 class="bread" style="font-family: 'Jua', sans-serif;">식당리뷰</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--하영(2/5)-->
-        <section class="ftco-section-no-padding">
-            <div class="container-fluid px-3 px-md-0">
-                <div class="row justify-content-end">
-                    <div class="hero-wrap col-md-10">
-                        <div class="overlay"></div>
-                        <div class="d-flex">
-
-                            <div>
-                                <!--내용 써야함-->
-                                <header>
-                                    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-                                        <div class="container d-flex justify-content-between">
-                                            <a href="http://localhost:8000/board/"
-                                               class="navbar-brand d-flex align-items-center">
-                                                <strong>작성 페이지</strong>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </header>
-
-                                <form method="post" action="http://localhost:8000/board">
-                                    {% csrf_token %}
-                                    <div class="form-group row">
-                                        <label for="inputstore"
-                                               class="col-sm-2 col-form-label"><strong>방문매장</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="store" cols="200" rows="10"
-                                                   class="form-control" id="inputstore"
-                                                   placeholder="방문하신 매장을 적어주세요.">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>방문일자</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="date">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>동반고객</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="radio" name="customers" value="가족">가족
-                                            <input type="radio" name="customers" value="연인">연인
-                                            <input type="radio" name="customers" value="직장동료">직장동료
-                                            <input type="radio" name="customers" value="친구">친구
-                                            <input type="radio" name="customers" value="기타">기타
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>만 족 도</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="radio" name="satisfaction" value="5">매우 만족
-                                            <input type="radio" name="satisfaction" value="4">만족
-                                            <input type="radio" name="satisfaction" value="3">보통
-                                            <input type="radio" name="satisfaction" value="2">불만족
-                                            <input type="radio" name="satisfaction" value="1">매우 불만족
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputtitle" class="col-sm-2 col-form-label"><strong>제
-                                            목</strong></label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="title" cols="200" rows="10"
-                                                   class="form-control" id="inputtitle" placeholder="제목을 적어주세요.">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputContent" class="col-sm-2 col-form-label"><strong>내
-                                            용</strong></label>
-                                        <div class="col-sm-10">
-                                                <textarea type="text" name="content" cols="200" rows="10"
-                                                          class="form-control" id="inputContent"
-                                                          placeholder="의견을 적어주세요."></textarea>
-                                        </div>
-                                    </div>
-                                    <!--                                       첨부파일 업로드-->
-                                    <div class="form-group row">
-                                        <label for="inputContent"
-                                               class="col-sm-2 col-form-label"><strong>첨부파일</strong></label>
-                                        <div class="col-sm-10">
-
-                                            <form action="" method="POST" enctype="multipart/form-data"
-                                                  name="imagefile">
-                                                <div class="card-footer">
-                                                    <div class="form-group">
-                                                        {{ form.upload_files }}
-                                                        <small id="help" class="form-text text-muted">
-                                                            [파일 업로드]&nbsp;첨부할 파일을 업로드해주세요.
-                                                        </small>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="row">
-                                                    <div class="col-auto mr-auto"></div>
-                                                    <div class="col-auto">
-                                                        <div class="container">
-                                                            <button type="reset" value="Reset">재작성</button>
-                                                            <button type="submit" value="Submit"><a
-                                                                    href="http://localhost:8000/board_view/">제출</button>
-                                                            <form action="" method=post>
-                                                                {% csrf_token %}
-                                                                <button onclick="history.back();return false;">취소
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
-                                                    <hr>
-                                                </div>
-                                        </div>
-                                    </div>
+            <div id="colorlib-main">
+                <section class="ftco-section ftco-bread ftco-extend-mb">
+                    <div class="container-fluid px-3 px-md-0">
+                        <div class="row no-gutters slider-text justify-content-end align-items-center">
+                            <div class="col-md-10 ftco-animate">
+                                <h1 class="bread" style="font-family: 'Do Hyeon', sans-serif;">식당리뷰</h1>
                             </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
+            <section class="ftco-section contact-section ftco-no-pt ftco-animate">
+              <div class="container-fluid px-md-0 px-3">
+                 <div class="row mb-5 contact-info justify-content-end">
+                    <div class="col-md-10">
+                        <div class="container" id="board">
 
-                            <section class="ftco-section contact-section ftco-no-pt">
-                                <div class="container-fluid px-md-0 px-3">
-                                    <div class="row mb-5 contact-info justify-content-end">
-                                    </div>
-                                    <div class="row block-9 justify-content-end">
+                            <div class="navbar navbar-dark bg-dark shadow-sm">
+                                <div class="container d-flex justify-content-between">
+                                    <a href="" class="navbar-brand d-flex align-items-center">
+                                        <strong>수정 페이지</strong>
+                                    </a>
+                                </div>
+                            </div><br>
+
+                            <form method="POST" action="/update/{{ board.pk }}">
+                                <!--CSRF 토큰을 이용해 CSRF 공격 방지-->
+                                {% csrf_token %}
+
+                                <div class="form-group row">
+                                    <label for="inputpostname"
+                                        class="col-sm-2 col-form-label"><strong>제목</strong></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="postname" cols="200" rows="10"
+                                            class="form-control" id="editpostname" placeholder="제목을 입력해주세요"
+                                            value="{{ board.postname }}">
                                     </div>
                                 </div>
-                            </section>
 
+                                <div class="form-group row">
+                                    <label for="inputContents" class="col-sm-2 col-form-label"><strong>내
+                                        용</strong></label>
+                                    <div class="col-sm-10">
+                                            <textarea type="text" name="contents" cols="200" rows="10"
+                                                    class="form-control" id="inputContents"
+                                                    placeholder="의견을 적어주세요.">{{ board.contents }}</textarea>
+                                    </div>
+                                </div>
+
+                                <!--첨부파일 업로드-->
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"><strong></strong></label>
+                                    <div class="col-sm-10">
+
+
+                                        <div class="row">
+                                            <div class="col-auto mr-auto"></div>
+                                                <div class="col-auto">
+                                                    <div class="container">
+                                                        <button class="btn btn-primary" type="reset" value="Reset">되돌리기</button>
+                                                        <button class="btn btn-primary" type="submit" value="Submit">수정</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div id="ftco-loader" class="show fullscreen">
-                            <svg class="circular" width="48px" height="48px">
-                                <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                                        stroke="#eeeeee"/>
-                                <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                                        stroke-miterlimit="10"
-                                        stroke="#F96D00"/>
-                            </svg>
-                        </div>
+                    </div>
+                </div>
+            </section>
 
+        </div>
 
-                        <script src="/static/js/jquery.min.js"></script>
-                        <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
-                        <script src="/static/js/popper.min.js"></script>
-                        <script src="/static/js/bootstrap.min.js"></script>
-                        <script src="/static/js/jquery.easing.1.3.js"></script>
-                        <script src="/static/js/jquery.waypoints.min.js"></script>
-                        <script src="/static/js/jquery.stellar.min.js"></script>
-                        <script src="/static/js/owl.carousel.min.js"></script>
-                        <script src="/static/js/jquery.magnific-popup.min.js"></script>
-                        <script src="/static/js/aos.js"></script>
-                        <script src="/static/js/jquery.animateNumber.min.js"></script>
-                        <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
-                        <script src="/static/js/scrollax.min.js"></script>
-                        <script src="/static/js/main.js"></script>
+        <div id="colorlib-main">
+            <footer class="ftco-footer ftco-bg-dark ftco-section">
+                 <div class="container px-md-5">
+                   <div class="row">
+                     <div class="col-md-12" >
+                         <div align="center">
+
+                                 <a href="https://github.com/SUJEONG999"  target="_blank" style="padding: 15px; "><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                <a style="font-color:#4D4D4D;" >JSJ</a>
+                                 <a href="https://github.com/Yoon-Sangwon/" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                YSW
+                                 <a href="https://github.com/kdragonkorea" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                KY
+                                 <a href="https://github.com/haoingg" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                KHY </div>
+                       <br><p align="center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                     </div>
+                   </div>
+                 </div>
+               </footer>
+        </div>
+        <section class="ftco-section contact-section ftco-no-pt"></section>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
+        <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/jquery.easing.1.3.js"></script>
+        <script src="/static/js/jquery.waypoints.min.js"></script>
+        <script src="/static/js/jquery.stellar.min.js"></script>
+        <script src="/static/js/owl.carousel.min.js"></script>
+        <script src="/static/js/jquery.magnific-popup.min.js"></script>
+        <script src="/static/js/aos.js"></script>
+        <script src="/static/js/jquery.animateNumber.min.js"></script>
+        <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="/static/js/scrollax.min.js"></script>
+        <script src="/static/js/main.js"></script>
 </body>
 </html>

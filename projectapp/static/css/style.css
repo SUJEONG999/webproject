@@ -8017,7 +8017,9 @@ textarea.form-control {
   border-radius: 50%; }
 
 .about-author .desc h3 {
-  font-size: 20px; }
+  font-size: 20px;
+  /* 상원 */
+  background-color: white;}
 
 .ftco-section {
   padding: 3em 0;

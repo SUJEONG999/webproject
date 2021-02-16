@@ -1,14 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <style>
-	 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-	 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
+    /* id=board css 수정 */
+    #board {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+    margin-left: 0px;
+   }
+    /* id=board css 수정 */
+
+    div{
+
+    }
+
+    #content_div{
+        width: 95%;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
     </style>
+
     <meta charset="UTF-8">
-    <title>내용 페이지</title>
+    <title>Board</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,7 +51,6 @@
     <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-    <!--    왼쪽 글씨 색깔 변경-->
     <link rel="stylesheet" href="/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -35,23 +59,127 @@
 </head>
 
 <body style="background-color:#dddddd">
-        <h1>게시글 개별 페이지입니다</h1>
-        <p>{{board.writer}}</p>
-        <p>{{board.store}}</p>
-        <p>{{board.date}}</p>
-        <p>{{board.postname}}</p>
-        <p>{{board.contents}}</p>
-        <p>{{board.satisfaction}}</p>
+        <div id="colorlib-page">
+            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            <aside id="colorlib-aside" role="complementary" class="js-fullheight">
+                <nav id="colorlib-main-menu" role="navigation">
+                    <ul>
+                        <li><a href="/main" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            홈</a></li>
+                        <br>
+                        <li><a href="/map1" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            안심식당</a></li>
+                        <br>
+                        <li><a href="/map2" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                            안심병원<br>& 진료소</a></li>
+                        <br>
+                        <li class="colorlib-active">
+                            <a href="/board" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                                식당리뷰</a></li>
+                        <br>
+                    </ul>
+                    <p class="social">
+                       {% if not request.user.is_authenticated %}
+                          <span><a href="../register" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">회원가입</a></span>
+                             <span><a href="../login" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그인</a></span>
+                       {% else %}
+                          <span><a href="../logout" style="font-family: 'Do Hyeon', sans-serif; font-size: 15pt;">로그아웃</a></span>
+                       {% endif %}
+                    </p>
+                </nav>
+            </aside>
 
-        <!-- 이미지 보여주기 -->
-        {% if post.mainphoto %}
-            <img src = "{{ post.mainphoto.url }}" alt="" height="600">
-            <br>
-        {% endif %}
-        <a href="/board/">목록</a>
-        <a href="/board/{{board.pk}}/remove">삭제</a>
+            <div id="colorlib-main">
+                <section class="ftco-section ftco-bread ftco-extend-mb">
+                    <div class="container-fluid px-3 px-md-0">
+                        <div class="row no-gutters slider-text justify-content-end align-items-center">
+                            <div class="col-md-10 ftco-animate">
+                                <h1 class="bread" style="font-family: 'Do Hyeon', sans-serif;">식당리뷰</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
+            <section class="ftco-section contact-section ftco-no-pt ftco-animate">
+              <div class="container-fluid px-md-0 px-3">
+                 <div class="row mb-5 contact-info justify-content-end">
+                    <div class="col-md-10">
+
+            <div class="container" id="board">
+
+                <div class="navbar navbar-dark bg-dark shadow-sm">
+                    <div class="container d-flex justify-content-between">
+                        <a href="" class="navbar-brand d-flex align-items-center">
+                            <strong>제목 : {{board.postname}}</strong>
+                        </a>
+                    </div>
+                </div>
+                    <p align="right" style="margin-bottom: 0rem;">작성자 : {{board.writer}}</p>
+                    <p align="right" style="margin-bottom: 0rem;">작성일 : {{board.created_date}}</p>
+                    <p align="right" style="margin-bottom: 0rem;">수정일 : {{board.modified_date}}</p>
+                <div id = "content_div" style="background-color: white;">
+
+                    <h3>{{board.contents}}</h3>
+                    {% if post.mainphoto %}
+                        <img src = "{{ post.mainphoto.url }}" alt="" height="600">
+                        <br>
+                    {% endif %}
+                    <p>{{board.mainphoto}}</p> <br>
+                    <p></p>
+                </div>
+                <br>
+
+        <!--** 버튼-->
+                <div class="row">
+                    <div class="col-auto mr-auto"></div>
+                    <div class="col-auto">
+                        <a class="btn btn-primary" href="/board/"
+                           role="button">목록</a>
+
+                        <a class="btn btn-primary" href="/board/update/{{ board.pk }}"
+                           role="button">수정</a>
+
+                        <button class="btn btn-primary"
+                           onclick="dd_confirm('{{ board.writer }}', {{ board.pk }})">삭제</button>
+                    </div>
+                </div>
+            </div>  <!--  -->
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="colorlib-main">
+            <footer class="ftco-footer ftco-bg-dark ftco-section">
+                 <div class="container px-md-5">
+                   <div class="row">
+                     <div class="col-md-12" >
+                         <div align="center">
+
+                                 <a href="https://github.com/SUJEONG999"  target="_blank" style="padding: 15px; "><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                <a style="font-color:#4D4D4D;" >JSJ</a>
+                                 <a href="https://github.com/Yoon-Sangwon/" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                YSW
+                                 <a href="https://github.com/kdragonkorea" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                KY
+                                 <a href="https://github.com/haoingg" target="_blank" style="padding: 15px"><img class="git" src="/static/images/git.png" style="width:40px;"></a>
+                                KHY </div>
+                       <br><p align="center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                     </div>
+                   </div>
+                 </div>
+               </footer>
+        </div>
+        <section class="ftco-section contact-section ftco-no-pt"></section>
         <script src="/static/js/jquery.min.js"></script>
+        <script src="{% static 'js/board/bootstrap.min.js' %}"></script>
         <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
         <script src="/static/js/popper.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
@@ -65,6 +193,17 @@
         <script src="/static/js/jquery.mb.YTPlayer.min.js"></script>
         <script src="/static/js/scrollax.min.js"></script>
         <script src="/static/js/main.js"></script>
+        <script>
+             function dd_confirm(writer, pk) {
+                let result = confirm(writer+"님의 게시글을 삭제하겠습니까?");
+                if( result )
+                    location.href = "/board/" + pk + "/remove/";
+             }
 
-        </body>
-        </html>
+            function processSearch() {
+                 location.href = '/projectapp/'+$('[name="searchtype"]').val()+'/'+$('[name="keyword"]').val();
+            }
+
+        </script>
+</body>
+</html>

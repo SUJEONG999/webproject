@@ -163,54 +163,30 @@ def map2_1(request) :
 
 
 # 하영님
+
 def board(request) :
     # 모든 Board를 가져와 boardlist에 저장
     boardlist = Board.objects.all()
     context = {'boardlist':boardlist}
-    return render(request, 'boards.html', context)
+    return render(request, 'board.html', context)
 
 def board_view(request, pk) :
     # 게시글(Board) 중 pk를 이용해 하나의 게시글(post)를 검색
     board = Board.objects.get(pk=pk)
+    default_view_count = board.view_count
+    board.view_count = default_view_count + 1
+    Board.save()
     return render(request, 'boards/board_view.html', {'board':board}) #추가
 
 def board_write(request) :
     return render(request, 'boards/board_write.html')
 
-# def new_post(request):
-#     if request.method == 'POST':
-#         if request.POST['mainphoto'] :
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         else:
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         return redirect('board')
-#     return render(request, 'boards/new_write.html')
-
 def write(request):
-    print('a')
     if request.method == 'POST' and request.user.is_authenticated:
         writer = request.user
-        print('writer : ', writer)
         postname = request.POST['postname']
-        print('postname : ', writer)
         contents = request.POST['contents']
-        print('contents : ', writer)
         mainphoto = request.POST['mainphoto']
-        print('mainphoto : ', writer)
 
         vdate = Board(
         writer=request.user,
@@ -222,7 +198,24 @@ def write(request):
 
 def remove_board(request, pk):
     board = Board.objects.get(pk=pk)
-    if request.method == 'POST':
-        board.delete()
-        return redirect('../../')
-    return render(request, 'boards/remove_post.html', {'board': board})
+    board.delete()
+    return redirect("board")
+
+def update_board(request,pk):
+    board = Board.objects.get(pk=pk)
+    return render(request, 'boards/board_edit.html',{"board":board})
+
+def update(request,pk):
+    if request.method == 'POST' and request.user.is_authenticated:
+        writer = request.user
+        board_edit = Board.objects.get(pk=pk)
+        board_edit.writr = writer
+        board_edit.postname = request.POST['postname']
+        board_edit.contents = request.POST['contents']
+        board_edit.save()
+        return redirect('board')
+
+@property
+def click(self):
+    self.hits += 1
+    self.save()

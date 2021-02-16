@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -12,6 +14,10 @@ urlpatterns = [
     path('logout/', views.logout, name= 'logout'), # 수정's 추가
     path('board/<int:pk>/', views.board_view, name='board_view'),
     path('board_write/', views.board_write, name='board_write'),
+    path('board/<int:pk>/remove/', views.remove_board, name='board_remove'),
     path('write/', views.write, name='write'),
-    path('board/<int:pk>/remove/', views.remove_board),
+    path('board/update/<int:pk>', views.update_board, name='board_update'),
+    path('update/<int:pk>', views.update, name='update'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
