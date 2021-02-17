@@ -139,12 +139,12 @@ $("[id^=msg]").eq($(this).index()).toggle();
                               <li><a href="../map1">안심식당</a></li>
                               <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
                               <li><a href="../board">식당리뷰</a></li>
-<!--                               {% if not request.user.is_authenticated %}-->
+                               {% if not request.user.is_authenticated %}
                               <li><a href="../register">회원가입 </a></li>
                               <li><a href="../login">로그인 </a></li>
-<!--                              {% else %}-->
+                              {% else %}
                               <li><a href="../logout">로그아웃</a></li>
-<!--                               {% endif %}-->
+                               {% endif %}
 
                            </ul>
                            <button class="nav-toggler">
@@ -175,7 +175,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
                            <div class="row">
                               <div class="col-md-8">
                                  <div class="photog">
-                                    <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">오늘의 <br>코로나 안심지역은?</h1>
+                                    <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">서울시 오늘의 <br>코로나 안심지역은?</h1>
                                     <a class="read_more" href="javascript:void(0)" >Read More</a>
                                     <a class="read_more" href="about.html" >About Us</a>
                                  </div>
@@ -195,10 +195,10 @@ $("[id^=msg]").eq($(this).index()).toggle();
                                     <a class="read_more" href="#" ><div class="read_more float_l">클릭</div></a>
                                     <a class="read_more" href="../map1" >자세히보기</a>
                                     <p>
-                                    <div id="text1"><span style="font-size : 30px">안심식당이란? <br>덜어먹기 가능한 도구 비치·제공, 위생적인 수저관리, <br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
+                                    <div id="text1"><span style="font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리,<br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
                                     </p>
                                     <p>
-                                    <div id="text2"><span style="font-size : 30px">안심식당이란? <br>덜어먹기 가능한 도구 비치·제공,위생적인 수저관리, <br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
+                                    <div id="text2"><span style="font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리, <br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
                                     </p>
                                 </div>
                               </div>
@@ -217,10 +217,10 @@ $("[id^=msg]").eq($(this).index()).toggle();
                                     <a class="read_more" href="#" ><div class="read_more float_l">클릭</div></a>
                                     <a class="read_more" href="../map2" >자세히보기</a>
                                     <p>
-                                    <div id="msg1"><span style="font-size : xx-large">코로나바이러스감염증-19 중앙재난안전대책본부가 지정한 비호흡기질환과 분리된 호흡기질환 전용 진료구역(외래·입원)을 운영하는 312개 병원</span></div>
+                                    <div id="msg1"><span style="font-size : xx-large">코로나바이러스감염증-19 중앙재난안전대책본부가 지정한 비호흡기질환과 분리된 호흡기질환 전용 <br>진료구역(외래·입원)을 운영하는 312개 병원</span></div>
                                     </p>
                                     <p>
-                                    <div id="msg2"><span style="font-size : xx-large">코로나바이러스감염증-19 중앙재난안전대책본부가 지정한 비호흡기질환과 분리된 호흡기질환 전용 진료구역(외래·입원)을 운영하는 312개 병원</span></div>
+                                    <div id="msg2"><span style="font-size : xx-large">코로나바이러스감염증-19 중앙재난안전대책본부가 지정한 비호흡기질환과 분리된 호흡기질환 전용 <br>진료구역(외래·입원)을 운영하는 312개 병원</span></div>
                                     </p>
                                  </div>
                               </div>
@@ -256,7 +256,8 @@ $("[id^=msg]").eq($(this).index()).toggle();
 							<div class="col-md-6">
 								
 									<div class="hedingh3 text_align_center">
-										<img src="/static/images/happy.png" style="width : 200px; " alt="#"/>
+										<img src="/static/images/shield.png" style="width : 200px; " alt="#"/>
+                                        <br><br>
 										<h3 style="text-align:center;color : black;">오늘의 <span style="color : navy">안심지역</span></h3>
 										<h5 style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt; text-align:center;" id = "best"></h5>
 									</div><br><br>
@@ -264,7 +265,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 								
 									<div class="hedingh3  text_align_center">
 										<h3 style="text-align:center;color : black;">전일 확진자수</h3>
-										<strong class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "previous" ></strong>
+										<span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "previous" ></span>
 									</div>
 								
 							</div>
@@ -272,7 +273,8 @@ $("[id^=msg]").eq($(this).index()).toggle();
 							<div class="col-md-6">				
 								
 									<div class="hedingh3 text_align_center">
-										<img src="/static/images/free-icon-scared-3923701.png" style="width : 200px; " alt="#"/>
+										<img src="/static/images/alarm.png" style="width : 200px; " alt="#"/>
+                                        <br><br>
 										<h3 style="text-align:center;color : black;">오늘의 <span style="color : red">위험지역</span></h3>
 										<h5 style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;text-align:center;" id = "worst"></h5>
 									</div><br><br>
@@ -281,7 +283,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 								
 									<div class="hedingh3 text_align_center">
 										<h3 style="text-align:center;color : black;">누적 확진자수</h3>
-										<strong class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "cumulative" ></strong>
+										<span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "cumulative" ></span>
 									</div>
 								
 							</div>
@@ -293,6 +295,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 
                <div class="col-md-5">
                   <div class="about_img text_align_center">
+                      <p align="left" style="font-size : large"><< 글자주변을 클릭시 버튼이 생성됩니다. >></p>
                      <div id="map" style="width:120%;height:600px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services"></script>
 														<script>
@@ -1729,8 +1732,8 @@ $("[id^=msg]").eq($(this).index()).toggle();
 
        																	jQuery(document).ready(function($) {
 																			$('.counter').counterUp({
-																				delay: 10,
-																				time: 1000
+																				delay: 100,
+																				time: 5000
 																			});
 																		});
 
@@ -2016,7 +2019,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 															});
 														}
 													</script>
-											<p>[ 글자주변을 클릭시 버튼이 생성됩니다. ]</p>
+											<br>
 											</div>
                   </div>
                </div>
@@ -2072,7 +2075,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
                           <div class="desktop">
                              <i><img src="/static/images/pro3.png" alt="#"/></i>
                            <h3>전일 확진자수</h3>
-                             <strong class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "previous" ></strong>
+
                           </div>
                         </div>
                      </div>
@@ -2081,7 +2084,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
                           <div class="desktop">
                              <i><img src="/static/images/pro3.png" alt="#"/></i>
                            <h3>누적 확진자수</h3>
-                             <strong class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "cumulative" ></strong>
+
                           </div>
                         </div>
                      </div>

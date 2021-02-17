@@ -98,15 +98,14 @@
                            <ul>
                               <li><a class="active" href="../main">Home</a></li>
                               <li><a href="../map1">안심식당</a></li>
-                              <li><a href="index.html" class="logo_midle">COVID</a></li>
-                              <li><a href="../map2">안심병원 & 진료소</a></li>
+                              <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
                               <li><a href="../board">식당리뷰</a></li>
-<!--                               {% if not request.user.is_authenticated %}-->
+                               {% if not request.user.is_authenticated %}
                               <li><a href="../register">회원가입 </a></li>
                               <li><a href="../login">로그인 </a></li>
-<!--                              {% else %}-->
+                              {% else %}
                               <li><a href="../logout">로그아웃</a></li>
-<!--					{% endif %}-->
+					          {% endif %}
 
                            </ul>
                            <button class="nav-toggler">
