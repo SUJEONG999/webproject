@@ -1,7 +1,8 @@
-from django.conf import settings
-from django.conf.urls.static import static
 from django.urls import path
 from . import views
+# 이미지업로드
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('main/', views.main, name='main'),
@@ -18,11 +19,8 @@ urlpatterns = [
     path('board/<int:pk>/remove/', views.remove_board, name='board_remove'),
     path('board/update/<int:pk>', views.update_board, name='board_update'),
     path('board_search/', views.search, name='search'),
-
-
-    # path("search1/<writer>", views.search1, name="search1"),
-    # path("search2/<contents>", views.search2, name="search2"),
-    # path('search1', views.search1, name='search1'),
+    path('update/<int:pk>', views.update, name='update'),
+    path('like/', views.board_like, name='board_like'),
 ]
 
 # 이미지 URL 설정

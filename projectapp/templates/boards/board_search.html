@@ -19,6 +19,8 @@
 
 
 
+
+
     </style>
 
     <meta charset="UTF-8">
@@ -63,7 +65,7 @@
                     안심병원<br>& 진료소</a></li>
                 <br>
                 <li class="colorlib-active">
-                    <a href="" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
+                    <a href="/board" style="font-family: 'Do Hyeon', sans-serif; font-size: 30pt;">
                         식당리뷰</a></li>
                 <br>
             </ul>
@@ -91,6 +93,8 @@
         </section>
     </div>
 
+
+
     <section class="ftco-section contact-section ftco-no-pt">
         <div class="container-fluid px-md-0 px-3">
             <div class="row mb-5 contact-info justify-content-end">
@@ -107,6 +111,8 @@
                         </div>
                         <br><br>
                         <body>
+                        <h style="bold">'{{q}}'</h>
+                        에 대한 검색결과입니다.
                         <table class="table">
                             <thead class="thead-light">
                             <tr class="text-center">
@@ -138,10 +144,11 @@
                                     <span>{{ board.created_date}}</span>
                             </tr>
                             {% endfor %}
-
-                            <h style="bold">'{{q}}'</h>
-                            에 대한 검색결과입니다.
                             </tbody>
+                        </table>
+
+
+                        </tbody>
                         </table>
                         <a class="btn btn-primary" href="/board/"
                            role="button" placeholder="검색어를 입력해주세요.">목록</a>

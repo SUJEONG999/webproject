@@ -1,5 +1,6 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse, FileResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -8,7 +9,9 @@ from datetime import datetime, timedelta  # 수정
 from projectapp.models import Hospital  # 강용
 from projectapp.models import Clinic  # 강용
 from projectapp.models import Board  # 하영
-from django.core.paginator import Paginator  # 하영 2/16
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+import json
 
 
 # 수정님
@@ -168,7 +171,7 @@ def map2_1(request):
 # 하영님
 def board(request):
     # 모든 Board를 가져와 boardlist에 저장
-    boardlist = Board.objects.all()
+    boardlist = Board.objects.all().order_by('-id')
     context = {'boardlist': boardlist}
     return render(request, 'board.html', context)
 
@@ -181,17 +184,18 @@ def board_view(request, pk):
     board.save()
     return render(request, 'boards/board_view.html', {'board': board})  # 추가
 
-
+@login_required
 def board_write(request):
     return render(request, 'boards/board_write.html')
 
-
+@login_required
 def write(request):
     if request.method == 'POST' and request.user.is_authenticated:
         writer = request.user
         postname = request.POST['postname']
         contents = request.POST['contents']
         view_count = 0
+        likes_user = []
         mainphoto = request.POST['mainphoto']
 
         vdate = Board(
@@ -199,17 +203,18 @@ def write(request):
             postname=postname,
             contents=contents,
             view_count=view_count,
+            # likes_user=likes_user(),
             mainphoto=mainphoto)
         vdate.save()
         return redirect('board')
 
-
+@login_required
 def remove_board(request, pk):
     board = Board.objects.get(pk=pk)
     board.delete()
     return redirect("board")
 
-
+@login_required
 def update_board(request, pk):
     if request.method == 'POST':
         pk = request.GET.get("pk")
@@ -218,6 +223,7 @@ def update_board(request, pk):
         board.postname = request.POST['postname']
         board.contents = request.POST['contents']
         board.view_count = request.POST['view_count']
+        # board.likes_user = request.POST['likes_user']
         board.mainphoto = request.POST['mainphoto']
         board.save()
         return redirect('board/')
@@ -241,3 +247,42 @@ def search(request):
     # 다르면 search.html을 리턴
     else:
         return render(request, 'boards/board_search.html')
+
+@login_required
+def update_board(request,pk):
+    board = Board.objects.get(pk=pk)
+    return render(request, 'boards/board_edit.html', {"board":board})
+
+@login_required
+def update(request,pk):
+    if request.method == 'POST' and request.user.is_authenticated:
+        writer = request.user
+        board_edit = Board.objects.get(pk=pk)
+        board_edit.writer = writer
+        board_edit.postname = request.POST['postname']
+        board_edit.contents = request.POST['contents']
+        board_edit.save()
+        return redirect('board')
+
+def board_like(request):
+    pk = request.POST.get('pk', None)
+    board = get_object_or_404(Board, pk=pk)
+    user =request.user
+
+    if board.likes_user.filter(id=user.id).exists():
+        board.likes_user.remove(user)
+        message = '좋아요 취소 :('
+    else:
+        board.likes_user.add(user)
+        message = '좋아요 :)'
+
+    context = {'likes_count':board.count_likes_user(), 'message': message}
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
+def home(request):
+    boards = Board.objects
+    board_list = Board.objects.all()
+    paginator = Paginator(board_list, 5)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'board.html', {'boards':boards, 'posts':posts})

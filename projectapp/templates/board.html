@@ -16,6 +16,13 @@
    }
     /* id=board css 수정 */
 
+
+
+
+
+
+
+
     </style>
 
     <meta charset="UTF-8">
@@ -107,10 +114,9 @@
                         <table class="table">
                             <thead class="thead-light">
                             <tr class="text-center">
-                                <th scope="col">NO</th>
-                                <th scope="col">작성자</th>
+                                <th scope="col">No</th>
                                 <th scope="col">제목</th>
-                                <th scope="col">내용</th>
+                                <th scope="col">작성자</th>
                                 <th scope="col">작성일</th>
                                 <th scope="col">조회수</th>
                             </tr>
@@ -122,20 +128,17 @@
                                     <span>{{ board.pk }}</span>
                                 </th>
                                 <td>
-                                    <span>{{ board.writer }}</span>
-                                </td>
-                                <td>
                                     <a href="{{ board.pk }}">
                                         <span>{{ board.postname }}</span>
                                     </a>
                                 </td>
                                 <td>
-                                    <span>{{ board.contents }}</span>
+                                    <span>{{ board.writer }}</span>
                                 </td>
                                 <td>
-                                    <span>{{ board.created_date}}</span>
+                                    <span>{{ board.created_date |date:"Y-m-d"}}</span>
                                 </td>
-                                 <td>
+                                <td>
                                     <span>{{ board.view_count }}</span>
                                 </td>
                             </tr>
@@ -145,20 +148,41 @@
 
                         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
                             {% csrf_token %}
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                            <input class="form-control mr-sm-2" type="search" placeholder="Title Keyword"
+                                   aria-label="Search"
                                    name="q" value="{{q}}">
                             <button class="form-control mr-sm-2" type="submit">검색</button>
                         </form>
 
                         <!--** 버튼-->
+                        {% if user.is_authenticated %}
                         <div class="row">
                             <div class="col-auto mr-auto"></div>
                             <div class="col-auto">
                                 <a class="btn btn-primary" href="/board_write/"
-                                   role="button" placeholder="검색어를 입력해주세요.">글쓰기</a>
+                                   role="button">글쓰기</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>  <!--  -->
+
+                    <div class="container">
+                        {% if boards.has_previous %}
+                        <a href="?page=1">첫 페이지</a>
+                        <a href="?page={{posts.previous_page_number}}">이전</a>
+                        {% endif %}
+
+                        <span>{{post.number}}</span>
+                        <span>/</span>
+                        <span>{{posts.paginator.num_pages}}</span>
+
+                        {% if boards.has_next %}
+                        <a href="?page={{posts.next_page_number}}">다음</a>
+                        <a href="?page={{posts.paginator.num_pages}}">끝 페이지</a>
+                        {% endif %}
+                    </div>
+
+                    </script>
 
                 </div>
             </div>
