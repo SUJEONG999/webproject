@@ -644,7 +644,7 @@ button {
     position: absolute;
     content: "";
     bottom: 0px;
-    /*background: #ed1c24;*/
+    background: #ed1c24;
     width: 93px;
     height: 11px;
     left: 0;
@@ -831,16 +831,16 @@ button {
     bottom: 0;
 }
 
-.nostrud h3 {
+.nostrud h3 {        
     color: #151515;
     font-size: 30px;
     line-height: 30px;
     font-weight: bold;
-    padding-top: 52px;
+    padding-top: 150px;  /* (변경 전: 52px;) 강용 */
 }
 
 .nostrud p {
-    padding: 5px 0 60px 0;
+    padding: 1px 0 1px 0;  /* (변경 전: 5px 0 60px 0;) 강용 */
     color: #0f100d;
     line-height: 28px;
     font-weight: normal;
@@ -850,7 +850,7 @@ button {
 .nostrud::before {
     position: absolute;
     content: "";
-    left: 0;
+    left: 250;  /* (변경 전: 0) 강용 */
     right: 0;
     background: url(../images/corona_icon.png);
     bottom: -40px;

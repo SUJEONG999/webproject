@@ -65,7 +65,7 @@
       <!-- bootstrap css -->
       <link rel="stylesheet" href="/static/css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="/static/css/style.css">
+      <link rel="stylesheet" href="/static/css/style.css?after">
       <!-- Responsive-->
       <link rel="stylesheet" href="/static/css/responsive.css">
       <!-- fevicon -->
@@ -176,8 +176,6 @@ $("[id^=msg]").eq($(this).index()).toggle();
                               <div class="col-md-8">
                                  <div class="photog">
                                     <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">서울시 오늘의 <br>코로나 안심지역은?</h1>
-                                    <a class="read_more" href="javascript:void(0)" >Read More</a>
-                                    <a class="read_more" href="about.html" >About Us</a>
                                  </div>
                               </div>
                            </div>
@@ -192,8 +190,8 @@ $("[id^=msg]").eq($(this).index()).toggle();
                               <div class="col-md-8">
                                 <div class="photog">
                                     <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">내 근처 안심식당은<br>어디?</h1>
-                                    <a class="read_more" href="#" ><div class="read_more float_l">클릭</div></a>
-                                    <a class="read_more" href="../map1" >자세히보기</a>
+                                    <a class="read_more" href="#" ><div class="read_more float_l">자세히보기</div></a>
+                                    <a class="read_more" href="../map1" >이동</a>
                                     <p>
                                     <div id="text1"><span style="font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리,<br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
                                     </p>
@@ -214,8 +212,8 @@ $("[id^=msg]").eq($(this).index()).toggle();
                               <div class="col-md-8">
                                 <div class="photog">
                                     <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">안심병원이란?</h1>
-                                    <a class="read_more" href="#" ><div class="read_more float_l">클릭</div></a>
-                                    <a class="read_more" href="../map2" >자세히보기</a>
+                                    <a class="read_more" href="#" ><div class="read_more float_l">자세히보기</div></a>
+                                    <a class="read_more" href="../map2" >이동</a>
                                     <p>
                                     <div id="msg1"><span style="font-size : xx-large">코로나바이러스감염증-19 중앙재난안전대책본부가 지정한 비호흡기질환과 분리된 호흡기질환 전용 <br>진료구역(외래·입원)을 운영하는 312개 병원</span></div>
                                     </p>
@@ -295,7 +293,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 
                <div class="col-md-5">
                   <div class="about_img text_align_center">
-                      <p align="left" style="font-size : large"><< 글자주변을 클릭시 버튼이 생성됩니다. >></p>
+                      <p align="left" style="font-size : large">[글자주변을 클릭시 버튼이 생성됩니다.]</p>
                      <div id="map" style="width:120%;height:600px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services"></script>
 														<script>
