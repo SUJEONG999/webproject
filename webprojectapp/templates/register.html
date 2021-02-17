@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <style>
+	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Myeongjo:wght@400;800&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
+	</style>
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,14 +64,10 @@
                            <ul>
                               <li><a class="active" href="../main">Home</a></li>
                               <li><a href="../map1">안심식당</a></li>
-                              <li><a href="../map2">안심병원 & 진료소</a></li>
+                              <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
                               <li><a href="../board">식당리뷰</a></li>
-<!--                               {% if not request.user.is_authenticated %}-->
-                              <li><a href="../register">회원가입 </a></li>
+
                               <li><a href="../login">로그인 </a></li>
-<!--                              {% else %}-->
-                              <li><a href="../logout">로그아웃</a></li>
-<!--					{% endif %}-->
 
                            </ul>
                            <button class="nav-toggler">
@@ -79,47 +81,51 @@
          </header>
       <!-- end header -->
 
-      <!-- contact -->
-     <div class="contact">
-         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                     <div class="titlepage text_align_left">
-                        <h2>Contact Us</h2>
-                     </div>
-                  </div>
+ <div class="about">
+         <div class="container_width">
+            <div class="row d_flex">
+                     <div class="container">
+                        <h1 align="center" style="font-family: 'Do Hyeon', sans-serif; font-size: 55pt;">회원가입</h1>
+				<div class="row mt-5">
+                <div class="col-12 text-center" style="color:red">
+                    {{error}}
+                </div>
             </div>
-            <div class="row">
-               <div class="col-md-6">
-                  <form id="request" class="main_form">
-                     <div class="row">
-                        <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Full Name" type="type" name=" Name"> 
+            <div class="row mt-5">
+                <div class="col-12">
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="useremail">사용자 이메일</label>
+                            <input type="email" class="form-control" id="useremail"  placeholder="사용자 아이디" name="useremail" required>
+                            <small id="emailHelp" class="form-text text-muted">이메일 주소를 아이디로 사용합니다.</small>
                         </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone" type="type" name="Phone Number">                          
+                        <div class="form-group">
+                            <label for="username">사용자 성과 이름</label>
+                            <input type="text" class="form-control" id="username"  placeholder="성" name="lastname" required>
+                            <input type="text" class="form-control" id="username"  placeholder="이름" name="firstname" required>
                         </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
+                        <div class="form-group">
+                            <label for="password">비밀번호</label>
+                            <input type="password" class="form-control" id="password" placeholder="비밀번호" name="password" required>
                         </div>
-                        <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name"></textarea>
+                        <div class="form-group">
+                            <label for="re-password">비밀번호 확인</label>
+                            <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인" name="re-password" required>
                         </div>
-                        <div class="col-md-12">
-                           <button class="send_btn">Send Now</button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-                <div class="col-md-6">
-                  <div class="map-responsive">
-                     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="600" height="540" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
-                  </div>
-               </div>
+                        <button type="submit" class="btn btn-primary">회원가입</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+				<a href="{% url 'login' %}"><span style="color : brown">이미 가입되어 있으신가요? 클릭해주세요</span></a>
+            </div>
+     </div>
+
+
             </div>
          </div>
       </div>
-      <!-- end contact -->
       <!--  footer -->
       <footer>
          <div class="footer">
