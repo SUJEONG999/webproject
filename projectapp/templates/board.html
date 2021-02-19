@@ -134,20 +134,14 @@
             </tbody>
         </table>
 <!--**페이징네이션        -->
-                <ul class="pagination justify-content-center">
-            {% if board.has_previous %}
-              <li class="page-item"><a class="page-link" href='?page={{board.number|add:-1}}'>Previous</a></li>
+        <ul class="pagination justify-content-center">
+            {% if boardlist.has_previous %}
+              <li class="page-item"><a class="page-link" href='?page={{boardlist.number|add:-1}}'>Previous</a></li>
             {% endif %}
-            {% for i in total%}
-              {% if i == current %}
-                <li class="page-item active"  ><a class="page-link" style="background-color:#b68834; border-color:#b68834;" href="?page={{i}}">{{i}}</a></li>
-              {% else %}
-                <li class="page-item"><a class="page-link" style="color:black;"  href="?page={{i}}">{{i}}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if board.has_next %}
-              <li class="page-item"><a class="page-link"  href='?page={{board.number|add:+1}}'>Next</a></li>
-            {% endif%}
+                Page {{ boardlist.number }} / {{ boardlist.paginator.num_pages }}
+            {% if boardlist.has_next %}
+                <a href='?page={{boardlist.number|add:+1}}'>다음페이지</a>
+            {% endif %}
         </ul>
 <!--** 검색기능-->
         <div id="searchdiv">

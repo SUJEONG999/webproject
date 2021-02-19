@@ -30,6 +30,7 @@ class Board(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='작성자')
     postname = models.CharField(max_length=50, verbose_name='제목')
     contents = models.TextField(verbose_name='내용')
+    star = models.IntegerField()
     mainphoto = models.ImageField(blank=True, null=True, verbose_name='사진')
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)

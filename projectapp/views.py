@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from django.template import  loader
@@ -165,9 +166,12 @@ def map2_1(request) :
 # 하영님
 
 def board(request) :
+    page = request.GET.get('page', 1)
     # 모든 Board를 가져와 boardlist에 저장
-    boardlist = Board.objects.all()
-    context = {'boardlist':boardlist}
+    boardlist = Board.objects.all().order_by('-id')
+    paginator = Paginator(boardlist, 3)
+    boardpage = paginator.get_page(page)
+    context = { 'boardlist': boardpage }
     return render(request, 'board.html', context)
 
 def board_view(request, pk) :
@@ -184,6 +188,7 @@ def board_write(request) :
 def write(request):
     if request.method == 'POST' and request.user.is_authenticated:
         writer = request.user
+        star = int(request.POST['star'])
         postname = request.POST['postname']
         contents = request.POST['contents']
         mainphoto = request.POST['mainphoto']
@@ -191,6 +196,7 @@ def write(request):
         vdate = Board(
         writer=request.user,
         postname=postname,
+        star = star,
         contents=contents,
         mainphoto=mainphoto)
         vdate.save()
