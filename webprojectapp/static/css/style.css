@@ -88,7 +88,7 @@ h6 {
 }
 
 h1 {
-     font-size: 24px;
+    /* font-size: 24px;*/
 }
 
 h2 {
@@ -331,13 +331,13 @@ button {
 
 .logo_midle {color: #fef6fc; font-weight: bold; color: #fff !important;}
 .logo_midle::before {
-    position: absolute;
+    /* position: absolute;*/
     content: "";
     bottom: -93px;
     width: 158px;
     height: 96px;
-    background: url(../images/logo.png);
-    z-index: 999;
+    /*background: url(../images/logo.png);*/
+    /*z-index: 999;*/ /*수정*/
     margin: 0 auto;
     left: 0;
     right: 26px;
@@ -718,8 +718,8 @@ button {
    
 }
 .desktop {
-    padding: 45px 20px 30px 20px;
-    background: #fff;
+    padding: 30px 20px 30px 20px;
+    background: black; /*수정*/
     border-radius: 20px;
 }
 
@@ -749,15 +749,21 @@ button {
 
 }
 .owl-carousel .owl-item img {
-    width: inherit !important;
+    /*width: inherit !important;*/  /*수정*/
     text-align: center;
-    margin: 0 auto;
-    height: 90px;
+    margin: auto;
+    max-width: 100%; /*수정*/
+    max-height: 455px; /*수정*/
+    height: auto !important; /*수정*/
+    transition: all 0.2s linear;
+    /*height: 90px;*/ /*수정*/
 }
-
-.owl-carousel .owl-nav.disabled {
-     display: inherit !important;
-    padding-top: 80px;
+.owl-carousel .owl-item:hover img {/*수정*/
+transform: scale(1.15);/*수정*/
+}
+.owl-carousel .owl-nav.disabled {/*수정*/
+     display: inherit !important;/*수정*/
+    padding-top: 80px;/*수정*/
 }
 
 

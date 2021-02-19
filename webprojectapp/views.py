@@ -1,21 +1,24 @@
-from django.shortcuts import render
+from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse, FileResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib import auth
-from webprojectapp.models import Restaurant  # 상원
+from .models import Restaurant  # 상원
 from datetime import datetime, timedelta  # 수정
 from webprojectapp.models import Hospital  # 강용
 from webprojectapp.models import Clinic  # 강용
-# from webprojectapp.models import Board  # 하영
+from webprojectapp.models import Board  # 하영
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+import json
 
 
 # 수정님
 def main(request):
     template = loader.get_template('main.html')
     date = datetime.now() - timedelta(1)
-    context = {'current_date': date}
+    context = {'yesterday': date}
     return HttpResponse(template.render(context, request))
 
 
@@ -33,6 +36,7 @@ def register(request):
         elif password != re_password:
             res_data['error'] = '비밀번호가 다릅니다.'
         else:
+            res_data['error'] = '회원가입이 완료되었습니다.'
             user = User.objects.create_user(username=useremail,
                                             first_name=firstname,
                                             last_name=lastname,
@@ -110,28 +114,16 @@ def map2(request):
         hnumber.append(hospital.h_number)
 
     search = request.GET.get('search')
-    if request.method == 'POST':
-        txt = (request.POST['text'])
-        context = {
-            "txt": txt,
-            "search": search,
-            "hospitals": hospitals,
-            "hname": hname,
-            "haddress": haddress,
-            "htype": htype,
-            "hnumber": hnumber
-        }
-    else:
-        context = {
-            "search": search,
-            "hospitals": hospitals,
-            "hname": hname,
-            "haddress": haddress,
-            "htype": htype,
-            "hnumber": hnumber
-        }
-    return render(request, 'map2.html', context)
 
+    context = {
+        "search": search,
+        "hospitals": hospitals,
+        "hname": hname,
+        "haddress": haddress,
+        "htype": htype,
+        "hnumber": hnumber
+    }
+    return render(request, 'map2.html', context)
 
 def map2_1(request):
     clinics = Clinic.objects.all()
@@ -144,87 +136,130 @@ def map2_1(request):
         cnumber.append(clinic.number)
 
     search = request.GET.get('search')
-    if request.method == 'POST':
-        txt = (request.POST['text'])
-        context = {
-            "txt": txt,
-            "search": search,
-            "clinics": clinics,
-            "cname": cname,
-            "caddress": caddress,
-            "cnumber": cnumber
-        }
-    else:
-        context = {
-            "search": search,
-            "clinics": clinics,
-            "cname": cname,
-            "caddress": caddress,
-            "cnumber": cnumber
-        }
+
+    context = {
+        "search": search,
+        "clinics": clinics,
+        "cname": cname,
+        "caddress": caddress,
+        "cnumber": cnumber
+    }
     return render(request, 'map2_1.html', context)
 
 
 # 하영님
-# def board(request):
-#     # 모든 Board를 가져와 boardlist에 저장
-#     boardlist = Board.objects.all()
-#     context = {'boardlist': boardlist}
-#     return render(request, 'board.html', context)
-#
-#
-# def board_view(request, pk):
-#     # 게시글(Board) 중 pk를 이용해 하나의 게시글(post)를 검색
-#     board = Board.objects.get(pk=pk)
-#     return render(request, 'boards/board_view.html', {'board': board})  # 추가
-#
-#
-# def board_write(request):
-#     return render(request, 'boards/board_write.html')
 
 
-# def new_post(request):
-#     if request.method == 'POST':
-#         if request.POST['mainphoto'] :
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         else:
-#             new_article = Board.objects.create(
-#                 no=request.POST['no'],
-#                 writer=request.POST['writer'],
-#                 postname=request.POST['postname'],
-#                 contents=request.POST['contents'],
-#                 satisfaction=request.POST['satisfaction'],
-#                 mainphoto=request.POST['mainphoto'],
-#             )
-#         return redirect('board')
-#     return render(request, 'boards/new_write.html')
+def board(request) :
+    page = request.GET.get('page', 1)
+    # 모든 Board를 가져와 boardlist에 저장
+    boardlist = Board.objects.all().order_by('-id')
+    paginator = Paginator(boardlist, 5)
+    boardpage = paginator.get_page(page)
+    context = { 'boardlist': boardpage }
+    return render(request, 'board.html', context)
 
-# def write(request):
-#     if request.method == 'POST' and request.user.is_authenticated:
-#         writer = request.user
-#         postname = request.POST['postname']
-#         contents = request.POST['contents']
-#         mainphoto = request.POST['mainphoto']
-#
-#         vdate = Board(
-#             writer=request.user,
-#             postname=postname,
-#             contents=contents,
-#             mainphoto=mainphoto)
-#         vdate.save()
-#         return redirect('board')
-#
-#
-# def remove_board(request, pk):
-#     board = Board.objects.get(pk=pk)
-#     if request.method == 'POST':
-#         board.delete()
-#         return redirect('../../')
-#     return render(request, 'boards/remove_post.html', {'board': board})
+
+def board_view(request, pk):
+    # 게시글(Board) 중 pk를 이용해 하나의 게시글(post)를 검색
+    board = Board.objects.get(pk=pk)
+    default_view_count = board.view_count
+    board.view_count = default_view_count + 1
+    board.save()
+    return render(request, 'boards/board_view.html', {'board': board})  # 추가
+
+@login_required
+def board_write(request):
+    return render(request, 'boards/board_write.html')
+
+@login_required
+def write(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        writer = request.user
+        postname = request.POST['postname']
+        contents = request.POST['contents']
+        view_count = 0
+        likes_user = []
+
+        vdate = Board(
+            writer=request.user,
+            postname=postname,
+            contents=contents,
+            view_count=view_count,
+        )
+            # likes_user=likes_user(),
+        vdate.save()
+        return redirect('board')
+
+@login_required
+def remove_board(request, pk):
+    board = Board.objects.get(pk=pk)
+    board.delete()
+    return redirect("board")
+
+@login_required
+def update_board(request, pk):
+    if request.method == 'POST':
+        pk = request.GET.get("pk")
+        board = Board.objects.get(pk=pk)
+        board.writer = request.user
+        board.postname = request.POST['postname']
+        board.contents = request.POST['contents']
+        board.view_count = request.POST['view_count']
+        # board.likes_user = request.POST['likes_user']
+        board.save()
+        return redirect('board/')
+    else:
+        pk = request.GET.get('pk')
+        board = Board.objects.get(pk=pk)
+        jsonContent = {'writer': board.writer, 'postname': board.postname}
+        return JsonResponse(jsonContent, json_dumps_params={'ensure_ascii': False})
+
+
+def search(request):
+    # boards의 모든 객체를 블로그 id 역순으로 담음
+    boards = Board.objects.all().order_by('-id')
+    # q의 이름으로 POST에 넘어온 값을 q에 담음
+    q = request.POST.get('q', "")
+    # boards에 filter를 이용해 icontains로 q와 비교
+    if q:
+        boards = boards.filter(postname__icontains=q)
+        # 같으면 search.html에 boards와 q를 넘김
+        return render(request, 'boards/board_search.html', {'boards': boards, 'q': q})
+    # 다르면 search.html을 리턴
+    else:
+        return render(request, 'boards/board_search.html')
+
+@login_required
+def update_board(request,pk):
+    board = Board.objects.get(pk=pk)
+    return render(request, 'boards/board_edit.html', {"board":board})
+
+@login_required
+def update(request,pk):
+    if request.method == 'POST' and request.user.is_authenticated:
+        writer = request.user
+        board_edit = Board.objects.get(pk=pk)
+        board_edit.writer = writer
+        board_edit.postname = request.POST['postname']
+        board_edit.contents = request.POST['contents']
+        board_edit.save()
+        return redirect('board')
+
+def board_like(request):
+    pk = request.POST.get('pk', None)
+    board = get_object_or_404(Board, pk=pk)
+    user =request.user
+
+    if board.likes_user.filter(id=user.id).exists():
+        board.likes_user.remove(user)
+        message = '좋아요 취소 :('
+    else:
+        board.likes_user.add(user)
+        message = '좋아요 :)'
+
+    context = {'likes_count':board.count_likes_user(), 'message': message}
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
+
+

@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
    <head>
-      <style>     
-      /* 인포윈도우 start */
-      .info {
-      margin-left: 5px;
-      margin-right: 5px;
-      font-size: 12px;
-      padding: 5px;
-      }
-      .info .hname {
-      font-weight: bold;
-      }
-      /* 인포윈도우 end */
+      <style>    
       /* hospital TABLE 내용 적용 START*/
       #hospital {		
       font-family: Arial, Helvetica, sans-serif;
@@ -47,7 +36,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Covido</title>
+      <title>안심병원</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -78,13 +67,7 @@
       
       <!-- top -->
       <!-- header start -->
-         <header class="header-area">
-            <div class="left">
-               <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
-            </div>
-            <div class="right">
-               <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
-            </div>
+          <header class="header-area" style="padding: 20px 10px;">
             <div class="container">
                <div class="row d_flex">
                   <div class="col-sm-3 logo_sm">
@@ -96,16 +79,23 @@
                      <div class="navbar-area">
                         <nav class="site-navbar">
                            <ul>
-                              <li><a class="active" href="../main">Home</a></li>
-                              <li><a href="../map1">안심식당</a></li>
-                              <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
-                              <li><a href="../board">식당리뷰</a></li>
+                              <li><a href="../main"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">HOME</a></li>
+                              <li><a href="../map1"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심식당</a></li>
+                              <li><a class="active" href="../map2"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심병원 & 진료소</a></li>
+                              <li><a href="../board"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">식당리뷰</a></li>
                                {% if not request.user.is_authenticated %}
-                              <li><a href="../register">회원가입 </a></li>
-                              <li><a href="../login">로그인 </a></li>
+                              <li><a href="../register"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">회원가입 </a></li>
+                              <li><a href="../login"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그인 </a></li>
                               {% else %}
-                              <li><a href="../logout">로그아웃</a></li>
-					          {% endif %}
+                              <li><a href="../logout"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그아웃</a></li>
+                               {% endif %}
 
                            </ul>
                            <button class="nav-toggler">
@@ -1429,12 +1419,26 @@
                               });
                
                               // 인포윈도우로 장소에 대한 설명을 표시합니다
-                              var contenString = '<div class="info">'+'<div class="hname">'+hname[i]+'<img src="/static/images/hospital.png" width="20" height="20">'+'</div>'
-                              +'<div class="hnumber">'+hnumber[i]+'</div>'+
-                                 '<div class="htype">'+htype[i]+'</div>'+'</div>';
+                              var contenString = '<div class="wrap" style="width: 300px; padding: 10px">' +
+                                           '    <div class="info">' +
+                                           '        <div class="title"><h3>' +
+                                                               hname[i] +
+                                           '        </h3></div><hr style="margin-top:5px; margin-bottom:5px;>' +
+                                           '        <div class="body">' +
+                                           '            <div class="desc">' +
+                                           '                <div class="ellipsis">'+ hnumber[i] +'</div>' +
+                                           '            </div>' +
+                                           '            <div class="desc">' +
+                                           '                <div class="ellipsis">'+ htype[i] +'</div>' +
+                                           '            </div>' +
+                                           '        </div>' +
+                                           '    </div>' +
+                                           '</div>';
                               var infowindow = new kakao.maps.InfoWindow({
                                  content: contenString
                               });
+
+                              
                               
                               // 마커에 마우스오버 이벤트를 등록합니다
                               kakao.maps.event.addListener(marker, 'mouseover', function() {
@@ -1456,20 +1460,21 @@
 <!--board write start-->
                <div class="col-md-6">
                   <div class="nostrud">
-                        <h3>안심병원 정보 수정</h3>
-                        <p>추가 또는 잘못된 안심병원 정보를 입력해주세요</p>
+                        <h3>안심병원 문의사항</h3>
+                        <p>안심병원에 대한 문의사항을 입력해주세요</p>
                   </div>             
-                  
-                  <form id="request" class="main_form">
+
+                  <form method="POST" action="{% url 'map2' %}" class="main_form">
+                     {% csrf_token %}
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contactus" placeholder="성명" type="Name" name=" Name"> 
+                           <input class="contactus" placeholder="성명" type="name" name="name">
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="이메일" type="Email" name="Email"> 
+                           <input class="contactus" placeholder="이메일" type="email" name="email">
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="수정요청 내용을 입력해주세요" type="Msg" Message="Msg"></textarea>
+                           <textarea class="textarea" placeholder="내용을 입력해주세요" type="contents" name="contents"></textarea>
                         </div>
                         <div class="col-md-12">
                            <button class="send_btn" onclick="myFunction()">Send Now</button>

@@ -6,6 +6,9 @@
 	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap');
+	  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Pen+Script&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Do Hyeon&family=Single+Day&display=swap');
 	.area {
     position: absolute;
     background: #fff;
@@ -16,7 +19,10 @@
     left: 15px;
     padding:2px;
 	}
-
+    #pic {
+    display: flex;
+    align-items: center;
+    }
 	.info {
 		font-size: 12px;
 		padding: 5px;
@@ -43,7 +49,7 @@
 
 	#inform tr:nth-child(even){background-color: #f2f2f2;}
 
-	#inform tr:hover { color: navy;  font-weight : bold; border: 2.5px solid blue;}
+	#inform tr:hover { color: navy;  font-weight : bold; border: 2.5px solid #00132b;}
 
 	#inform th{
 	padding-top: 10px;
@@ -58,7 +64,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Covido</title>
+      <title>코딩해조</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -81,30 +87,22 @@
        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
        <script>
 $(function () {
-// text로 시작하는 모든 id를 숨김
 $("[id^=text]").hide();
 
-// 클래스가 일치하는 버튼을 가지지만, float_l 클래스가 아닌 요소
 $(".read_more:not(.float_l)").click(function (e) {
 e.stopPropagation();
 
-// index가 클릭한 것과 일치하는 요소를 찾음
 $("[id^=text]").eq($(this).index()).toggle();
-});
-});
+});});
 
 $(function () {
-// msg로 시작하는 모든 id를 숨김
 $("[id^=msg]").hide();
 
-// 클래스가 일치하는 버튼을 가지지만, float_l 클래스가 아닌 요소
 $(".read_more:not(.float_l)").click(function (e) {
 e.stopPropagation();
 
-// index가 클릭한 것과 일치하는 요소를 찾음
 $("[id^=msg]").eq($(this).index()).toggle();
-});
-});
+});});
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
    </head>
@@ -117,13 +115,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
       <!-- end loader -->
       <!-- top -->
                     <!-- header -->
-         <header class="header-area">
-            <div class="left">
-               <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
-            </div>
-            <div class="right">
-               <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
-            </div>
+         <header class="header-area" style="padding: 20px 10px;">
             <div class="container">
                <div class="row d_flex">
                   <div class="col-sm-3 logo_sm">
@@ -135,15 +127,22 @@ $("[id^=msg]").eq($(this).index()).toggle();
                      <div class="navbar-area">
                         <nav class="site-navbar">
                            <ul>
-                              <li><a class="active" href="../main">Home</a></li>
-                              <li><a href="../map1">안심식당</a></li>
-                              <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
-                              <li><a href="../board">식당리뷰</a></li>
+                              <li><a class="active" href="../main"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">HOME</a></li>
+                              <li><a  href="../map1"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심식당</a></li>
+                              <li><a href="../map2"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심병원 & 진료소</a></li>
+                              <li><a href="../board"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">식당리뷰</a></li>
                                {% if not request.user.is_authenticated %}
-                              <li><a href="../register">회원가입 </a></li>
-                              <li><a href="../login">로그인 </a></li>
+                              <li><a href="../register"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">회원가입 </a></li>
+                              <li><a href="../login"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그인 </a></li>
                               {% else %}
-                              <li><a href="../logout">로그아웃</a></li>
+                              <li><a href="../logout"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그아웃</a></li>
                                {% endif %}
 
                            </ul>
@@ -175,7 +174,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
                            <div class="row">
                               <div class="col-md-8">
                                  <div class="photog">
-                                    <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">서울시 오늘의 <br>코로나 안심지역은?</h1>
+                                    <h1 style="line-height:110%; text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 80pt;">오늘의 서울시 <br>코로나 안심지역은?</h1>
                                  </div>
                               </div>
                            </div>
@@ -189,14 +188,14 @@ $("[id^=msg]").eq($(this).index()).toggle();
                            <div class="row">
                               <div class="col-md-8">
                                 <div class="photog">
-                                    <h1 style="text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 65pt;">내 근처 안심식당은<br>어디?</h1>
+                                    <h1 style="line-height:110%; text-color : white; font-family: 'Do Hyeon', sans-serif; font-weight:normal; font-size : 60pt;">내 근처 안심식당은        어디?</h1>
                                     <a class="read_more" href="#" ><div class="read_more float_l">자세히보기</div></a>
                                     <a class="read_more" href="../map1" >이동</a>
                                     <p>
                                     <div id="text1"><span style="font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리,<br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
                                     </p>
                                     <p>
-                                    <div id="text2"><span style="font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리, <br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
+                                    <div id="text2"><span style= "font-size : 29px"><strong>안심식당이란?</strong> <br>덜어먹기 가능한 도구 비치·제공,  위생적인 수저관리, <br>종사자 마스크 착용 등 3대 식사문화 개선수칙을 지키는 곳</span></div>
                                     </p>
                                 </div>
                               </div>
@@ -243,58 +242,58 @@ $("[id^=msg]").eq($(this).index()).toggle();
       <!-- about -->
        <!-- about -->
       <div class="about">
-         <div class="container_width">
-            <div class="row d_flex">
-                <div class="col-md-7">
-                  <div class="titlepage text_align_left">
-                     <h3 style="font-size : 35px">'{{current_date|date}}' 기준</h3><br><br><br>
-                       <div class="container">
+         <div class="container_width" id="_width" style="width:100%; padding-right: 40px; padding-left: 40px">
+            <div class="row d_flex" style="width:100%; margin:auto;">
+                <div style="float: left; width:35%; margin-left: auto; margin-right:auto;">
+                  <div class="titlepage text_align_left" style="height:20%">
+                     <h3 style="font-size : 35px">'{{yesterday|date}}' 기준</h3><br><br><br>
+                       <div class="container" style="padding-right:0px; padding-left:0px;">
 
-                        <div class="row">
-							<div class="col-md-6">
-								
-									<div class="hedingh3 text_align_center">
-										<img src="/static/images/shield.png" style="width : 200px; " alt="#"/>
+                        <div class="row" style="float: left; width:100%; margin-left: auto; margin-right:auto;">
+                     <div style="float: left; width:auto; margin-left: auto; margin-right:auto;">
+
+                           <div class="hedingh3 text_align_center">
+                              <img src="/static/images/shield.png" style="width : 200px; " alt="#"/>
                                         <br><br>
-										<h3 style="text-align:center;color : black;">오늘의 <span style="color : navy">안심지역</span></h3>
-										<h5 style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt; text-align:center;" id = "best"></h5>
-									</div><br><br>
-								
-								
-									<div class="hedingh3  text_align_center">
-										<h3 style="text-align:center;color : black;">전일 확진자수</h3>
-										<span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "previous" ></span>
-									</div>
-								
-							</div>
-							
-							<div class="col-md-6">				
-								
-									<div class="hedingh3 text_align_center">
-										<img src="/static/images/alarm.png" style="width : 200px; " alt="#"/>
+                              <h3 style="text-align:center;color : black;">오늘의 <span style="color : navy">안심지역</span></h3>
+                              <h5 style="font-size: 15pt; text-align:center;" id = "best"></h5>
+                           </div><br><br>
+
+
+                           <div class="hedingh3  text_align_center">
+                              <h3 style="text-align:center;color : black;">전일 확진자수</h3>
+                              <span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; " id = "previous" ></span>
+                           </div>
+
+                     </div>
+
+                     <div style="float: left; width:auto; margin-left: auto; margin-right:auto;">
+
+                           <div class="hedingh3 text_align_center">
+                              <img src="/static/images/alarm.png" style="width : 200px; " alt="#"/>
                                         <br><br>
-										<h3 style="text-align:center;color : black;">오늘의 <span style="color : red">위험지역</span></h3>
-										<h5 style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;text-align:center;" id = "worst"></h5>
-									</div><br><br>
-								
-							
-								
-									<div class="hedingh3 text_align_center">
-										<h3 style="text-align:center;color : black;">누적 확진자수</h3>
-										<span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; font-family: Nanum Myeongjo', sans-serif;" id = "cumulative" ></span>
-									</div>
-								
-							</div>
+                              <h3 style="text-align:center;color : black;">오늘의 <span style="color : red">위험지역</span></h3>
+                              <h5 style=" font-size: 15pt;text-align:center;" id = "worst"></h5>
+                           </div><br><br>
+
+
+
+                           <div class="hedingh3 text_align_center">
+                              <h3 style="text-align:center;color : black;">누적 확진자수</h3>
+                              <span class="counter" style="font-weight: 400;font-size: 40px;color: #000000;width: 50%; " id = "cumulative" ></span>
+                           </div>
+
+                     </div>
                         </div>
 
                      </div>
                   </div>
                 </div>
 
-               <div class="col-md-5">
+               <div style="width: 750px; float:right; margin-left:auto; margin-right: auto;">
                   <div class="about_img text_align_center">
-                      <p align="left" style="font-size : large">[글자주변을 클릭시 버튼이 생성됩니다.]</p>
-                     <div id="map" style="width:120%;height:600px;"></div>
+                      <p align="left" style="font-size : large">[ 글자주변을 클릭시 버튼이 생성됩니다. ]</p>
+                     <div id="map" style="width:100%;height:600px;"></div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cc2187c8717ffab77eb12ceab5806ae&libraries=services"></script>
 														<script>
 														/* 서울시 각구 영역 데이터 표기작업 : 지도에 폴리곤으로 표시   start */
@@ -1628,7 +1627,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																map: map, // 다각형을 표시할 지도 객체
 																path: area.path,
 																strokeWeight: 4,
-																strokeColor: '#392102',
+																strokeColor: '#00132b',
 																strokeOpacity: 0.8,
 																fillColor: '#fff',
 																fillOpacity: 0.8
@@ -1637,7 +1636,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 															// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경
 															// 지역명을 표시하는 커스텀오버레이를 지도위에 표시
 															kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
-																polygon.setOptions({fillColor: '#a76105'});
+																polygon.setOptions({fillColor: '#b3b3b3'});
 
 															});
 
@@ -1645,7 +1644,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 															// 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경
 															// 커스텀 오버레이를 지도에서 제거
 															kakao.maps.event.addListener(polygon, 'mouseout', function() {
-																polygon.setOptions({fillColor: '#e3e1dc'});
+																polygon.setOptions({fillColor: '#f2f2f2'});
 
 															});
 
@@ -1731,7 +1730,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
        																	jQuery(document).ready(function($) {
 																			$('.counter').counterUp({
 																				delay: 100,
-																				time: 5000
+																				time: 1000
 																			});
 																		});
 
@@ -1806,7 +1805,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][0] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][0]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][0]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.504623153578926, 127.05949062537763), // 강남구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1814,7 +1813,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][1] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][1]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][1]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.5607863549836, 127.1421644692095), // 강동구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1822,7 +1821,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div class="kbk" style="font-weight: bold; position: relative; font-size: 11pt; text-align : right;">' + goo[0][2] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][2]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][2]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.64490610719697, 127.0133322835402), // 강북구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1830,7 +1829,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][3] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][3]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][3]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.57775018294295, 126.8187204359482), // 강서구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1838,7 +1837,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][4] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][4]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][4]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.48165985785466, 126.94287400363935), // 관악구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1846,7 +1845,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; text-align : center;">' + goo[0][5] + '<br>'+
-																			 		'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][5]+ '명</span></div>',
+																			 		'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][5]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.558378673736854, 127.08724333642496), // 광진구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1854,7 +1853,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : left;">' + goo[0][6] + '<br>'+
-																						'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+  goo[1][6]+ '명</span></div>',
+																						'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+  goo[1][6]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.50706328208777, 126.84190463607086), // 구로구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1862,7 +1861,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 9.8pt; text-align : right;">' + goo[0][7] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px yellow" ani_type="color(font:red,text-shadow:black)">'+ goo[1][7]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][7]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.475652864873695, 126.89457115063648), // 금천구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1870,7 +1869,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][8] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][8]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][8]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.65785985622097, 127.07473709814093), // 노원구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1878,7 +1877,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div ani_type="scale" style="padding:0;font-weight: bold;  text-align : center;">' + goo[0][9] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][9]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][9]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.686199688033014, 127.03004360766113), // 도봉구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1886,7 +1885,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][10] + '<br>'+
-																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][10]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][10]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.5925972187505, 127.05158582031156), // 동대문구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1894,7 +1893,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][11] +
-																					'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][11]+ '명</span></div>',
+																					'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][11]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.50770143971578, 126.9467185920646), // 동작구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1902,91 +1901,103 @@ $("[id^=msg]").eq($(this).index()).toggle();
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
 																			content: '<div style="padding:0;font-weight: bold; font-size: 9.5pt; text-align : center;">' + goo[0][12] + '<br>'+
-																						'<span style="color:black;text-shadow:0 0 5px red" ani_type="color(font:red,text-shadow:black)">'+ goo[1][12]+ '명</span></div>',
+																						'<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][12]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.574638463235985, 126.89796569759794), // 마포구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : right;">' + goo[0][13] + '<br>'+ '<span style="color : navy">'+ goo[1][13]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : right;">' + goo[0][13] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][13]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.583306827304256, 126.932054656516), // 서대문구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 12pt; text-align : right;">' + goo[0][14] + '<br>'+ '<span style="color : navy">'+ goo[1][14]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 12pt; text-align : right;">' + goo[0][14] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][14]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.49752686565149, 127.00733064534573), // 서초구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">' + goo[0][15] + '<br>'+ '<span style="color : navy">'+ goo[1][15]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">' + goo[0][15] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][15]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.56337608875355, 127.03808108259298), // 성동구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : right;">' + goo[0][16] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][16]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : right;">' + goo[0][16] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][16]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.610755877852235, 127.01098755073711), // 성북구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][17] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][17]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][17] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][17]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.522573212224245, 127.1048513074155), // 송파구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : center;"> ' + goo[0][18] +  '<span style="color : navy">'+ goo[1][18]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 10pt; text-align : center;"> ' + goo[0][18] +
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][18]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.52520907343933, 126.85141135453145), // 양천구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][19] + '<br>'+ '<span style="color : #cc0000">'+ goo[1][19]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][19] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][19]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.532400843453544, 126.909034060499), // 영등포구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][20] + '<br>'+ '<span style="color : navy">'+ goo[1][20]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][20] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][20]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.542085940314685, 126.97684677195822), // 용산구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][21] + '<br>'+ '<span style="color : navy">'+ goo[1][21]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">' + goo[0][21] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][21]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.62661514348289, 126.9228560592482), // 은평구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;"> ' + goo[0][22] +  '<span style="color : navy">'+ goo[1][22]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;"> ' + goo[0][22] +
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][22]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.58580756496787, 126.98461116406769), // 종로구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">  ' + goo[0][23] +  '<span style="color : navy">'+ goo[1][23]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; color : black; font-size: 11pt; text-align : center;">  ' + goo[0][23] +
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][23]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.567485116889, 126.99177297385386), // 중구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
 																		});
 																		var customOverlay = new kakao.maps.CustomOverlay({
 																			map: map,
-																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">  ' + goo[0][24] + '<br>'+ '<span style="color : navy">'+ goo[1][24]+ '명</span></div>',
+																			content: '<div style="padding:0;font-weight: bold; font-size: 11pt; text-align : center;">  ' + goo[0][24] + '<br>'+
+																			            '<span style="color:darkred;" ani_type="color(font:red,text-shadow:black)">'+ goo[1][24]+ '명</span></div>',
 																			position: new kakao.maps.LatLng(37.60674081181382, 127.09072741551819), // 중랑구 커스텀 오버레이 표시 좌표
 																			xAnchor: 0.5, // 컨텐츠의 x 위치
 																			yAnchor: 0 // 컨텐츠의 y 위치
@@ -1998,13 +2009,13 @@ $("[id^=msg]").eq($(this).index()).toggle();
 															};
 
 
-															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시
+															// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 버튼을 인포윈도우에 표시
 															kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
 																var content = '<div style="text-align : left; width: 110%;" class="info" >' +
 																			'<div class="title">' + area.name +   '</div>' +
-																			'<a href="../map1/?search=' +  area.name + '"class="btn btn-primary">안심식당</a>' +
-																			'<a href="../map2/?search=' +  area.name + '"class="btn btn-primary">안심병원</a>' +
-																			'<a href="../map2_1/?search=' +  area.name + '"class="btn btn-primary">선별진료소</a>' +
+																			'<a href="../map1/?search=' +  area.name + '"class="btn btn-outline-danger btn-sm">안심식당</a>' +
+																			'<a href="../map2/?search=' +  area.name + '"class="btn btn-outline-danger btn-sm">안심병원</a>' +
+																			'<a href="../map2_1/?search=' +  area.name + '"class="btn btn-outline-danger btn-sm">선별진료소</a>' +
 
 																			'</div>';
 
@@ -2030,90 +2041,26 @@ $("[id^=msg]").eq($(this).index()).toggle();
      <!-- coronata -->
 
       <!-- end coronata -->
-   
-        <!-- protect -->
-      <div class="protect">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage text_align_center">
-                     <h2>How to Protect Yourself</h2>
-                     <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using  
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-           <div class="protect_bg">
-         <div class="container">
-             <div class="row">
-               <div class="col-md-12">
-                  <!--  Demos -->
-                  <div class="owl-carousel owl-theme">
-                     <div class="item">
-                        <div class="protect_box text_align_center">
-                          <div class="desktop">
-                              <i><img src="/static/images/pro1.png" alt="#"/></i>
-                             <h3>오늘의 <span style="color : navy">안심지역</span></h3>
-                           <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;" id = "best"></p>
-                          </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                          <div class="protect_box text_align_center">
-                          <div class="desktop">
-                            <i><img src="/static/images/pro2.png" alt="#"/></i>
-                           <h3>오늘의 <span style="color : red">위험지역</span></h3>
-                             <p style="font-family: 'Nanum Myeongjo', sans-serif; font-size: 15pt;" id = "worst"></p>
-                          </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                         <div class="protect_box text_align_center">
-                          <div class="desktop">
-                             <i><img src="/static/images/pro3.png" alt="#"/></i>
-                           <h3>전일 확진자수</h3>
-
-                          </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                         <div class="protect_box text_align_center">
-                          <div class="desktop">
-                             <i><img src="/static/images/pro3.png" alt="#"/></i>
-                           <h3>누적 확진자수</h3>
-
-                          </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-          </div>
-      </div>
-         </div>
-      </div>
-      <!-- end protect -->
-    <!-- cases -->
+       <!-- cases -->
       <div class="cases">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage text_align_center ">
-                     <h2>확진자 현황</h2>
+                     <h2 >확진자 현황</h2>
                      <br>
-                      <button type="button" style="float:right;" class="btn btn-primary" onclick="$('tbody').hide()">숨김</button>
-<button id = "list" type="button" style="float:right;" class="btn btn-primary" onclick="coronapatients(); $('tbody').show()">자세히보기</button>
+                      <button type="button" style="float:right;" class="btn btn-dark mr-2 mb-3" onclick="$('tbody').hide()">숨김</button>
+<button id = "list" type="button" style="float:right;" class="btn btn-dark mr-2 mb-3" onclick="coronapatients(); $('tbody').show()">자세히보기</button>
 
-							<br><br>
+							<br><br><br>
 						<section>
 						  <table id="inform" style= "text-align: center; margin-left : auto; margin-right : auto;  ">
 							<thead>
 							<tr>
-								<th style="background-color: navy; color: white;" scope="col">확진일</th>
-								<th style="background-color: navy; color: white;" scope="col">환자 번호</th>
-								<th style="background-color: navy; color: white;" scope="col">발생지역</th>
-								<th style="background-color: navy; color: white;" scope="col">감염경로</th>
+								<th style="background-color: #00132b; color: white;" scope="col">확진일</th>
+								<th style="background-color: #00132b; color: white;" scope="col">환자 번호</th>
+								<th style="background-color: #00132b; color: white;" scope="col">발생지역</th>
+								<th style="background-color: #00132b; color: white;" scope="col">감염경로</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -2140,7 +2087,7 @@ $("[id^=msg]").eq($(this).index()).toggle();
 								  function(jsonObj){
 									  var dom = $('tbody');
 									  let content="";
-									  for(var i=0; i < 50; i++) {
+									  for(var i=0; i < 30; i++) {
 										content += "<tr><th scope='row'>"+jsonObj.Corona19Status.row[i].CORONA19_DATE +
 																"</th><td>"+jsonObj.Corona19Status.row[i].CORONA19_ID+
 																"</td><td>"+jsonObj.Corona19Status.row[i].CORONA19_AREA+
@@ -2158,12 +2105,93 @@ $("[id^=msg]").eq($(this).index()).toggle();
          </div>
       </div>
       <!-- end cases -->
-         <!-- doctors -->
+        <!-- protect -->
+      <div class="protect">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage text_align_center">
+                     <h2>I·SEOUL·U</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+          <div class="protect_bg">
+         <div class="container">
+             <div class="row">
+               <div class="col-md-12">
+                  <!--  Demos -->
+                  <div class="owl-carousel owl-theme">
+                     <div class="item">
+                        <div class="protect_box text_align_center">
+                          <div class="desktop" style="height : 100%">
+                              <hr style="border: outset 2px white;">
+                              <hr style="border: dashed 2px white;"><br><br><br>
+                              <video muted autoplay loop width = "100%" >
+                                <source src="/static/images/I_SEOUL_U1.mp4" type="video/mp4">
+                                </video><br><br><br><br>
+                              <hr style="border: dashed 2px white;">
+                              <hr style="border: outset 2px white;">
+                          </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                          <div class="protect_box text_align_center">
+                          <div class="desktop" style="height : 100%">
+                              <hr style="border: outset 2px white;">
+                              <hr style="border: dashed 2px white;"><br><br><br>
+                            <video muted autoplay loop width = "100%" >
+                                <source src="/static/images/I_SEOUL_U2.mp4" type="video/mp4">
+                                </video><br><br><br><br>
+                              <hr style="border: dashed 2px white;">
+                              <hr style="border: outset 2px white;">
+                          </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                         <div class="protect_box text_align_center">
+                          <div class="desktop" style="height : 100%">
+                              <hr style="border: outset 2px white;">
+                              <hr style="border: dashed 2px white;"><br><br><br>
+                             <video muted autoplay loop width = "100%">
+                                <source src="/static/images/I_SEOUL_U3.mp4" type="video/mp4">
+                                </video><br><br><br><br>
+                              <hr style="border: dashed 2px white;">
+                              <hr style="border: outset 2px white;">
+                          </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                         <div class="protect_box text_align_center">
+                          <div class="desktop" id = "pic" style="min-height : 410px; height : 100%; padding-top :auto; padding-bottom:auto;">
+                            <img src="/static/images/방역예절_식당.jpg" style="margin-top :auto; margin-bottom:auto;" width = "100%" height = "100%" alt="#"/>
+                          </div>
+                        </div>
+                     </div>
+                      <div class="item">
+                         <div class="protect_box text_align_center">
+                          <div class="desktop" id = "pic" style="min-height : 410px; height : 100%; padding-top :auto; padding-bottom:auto;">
+                            <img src="/static/images/5이상금지.jpg" width = "100%" height = "100%" alt="#"/>
+                          </div>
+                        </div>
+                     </div>
+                      <div class="item">
+                         <div class="protect_box text_align_center">
+                          <div class="desktop" id = "pic" style="min-height : 410px; height : 100%; padding-top :auto; padding-bottom:auto;">
+                            <img src="/static/images/거리두기유지.jpg" width = "100%" height = "100%" alt="#"/>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          </div>
+      </div>
+         </div>
+      </div>
+      <!-- end protect -->
 
-      <!-- end cases -->
-<!-- update -->
-
-<!-- update -->
+<br><br>
       <!--  footer -->
       <footer>
          <div class="footer">

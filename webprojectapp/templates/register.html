@@ -14,7 +14,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Covido</title>
+      <title>회원가입</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -44,13 +44,7 @@
       <!-- end loader -->
       <!-- top -->
                     <!-- header -->
-         <header class="header-area">
-            <div class="left">
-               <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
-            </div>
-            <div class="right">
-               <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
-            </div>
+         <header class="header-area" style="padding: 20px 10px;">
             <div class="container">
                <div class="row d_flex">
                   <div class="col-sm-3 logo_sm">
@@ -62,12 +56,23 @@
                      <div class="navbar-area">
                         <nav class="site-navbar">
                            <ul>
-                              <li><a class="active" href="../main">Home</a></li>
-                              <li><a href="../map1">안심식당</a></li>
-                              <li><a href="../map2" class="logo_midle">안심병원 & 진료소</a></li>
-                              <li><a href="../board">식당리뷰</a></li>
-
-                              <li><a href="../login">로그인 </a></li>
+                              <li><a  href="../main"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">HOME</a></li>
+                              <li><a  href="../map1"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심식당</a></li>
+                              <li><a href="../map2"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">안심병원 & 진료소</a></li>
+                              <li><a href="../board"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">식당리뷰</a></li>
+                               {% if not request.user.is_authenticated %}
+                              <li><a class="active" href="../register"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">회원가입 </a></li>
+                              <li><a href="../login"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그인 </a></li>
+                              {% else %}
+                              <li><a href="../logout"
+                                     style="font-size:20px; font-weight: 600; font-family: 'Black Han Sans', sans-serif;">로그아웃</a></li>
+                               {% endif %}
 
                            </ul>
                            <button class="nav-toggler">
@@ -113,7 +118,12 @@
                             <label for="re-password">비밀번호 확인</label>
                             <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인" name="re-password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">회원가입</button>
+                        <button type="submit" onclick="registFunction()" class="btn btn-outline-danger btn-sm">회원가입</button>
+                        <script>
+                              function registFunction() {
+                                 alert("회원가입 되셨습니다");
+                              }
+                           </script>
                     </form>
                 </div>
             </div>
