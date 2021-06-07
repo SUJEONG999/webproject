@@ -2,7 +2,9 @@
 
 > K-DIGIT 프로젝트형 빅데이터 분석 서비스 개발 프로그램에서 진행중인 인터페이스(Web) 개발 프로젝트입니다. 
 >
-> https://codeplz4.pythonanywhere.com/  ( 알 수 없는 이유로 일일 확진자 데이터가 표시되지 않음 )
+> http://codeplz4.pythonanywhere.com/ 
+>
+> (https로 접속 시 데이터가 출력되지 않는 오류가 있음)
 
 
 
